@@ -1,6 +1,8 @@
 Portal::Application.routes.draw do
 
 
+  resources :users
+	match 'users/confirmation/:ticket' => 'users#confirmation'
   devise_for :admins
 	resources :admins, :only => [:index, :show]
 

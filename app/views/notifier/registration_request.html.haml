@@ -1,0 +1,19 @@
+%h1 Shit In A Box
+
+%p 
+	Beste #{@user.first_name} #{@user.last_name}
+	%br
+	%br
+	Bij deze ben je uitgenodigd door LaRed om onze nieuwe dienst te gebruiken: Shit in a box. In het vervolg kan jij deze dienst gebruiken om je aan te melden bij onze volgende bijeenkomst. 
+	%br
+	%br
+	We vragen u te registreren op deze dienst door op 
+	= link_to('deze', "localhost:3000/users/confirmation/")
+	link te klikken.
+	%br
+	%br
+	%br
+	Indien de link het niet doet kunt u de het onderstaande adres in uw adresbalk plakken
+	%br
+	%b Link:
+	localhost:3000/users/confirmation/#{@user.ticket}
