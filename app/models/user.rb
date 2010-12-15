@@ -9,5 +9,5 @@ class User < ActiveRecord::Base
   def User.generate_ticket
   	ticket = ActiveSupport::SecureRandom.hex(16)
   end
-  
+ 
 end

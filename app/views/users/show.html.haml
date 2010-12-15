@@ -1,0 +1,65 @@
+%h2 User Page
+%ul
+	%li
+		%b User ID:
+		= @user.id
+	%li
+		%b First Name:
+		= @user.first_name
+	%li
+		%b Last Name:
+		= @user.last_name
+	%li
+		%b Email:
+		= @user.email
+
+	%li
+		=@linkedin_id
+		- if @authenticated
+			-# Profile
+			%h2 LinkedIn Profile:
+			%ul
+				%li
+					%b First Name:
+					= @public_linkedin.first_name
+				%li
+					%b Last Name:
+					= @public_linkedin.last_name
+				%li
+					- if @public_linkedin.picture_url != nil
+						= image_tag @public_linkedin.picture_url, :alt => 'profile_picture'
+
+				-#%ul
+					%li
+						%b LinkedIn ID:
+						= @linkedin_id.id
+					%li
+						%b First Name:
+						= @profile.first_name
+					%li
+						%b Last Name:
+						= @profile.last_name
+					%li
+						- if @profile.picture_url != nil
+							= image_tag @profile.picture_url, :alt => 'profile_picture'
+					%li
+						%h3 public linkedin
+			
+			-# Connections
+				-#%h2 Connections	
+				- @connections.each do |c|
+					%ul
+						%li
+							%b First Name:
+							= c.first_name
+						%li
+							%b Last Name:
+							= c.last_name
+						%li
+							- if c.picture_url != nil
+								= image_tag c.picture_url, :alt => 'profile_picture'
+		- else 
+			%p LinkedIn not authenticated!
+
+|
+\#{link_to 'Back', users_path}

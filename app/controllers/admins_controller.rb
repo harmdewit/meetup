@@ -1,5 +1,7 @@
 class AdminsController < ApplicationController
-# GET /admins
+	before_filter :authenticate_admin!, :except => :login
+	
+	# GET /admins
   # GET /admins.xml
   def index
     @admins = Admin.all
@@ -20,4 +22,5 @@ class AdminsController < ApplicationController
       format.xml  { render :xml => @admin }
     end
   end
+  
 end

@@ -7,10 +7,15 @@
 		= csrf_meta_tag
 	%body
 		- if admin_signed_in?
+			%b Admin 
 			Signed in as #{link_to current_admin.email, admin_path(current_admin)} |
 			#{link_to "sign out", destroy_admin_session_path}
-		- else
-			#{link_to "Register", new_admin_registration_path} | #{link_to "Sign in", new_admin_session_path}
+			%br
+		- if session[:current_user]
+			%b User 
+			Signed in as #{link_to session[:current_user].email, session[:current_user]} |
+			= link_to "sign out", logout_path, :method => 'delete'
 		-	if notice
 			%p#notice= notice
+			%br
 		= yield

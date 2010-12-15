@@ -1,10 +1,25 @@
 Portal::Application.routes.draw do
 
-
-  resources :users
 	match 'users/confirmation/:ticket' => 'users#confirmation'
+	match 'users/:id/linkedin_authenticate', :to => 'users#linkedin_authenticate'
+	match 'users/:id/linkedin_callback', :to => 'users#linkedin_callback'
+	
+	match 'sessions/linkedin_authenticate'
+	match 'sessions/linkedin_callback'
+	
+  resources :users
+
   devise_for :admins
 	resources :admins, :only => [:index, :show]
+	
+	
+	controller :sessions do
+		get 'login' => :new
+		get 'linkedin_authenticate' => :linkedin_authenticate
+		get 'linkedin_callback' => :linkedin_callback
+		post 'login' => :create
+		delete 'logout' => :destroy
+	end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,24 @@
+%h2 User Confirmation
+%h3 User
+%ul
+	%li
+		%b User ID:
+		= @user.id
+	%li
+		%b First Name:
+		= @user.first_name
+	%li
+		%b Last Name:
+		= @user.last_name
+	%li
+		%b Email:
+		= @user.email
+	%li
+		%b Ticket:
+		= @user.ticket
+%p
+	Om in te kunnen loggen moet je eerst je eerst je LinkedIn account koppelen met deze applicatie
+	%br
+	= link_to 'Authenticate with LinkedIn', "#{users_path}/#{@user.id}/linkedin_authenticate"
+|
+\#{link_to 'Back', users_path}
