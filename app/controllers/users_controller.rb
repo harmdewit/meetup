@@ -94,7 +94,7 @@ class UsersController < ApplicationController
   
   # GET /users/confirmation/:ticket
   def confirmation
-  	unless session[:current_user] 
+  	unless session[:linked_in] 
 	  	user = User.find_by_ticket(params[:ticket])
 	    if user.linkedin_id
 	    	redirect_to login_url, :notice => 'You have already linked your account with LinkedIn. Please login as usual.'

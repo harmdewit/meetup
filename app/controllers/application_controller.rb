@@ -4,12 +4,8 @@ class ApplicationController < ActionController::Base
   protected
   
   def authenticate_user
-  	unless session[:current_user]
-			if session[:linkedin_id]
-				redirect_to login_url, :method => 'POST'
-			else
-  			redirect_to login_url, :notice => "Please log in"
-			end
+  	unless @current_user = User.find_by_linkedin_id(session[:linkedin_id])
+			redirect_to login_url, :notice => "Please log in"
 		end
 	end
 

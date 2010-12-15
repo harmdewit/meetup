@@ -11,9 +11,9 @@
 			Signed in as #{link_to current_admin.email, admin_path(current_admin)} |
 			#{link_to "sign out", destroy_admin_session_path}
 			%br
-		- if session[:current_user]
+		- if @current_user
 			%b User 
-			Signed in as #{link_to session[:current_user].email, session[:current_user]} |
+			Signed in as #{link_to @current_user.email, @current_user} |
 			= link_to "sign out", logout_path, :method => 'delete'
 		-	if notice
 			%p#notice= notice

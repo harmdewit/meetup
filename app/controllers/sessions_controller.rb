@@ -33,7 +33,6 @@ class SessionsController < ApplicationController
   
   def create
     if user = User.find_by_linkedin_id(session[:linkedin_id])
-      session[:current_user] = user
       redirect_to user, :notice => 'Succesfully logged in.'
     else
       redirect_to login_url, :notice => "Your LinkedIn account is not known in our database, please use your LinkedIn account you used when you first visited this website."
@@ -42,7 +41,6 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:linkedin_id] = nil
-    session[:current_user] = nil
     redirect_to '/login', :notice => "Logged out"
   end
 
