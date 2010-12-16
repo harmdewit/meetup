@@ -1,14 +1,22 @@
 Portal::Application.routes.draw do
+  resources :meetings do
+	  resources :participants, :only => [:new, :create, :destroy]
+	end
 
 	match 'users/confirmation/:ticket' => 'users#confirmation'
-	match 'users/:id/linkedin_authenticate', :to => 'users#linkedin_authenticate'
-	match 'users/:id/linkedin_callback', :to => 'users#linkedin_callback'
+	
+	match 'users/confirmation/:ticket/linkedin_authenticate', :to => 'users#linkedin_authenticate'
+	match 'users/confirmation/:ticket/linkedin_callback', :to => 'users#linkedin_callback'
 	
 	match 'sessions/linkedin_authenticate'
 	match 'sessions/linkedin_callback'
 	
   resources :users
-
+  
+	#resources :users do |user|
+	#	user.resources :connections
+	#end
+	
   devise_for :admins
 	resources :admins, :only => [:index, :show]
 	

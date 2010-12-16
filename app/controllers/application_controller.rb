@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   protected
   
   def authenticate_user
-  	unless @current_user = User.find_by_linkedin_id(session[:linkedin_id])
+  	if @current_user = User.find_by_linkedin_id(session[:linkedin_id])
+  	  client = LinkedIn::Client.new("TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m", "sD8x8zFOk7atIx1n7Ei5NmAFOkvLkLlnlqDZ8gvPURnaEB1hrcoOxaJgh0tZp6wf")
+	    client.authorize_from_access(@current_user.linkedin_token, @current_user.linkedin_secret)
+	    
+	    @profile = client.profile(:id => @current_user.linkedin_id, :fields => %w(picture_url,first_name,last_name))
+	    @connections = client.connections
+  	else
 			redirect_to login_url, :notice => "Please log in"
 		end
 	end

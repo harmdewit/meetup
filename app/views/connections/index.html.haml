@@ -1,0 +1,21 @@
+%h1 Listing connections
+%table
+  %tr
+    %th User
+    %th Connected user
+    %th Meeting
+    %th Status
+    %th
+    %th
+    %th
+  - @connections.each do |connection|
+    %tr
+      %td= connection.user_id
+      %td= connection.connected_user_id
+      %td= connection.meeting_id
+      %td= connection.status
+      %td= link_to 'Show', connection
+      %td= link_to 'Edit', edit_connection_path(connection)
+      %td= link_to 'Destroy', connection, :confirm => 'Are you sure?', :method => :delete
+%br/
+= link_to 'New Connection', new_connection_path

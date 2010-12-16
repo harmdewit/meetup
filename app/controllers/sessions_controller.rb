@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
 	before_filter :authenticate_user, :only => :destroy
-
-	def new
-	end
 	
 	def linkedin_authenticate
 	  client = LinkedIn::Client.new("TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m", "sD8x8zFOk7atIx1n7Ei5NmAFOkvLkLlnlqDZ8gvPURnaEB1hrcoOxaJgh0tZp6wf")
