@@ -1,16 +1,13 @@
 class UsersController < ApplicationController
 	before_filter :authenticate_admin!, :only => [:index, :new, :create, :update, :destroy]
-	
-	# moet verwijderd worden nadat meer user pagina's zijn gemaakt
-	before_filter :authenticate_user, :only => :show
 
 	# GET /user/:id/linkedin_authenticate 
-	def linkedin_authenticate
-		user = User.find_by_ticket(params[:ticket])
-    unless user.linkedin_id 
+	def linkedin_authenticate ticket
+		user = User.find_by_ticket(ticket)
+    unless user.linkedin_id
 		  client = LinkedIn::Client.new("TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m", "sD8x8zFOk7atIx1n7Ei5NmAFOkvLkLlnlqDZ8gvPURnaEB1hrcoOxaJgh0tZp6wf")
 	
-	    request_token = client.request_token(:oauth_callback => "http://#{request.host_with_port}/users/#{user.ticket}/linkedin_callback")  
+	    request_token = client.request_token(:oauth_callback => "http://#{request.host_with_port}/users/confirmation/#{user.ticket}/linkedin_callback")  
 	    session[:rtoken] = request_token.token
 	    session[:rsecret] = request_token.secret
 	    redirect_to client.request_token.authorize_url
@@ -21,7 +18,7 @@ class UsersController < ApplicationController
 	
   # GET /user/:id/linkedin_callback
   def linkedin_callback
-    user = User.find(params[:ticket])
+    user = User.find_by_ticket(params[:ticket])
     unless user.linkedin_id
 	    client = LinkedIn::Client.new("TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m", "sD8x8zFOk7atIx1n7Ei5NmAFOkvLkLlnlqDZ8gvPURnaEB1hrcoOxaJgh0tZp6wf")
 	    if params[:oauth_verifier]
@@ -94,16 +91,16 @@ class UsersController < ApplicationController
   
   # GET /users/confirmation/:ticket
   def confirmation
-  	unless session[:linked_in] 
+  	unless session[:linkedin_id]
 	  	user = User.find_by_ticket(params[:ticket])
 	    if user.linkedin_id
 	    	redirect_to login_url, :notice => 'You have already linked your account with LinkedIn. Please login as usual.'
 	    else
 	    	params[:id] = user.id
-				redirect_to linkedin_authenticate params[:ticket]
+				linkedin_authenticate params[:ticket]
 	    end
     else
-    	redirect_to session[:current_user], :notice => 'You are already logged in.'
+    	redirect_to User.find_by_linkedin_id(session[:linkedin_id]), :notice => 'You are already logged in.'
   	end
 	end
 

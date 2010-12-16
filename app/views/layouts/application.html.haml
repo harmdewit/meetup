@@ -2,20 +2,70 @@
 %html
 	%head
 		%title Portal
-		= stylesheet_link_tag :all
-		= javascript_include_tag :defaults
+		= stylesheet_link_tag 'reset.css'
+		= stylesheet_link_tag 'scaffold.css'
+		= stylesheet_link_tag 'main.css'
 		= csrf_meta_tag
 	%body
-		- if admin_signed_in?
-			%b Admin 
-			Signed in as #{link_to current_admin.email, admin_path(current_admin)} |
-			#{link_to "sign out", destroy_admin_session_path}
-			%br
-		- if @current_user
-			%b User 
-			Signed in as #{link_to @current_user.email, @current_user} |
-			= link_to "sign out", logout_path, :method => 'delete'
-		-	if notice
-			%p#notice= notice
-			%br
-		= yield
+		#container
+			%header
+				%nav
+					%ul
+						%li
+							%a{:href => "#"} Meeting informatie
+						%li.active
+							%a{:href => "#"} Deelnemers
+				#personal_info
+					- if @profile
+						= image_tag @profile.picture_url
+						.info
+							Welkom,
+							%br/
+							%strong= @profile.first_name + " " + @profile.last_name
+							.dropdown
+								%span.icon y
+								%span.text Opties
+			.spacer
+			#information
+				.title
+					%h2 Deelnemers
+					%small (89)
+					%input{:placeholder => "Zoek...", :type => "text"}/
+				%p Episode V, A NEW HOPE It is a dark time for the Rebellion. Although the Death Star has been destroyed, Imperial troops have driven the Rebel forces from their hidden base and pursued them across the galaxy.  Evading the dreaded Imperial Starfleet, a group of freedom fighters led by Luke Skywalker has established a new secret base on the remote ice world of Hoth. The evil lord Darth Vader, obsessed with finding young Skywalker, has dispatched.
+			#main_content
+			
+				- @connections.each do |x|
+					.stack
+						.main_card
+							.clickarea
+							.card.front
+								%img{:alt => "Ribbon", :src => "/images/vlaggetje.png"}/
+								.card_inside
+									%h2= x.first_name + " " + x.last_name
+									%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+							.card.back
+								.ribbon
+									%a{:href => "#"}
+								.card_inside
+									- if x.picture_url
+										= image_tag x.picture_url
+									%h2 Beest
+									%p Balalaowo
+						.connections
+							.card
+								.card_inside
+									%h2 George Michael
+									%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+							.card
+								.card_inside
+									%h2 George Michael
+									%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+							.card
+								.card_inside
+									%h2 George Michael
+									%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+			
+			%footer
+		
+		%script{:src => "/javascripts/jquery.js"}
+		%script{:src => "/javascripts/script.js"}

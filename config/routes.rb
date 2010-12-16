@@ -1,8 +1,11 @@
 Portal::Application.routes.draw do
 
+  resources :meetings
+
 	match 'users/confirmation/:ticket' => 'users#confirmation'
-	match 'users/:id/linkedin_authenticate', :to => 'users#linkedin_authenticate'
-	match 'users/:id/linkedin_callback', :to => 'users#linkedin_callback'
+	
+	match 'users/confirmation/:ticket/linkedin_authenticate', :to => 'users#linkedin_authenticate'
+	match 'users/confirmation/:ticket/linkedin_callback', :to => 'users#linkedin_callback'
 	
 	match 'sessions/linkedin_authenticate'
 	match 'sessions/linkedin_callback'
