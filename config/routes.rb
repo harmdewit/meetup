@@ -1,8 +1,12 @@
 Portal::Application.routes.draw do
-  resources :meetings do
+
+  resources :meetings, :only => :show do
 	  resources :participants, :only => [:new, :create, :destroy]
 	end
 
+	match 'meetings' => 'meetings#last_meeting'
+	match 'meetings/:id/participants' => 'meetings#show_participants'
+	
 	match 'users/confirmation/:ticket' => 'users#confirmation'
 	
 	match 'users/confirmation/:ticket/linkedin_authenticate', :to => 'users#linkedin_authenticate'
@@ -17,17 +21,26 @@ Portal::Application.routes.draw do
 	#	user.resources :connections
 	#end
 	
-  devise_for :admins
-	resources :admins, :only => [:index, :show]
-	
+	#devise_for :admins, :controllers => { :sessions => "admin/sessions" }
+	resources :connections
 	
 	controller :sessions do
 		get 'login' => :new
 		get 'linkedin_authenticate' => :linkedin_authenticate
 		get 'linkedin_callback' => :linkedin_callback
 		post 'login' => :create
-		delete 'logout' => :destroy
+		delete 'logout' => :destroy, :as => 'logout'
 	end
+	
+  devise_for :admins, :controllers => {:sessions => 'admin/sessions'}
+	namespace "admin" do
+		resources :users
+		resources :admins, :only => [:index, :show]
+		resources :meetings 
+		#resources :participants
+	end
+	
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -78,7 +91,7 @@ Portal::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "admins#index"
+  root :to => "meetings#last_meeting"
 
   # See how all your routes lay out with "rake routes"
 

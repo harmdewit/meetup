@@ -1,0 +1,40 @@
+!!!
+%html
+	%head
+		%title Portal
+		= stylesheet_link_tag 'reset.css'
+		= stylesheet_link_tag 'main.css'
+		= csrf_meta_tag
+		
+		= javascript_include_tag 'jquery'
+		= javascript_include_tag 'rails'
+		= javascript_include_tag 'script'
+	%body
+		#overlay
+			#centerpack
+				#modal
+					.colorindicator
+					.content
+					-# %strong Afmelden voor het event "eventnaam"?
+						%p Weet je zeker dat je je wilt afmelden voor het event "eventnaam"?
+						
+						.buttons
+							%a{:href => "#"} 
+								%span.icon 3
+								Ja, afmelden
+							%a{:href => "#"}
+								%span.icon d
+								Nee, annuleren
+		#container
+			%header
+			.spacer
+			-##information
+				
+			- if notice
+				%p#notice= notice
+			.title
+			%h2 Login
+			=yield
+			
+			%footer
+		

@@ -1,5 +1,6 @@
 class ConnectionsController < ApplicationController
-	filter_before :authenticate_user, :only => [:index, :show]
+	skip_before_filter :authenticate_user, :only => :index
+	layout 'login'
 	
   # GET /connections
   # GET /connections.xml
@@ -16,6 +17,7 @@ class ConnectionsController < ApplicationController
   # GET /connections/1.xml
   def show
     @connection = Connection.find(params[:id])
+		@meeting = Meeting.find(5)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,7 +40,21 @@ class ConnectionsController < ApplicationController
   def edit
     @connection = Connection.find(params[:id])
   end
+  
+  def create
+    @connection = Connection.new(params[:connection])
 
+    respond_to do |format|
+      if @connection.save
+        format.html { redirect_to(@connection, :notice => '@connection was successfully created.') }
+        format.xml  { render :xml => @admin_meeting, :status => :created, :location => @admin_meeting }
+      else
+        format.html { render :action => 'new'}
+        format.xml  { render :xml => @admin_meeting.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+=begin
 	def create
 		@user = User.find(@current_user)
 		@connected_user = User.find(params[:connected_user_id])
@@ -54,7 +70,7 @@ class ConnectionsController < ApplicationController
 			redirect_to user_path(@current_user)
 		end
 	end
-	
+=end
 	def update
 		@user = User.find(@current_user)
 		@connected_user = User.find(params[:connected_user_id])

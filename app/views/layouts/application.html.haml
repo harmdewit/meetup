@@ -5,37 +5,59 @@
 		= stylesheet_link_tag 'reset.css'
 		= stylesheet_link_tag 'main.css'
 		= csrf_meta_tag
+		
+		= javascript_include_tag 'jquery'
+		= javascript_include_tag 'rails'
+		= javascript_include_tag 'script'
 	%body
-		- if admin_signed_in?
-			%b Admin 
-			Signed in as #{link_to current_admin.email, admin_path(current_admin)} |
-			#{link_to "sign out", destroy_admin_session_path}
+		#overlay
+			#centerpack
+				#modal
+					.colorindicator
+					.content
+					-# %strong Afmelden voor het event "eventnaam"?
+						%p Weet je zeker dat je je wilt afmelden voor het event "eventnaam"?
+						
+						.buttons
+							%a{:href => "#"} 
+								%span.icon 3
+								Ja, afmelden
+							%a{:href => "#"}
+								%span.icon d
+								Nee, annuleren
 		#container
 			%header
 				%nav
 					%ul
-						%li
-							%a{:href => "#"} Meeting informatie
 						%li.active
-							%a{:href => "#"} Deelnemers
+							=link_to 'Meeting informatie', @meeting
+						%li
+							=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
 				#personal_info
 					- if @profile
-						= image_tag @profile.picture_url
+						- if @profile.picture_url
+							= image_tag @profile.picture_url
 						.info
 							Welkom,
 							%br/
-							%strong= @profile.first_name + " " + @profile.last_name
+							%a{:href => user_path(@profile.id)}
+								%strong= @profile.first_name + " " + @profile.last_name
 							.dropdown
 								%span.icon y
 								%span.text Opties
-							= link_to 'Logout', logout_url 
+							= link_to 'Logout', logout_url, :method => 'delete' 
 			.spacer
 			#information
+				
 				- if notice
 					%p#notice= notice
-				=yield
+				.title
+					%h2= @meeting.title
+					%small= #{}"(#{@meeting.participants.count})"
+					%input{:placeholder => "Zoek...", :type => "text"}/
+				%p= @meeting.description
+				#main_content
+					=yield
 			
 			%footer
 		
-		%script{:src => "/javascripts/jquery.js"}
-		%script{:src => "/javascripts/script.js"}

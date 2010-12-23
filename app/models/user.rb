@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+	has_many :participants, :dependent => :destroy
+	has_many :connections, :dependent => :destroy
+	
 	attr_accessible :email, :first_name, :last_name, :ticket
 	validates :first_name, :last_name, :email, :ticket, :presence => true
 	validates_uniqueness_of :email, :ticket

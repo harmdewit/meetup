@@ -1,0 +1,57 @@
+!!!
+%html
+	%head
+		%title Portal	
+		= stylesheet_link_tag 'admin/reset.css'
+		= stylesheet_link_tag 'admin/main.css'
+		= stylesheet_link_tag 'admin/css3.css'
+		= stylesheet_link_tag 'admin/custom-theme/jquery-ui-1.8.1.custom.css'
+		= csrf_meta_tag
+		
+		= javascript_include_tag 'admin/jquery-1.4.2.min.js'
+		= javascript_include_tag 'admin/jquery-ui.min.js'
+		= javascript_include_tag 'admin/jquery.wysiwyg.js'
+		= javascript_include_tag 'admin/excanvas.js'
+		= javascript_include_tag 'admin/jquery.visualize.js'
+		= javascript_include_tag 'admin/script.js'
+		
+	%body
+		#bokeh
+			#container
+				#header
+					%h1#logo Admin Control Panel
+					
+					#header_buttons
+						- if admin_signed_in?
+							= link_to "#{current_admin.email} ", admin_admin_path(current_admin)
+							= link_to "sign out", destroy_admin_session_path
+						- else
+							= link_to "Register", new_admin_registration_path
+							= link_to "Sign in", new_admin_session_path
+							
+					%ul#main-nav
+						%li
+							= link_to "Admin", admin_admins_path
+							%ul
+								%li= link_to 'Admins', admin_admins_path
+						%li
+							= link_to "User", admin_users_path
+							%ul
+								%li= link_to 'Users', admin_users_path							
+						%li
+							= link_to "Meeting", admin_meetings_path
+							%ul
+								%li= link_to 'Meetings', admin_meetings_path							
+					
+					%h2
+						=image_tag("admin/icons/tools_32.png")
+						Management
+							
+				#content
+					.content-box
+						.content-box-header	
+						.content-box-content
+							=yield
+					- if notice
+						%p#notice= notice
+		

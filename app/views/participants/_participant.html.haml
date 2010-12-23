@@ -1,0 +1,34 @@
+.stack
+	.main_card
+		.clickarea
+		.card.front
+			%img{:alt => "Ribbon", :src => "/images/vlaggetje.png"}/
+			.card_inside
+				%h2= participant.user.first_name + " " + participant.user.last_name
+
+				%p= participant.motivation
+		.card.back
+			.ribbon
+				%a{:href => "#"}
+			.card_inside
+				- if participant.picture_url
+					= image_tag participant.picture_url
+				%h2 Beest
+				%p Balalaowo
+	.connections
+		.card
+			.card_inside
+				%h2 George Michael
+				%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+		.card
+			.card_inside
+				%h2 George Michael
+				%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+		.card
+			.card_inside
+				%h2 George Michael
+				%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+-#%tr
+	%td= participant.user_id
+	%td= participant.meeting_id
+	%td= participant.motivation

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101216162949) do
+ActiveRecord::Schema.define(:version => 20101222133609) do
 
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(:version => 20101216162949) do
     t.string   "ticket"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "linkedin_url"
   end
 
 end

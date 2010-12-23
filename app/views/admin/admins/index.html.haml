@@ -1,0 +1,7 @@
+%h2 Admins Index
+- @admins.each do |admin|
+	%tr
+		%td= admin.id
+		%td= admin.email
+		%td
+			= link_to 'Show', admin_admin_path(admin)

@@ -50,6 +50,19 @@ body {
 	text-shadow: 0 1px 0 #efede5;
 }
 
+.card small {
+	color: #292828;
+	display: block;
+	font-size: 11px;
+	height: 12px;
+	width: 230px;
+	overflow: hidden;
+	margin: -5px 20px 5px 20px;
+	text-overflow: ellipsis;
+	text-shadow: 0 1px 0 #fff;
+	white-space: nowrap;
+}
+
 .card p {
 	color: #746f65;
 	font-size: 12px;
@@ -200,6 +213,7 @@ header {
 #personal_info strong {
 	font-family: "Aller Display";
 	font-size: 14px;
+	margin-right: 50px;
 	text-transform: uppercase;
 }
 
@@ -209,9 +223,27 @@ header {
 	color: #8d5812;
 	cursor: pointer;
 	margin-top: 3px;
+	position: absolute;
 	
 	-webkit-border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 0 #f8c685;
+}
+
+#personal_info .dropdown.active, #personal_info .dropdown:hover {
+	background: -webkit-gradient(linear, left top, left bottom, from(#3f3f3f), to(#000));
+	border: 1px solid #4c4c4c;
+	color: #fff;
+	text-shadow: 0 1px 0 #000;
+	
+	-webkit-box-shadow: inset 0 1px 0 #747474;
+}
+
+#personal_info .dropdown:hover {
+	background: -webkit-gradient(linear, left top, left bottom, from(#454545), to(#323232));
+}
+
+#personal_info .dropdown:hover.active {
+	background: -webkit-gradient(linear, left top, left bottom, from(#3f3f3f), to(#000));
 }
 
 #personal_info .dropdown .icon {
@@ -221,12 +253,46 @@ header {
 	padding: 5px 9px;
 }
 
+#personal_info .dropdown.active .icon, #personal_info .dropdown:hover .icon {
+	border-right: 1px solid #4c4c4c;
+}
+
 #personal_info .dropdown .text {
 	border-left: 1px solid #f4be78;
 	font-size: 12px;
 	line-height: 24px;
 	padding: 5px 55px 5px 9px;
 	margin-left: -3px;
+}
+
+#personal_info .dropdown.active .text, #personal_info .dropdown:hover .text {
+	border-left: 1px solid #3a3a3a;
+}
+
+#personal_info .dropdown ul {
+	background: -webkit-gradient(linear, left top, left bottom, from(#444), to(#303030));
+	display: none;
+	text-align: center;
+	
+	-webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, .3);
+}
+
+#personal_info .dropdown ul li {
+	border-bottom: 1px solid #343434;
+	border-top: 1px solid #696969;
+}
+
+#personal_info .dropdown ul li a {
+	color: #fff;
+	display: inline-block;
+	text-decoration: none;
+	opacity: .75;
+	padding: 8px 0px;
+	text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
+}
+
+#personal_info .dropdown ul li a:hover {
+	opacity: 1;
 }
 
 /* Navigation */
@@ -329,6 +395,31 @@ input::-webkit-input-placeholder {
 	text-shadow: 0 1px 0 #000;
 }
 
+/* Pagination */
+
+#information ul {
+	margin: 15px auto 0 auto;
+	text-align: center;
+}
+
+#information ul li {
+	display: inline;
+}
+
+#information ul li a {
+	background: url(../images/pagination.png) no-repeat center;
+	display: inline-block;
+	height: 8px;
+	width: 7px;
+	padding: 6px;
+	margin: 0 -2px;
+	text-indent: -9999px;
+}
+
+#information ul li.active a {
+	background: url(../images/pagination_active.png) no-repeat center;
+}
+
 /* Main content */
 
 #main_content {
@@ -356,4 +447,108 @@ footer {
 
 .icon {
 	font-family: Pictos;
+}
+
+/* Overlay */
+
+#overlay {
+	background: url(../images/overlay.png);
+	display: none;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	z-index: 99999;
+}
+
+#centerpack {
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+#modal {
+	background: #e8e5dd;
+	border-top: 1px solid #ccc9be;
+	margin: 150px auto;
+	text-align: center;
+	position: relative;
+	width: 460px;
+	z-index: 999999;
+
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+
+#modal strong {
+	color: #292828;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 25px 0 8px 0;
+	text-shadow: 0 1px 0 #fff;
+}
+
+#modal p {
+	color: #54514b;
+	font-size: 12px;
+	text-shadow: 0 1px 0 #fff;
+}
+
+#modal .buttons {
+	background: -webkit-gradient(linear, left top, left bottom, from(#313131), to(#232323));
+	border: 1px solid #4c4c4c;
+	display: -webkit-box;
+	margin: -1px;
+	margin-top: 25px;
+	
+	-webkit-box-orient: horizontal;
+}
+
+#modal .buttons a {
+	border-top: 1px solid #656565;
+	display: block;
+	font-size: 14px;
+	line-height: 30px;
+	text-decoration: none;
+	
+	-webkit-box-flex: 1;
+}
+
+#modal .buttons a:first-child {
+	border-right: 1px solid #3f3f3f;
+	color: #fff;
+	text-shadow: 0 1px 0 #000;
+}
+
+#modal .buttons a:last-child {
+	color: #969696;
+	text-shadow: 0 1px 0 #000;
+}
+
+#modal .buttons span.icon {
+	font-size: 18px;
+	margin-right: 5px;
+}
+
+#modal .buttons a:first-child span.icon {
+	color: #009a2c;
+	text-shadow: 0 1px 0 #000;
+}
+
+#modal .buttons a:last-child span.icon {
+	color: #cf060e;
+	opacity: .5;
+}
+
+#modal .colorindicator {
+	background: #fab625;
+	border: 1px solid #8f6815;
+	border-bottom: 1px solid #f5edd8;
+	height: 8px;
+	left: 4px;
+	position: absolute;
+	width: 450px;
+	top: -11px;
+	
+	-webkit-box-shadow: inset 0 1px 0 #fbca5c;
 }

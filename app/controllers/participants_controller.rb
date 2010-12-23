@@ -1,20 +1,19 @@
 class ParticipantsController < ApplicationController
-	before_filter :authenticate_user
   # POST /participants
   # POST /participants.xml
   def new
+		@meeting = Meeting.find(params[:meeting_id])
   	@participant = Participant.new
-		@meeting_id = params[:meeting_id]
-		@meeting = Meeting.find(@meeting_id)
 	end
 	
 	
   def create
-  	@participant = Participant.new(params[:meeting])
+  	@meeting = Meeting.find(params[:meeting_id])
+  	@participant = Participant.new(params[:participant])
 		@participant.user_id = @current_user.id
 		@participant.meeting_id = params[:meeting_id]
     if @participant.save
-      redirect_to(Meeting.find(@participant.meeting_id), :notice => 'Participant was successfully created.')
+      redirect_to(@meeting, :notice => 'Participant was successfully created.')
     else
 			render :action => 'new'
     end
@@ -23,11 +22,12 @@ class ParticipantsController < ApplicationController
   # DELETE /participants/1
   # DELETE /participants/1.xml
   def destroy
+  	@meeting = Meeting.find(params[:meeting_id])
     @participant = Participant.find(params[:id])
     @participant.destroy
 
     respond_to do |format|
-      format.html { redirect_to(meetings_url) }
+      format.html { redirect_to(@meeting) }
       format.xml  { head :ok }
     end
   end

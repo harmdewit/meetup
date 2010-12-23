@@ -1,0 +1,7 @@
+= form_for [@meeting, @participant] do |p|
+	.field
+		= p.text_area :motivation
+		%br/
+	.actions
+		= p.submit 'submit'
+	

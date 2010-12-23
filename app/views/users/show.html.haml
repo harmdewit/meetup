@@ -14,7 +14,6 @@
 		= @user.email
 
 	%li
-		=@linkedin_id
 		- if @authenticated
 			-# Profile
 			%h2 LinkedIn Profile:
@@ -25,6 +24,9 @@
 				%li
 					%b Last Name:
 					= @public_linkedin.last_name
+				%li
+					%b public url:
+					= @public_linkedin.public_profile_url
 				%li
 					- if @public_linkedin.picture_url != nil
 						= image_tag @public_linkedin.picture_url, :alt => 'profile_picture'
@@ -46,7 +48,7 @@
 						%h3 public linkedin
 			
 			-# Connections
-				-#%h2 Connections	
+				%h2 Connections	
 				- @connections.each do |c|
 					%ul
 						%li
@@ -60,6 +62,3 @@
 								= image_tag c.picture_url, :alt => 'profile_picture'
 		- else 
 			%p LinkedIn not authenticated!
-
-|
-\#{link_to 'Back', users_path}
