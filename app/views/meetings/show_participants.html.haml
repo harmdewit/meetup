@@ -8,9 +8,22 @@
 - else
 	= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), :remote => true
 #main_content
-	- @meeting.users.each do |user|
-		-user.connections.each do |c|
-			= "#{c.user.first_name} #{c.user.last_name}"
+	- @meeting.participants.each do |p|
+		%p
+			%b Participant:
+			= "#{p.participating_user.first_name} #{p.participating_user.last_name}"
+		- p.participating_user.connected_users.each do |c|
+			%p
+				%b Connection:
+				= "#{c.first_name} #{c.last_name}"
+	-# @meeting.participants.each do |participant|
+		%p
+			%b Participant:
+			= participant.user.first_name
+		-participant.connections.each do |c|
+			%p
+				%b Connection:
+				= "#{c.user.first_name} #{c.user.last_name}"
 	
 -# = -#render @participants
 	-# if @profile 
