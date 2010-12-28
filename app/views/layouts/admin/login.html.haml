@@ -26,13 +26,12 @@
 						Login
 							
 				#content
+					- if notice
+						.notification.success= notice
+				
 					#login
 						.content-box
 							.content-box-header	
 								%h3 Login
 							.content-box-content
-								.class.notification.information Just click login to go forward.
 								=yield
-					- if notice
-						%p#notice= notice
-		

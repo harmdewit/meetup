@@ -9,7 +9,12 @@
 		= javascript_include_tag 'jquery'
 		= javascript_include_tag 'rails'
 		= javascript_include_tag 'script'
+		
+		%script{:type => "text/javascript", :src => "http://platform.linkedin.com/in.js"}
+			api_key: TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m
+			authorize: true
 	%body
+
 		#overlay
 			#centerpack
 				#modal
@@ -25,28 +30,41 @@
 							%a{:href => "#"}
 								%span.icon d
 								Nee, annuleren
-		#container
+		#container		
 			%header
 				%nav
 					%ul
-						%li.active
-							=link_to 'Meeting informatie', @meeting
-						%li
-							=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
+						- if params[:action] == "show"
+							%li.active
+								=link_to 'Meeting informatie', @meeting
+						- else
+							%li
+								=link_to 'Meeting informatie', @meeting
+								
+						- if params[:action] != "show"
+							%li.active
+								=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
+						- else
+							%li
+								=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
+								
 				#personal_info
-					- if @profile
-						- if @profile.picture_url
-							= image_tag @profile.picture_url
+					- if @current_user
+						- if @current_user.picture_url
+							= image_tag @current_user.picture_url
 						.info
 							Welkom,
 							%br/
-							%a{:href => user_path(@profile.id)}
-								%strong= @profile.first_name + " " + @profile.last_name
+							%strong= @current_user.first_name + " " + @current_user.last_name
 							.dropdown
 								%span.icon y
 								%span.text Opties
-							= link_to 'Logout', logout_url, :method => 'delete' 
+								
+								%ul
+									%li
+										= link_to 'Uitloggen', logout_url, :method => 'delete'
 			.spacer
+			
 			#information
 				
 				- if notice
@@ -56,8 +74,19 @@
 					%small= #{}"(#{@meeting.participants.count})"
 					%input{:placeholder => "Zoek...", :type => "text"}/
 				%p= @meeting.description
-				#main_content
-					=yield
+				%ul
+					%li
+						%a 1
+					%li.active
+						%a 2
+					%li
+						%a 3
+					%li
+						%a 4
+					%li
+						%a 5
+			
+			#main_content
+				=yield
 			
 			%footer
-		

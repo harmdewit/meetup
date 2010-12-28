@@ -30,28 +30,29 @@
 							= link_to "Sign in", new_admin_session_path
 							
 					%ul#main-nav
-						%li
-							= link_to "Admin", admin_admins_path
-							%ul
-								%li= link_to 'Admins', admin_admins_path
-						%li
-							= link_to "User", admin_users_path
-							%ul
-								%li= link_to 'Users', admin_users_path							
-						%li
-							= link_to "Meeting", admin_meetings_path
-							%ul
-								%li= link_to 'Meetings', admin_meetings_path							
-					
-					%h2
-						=image_tag("admin/icons/tools_32.png")
-						Management
+						- if params[:controller] == "admin/admins"
+							%li
+								= link_to "Admins", admin_admins_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Admins", admin_admins_path
+								
+						- if params[:controller] == "admin/users"
+							%li
+								= link_to "Users", admin_users_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Users", admin_users_path
+										
+						- if params[:controller] == "admin/meetings"
+							%li
+								= link_to "Meetings", admin_meetings_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Meetings", admin_meetings_path
 							
 				#content
-					.content-box
-						.content-box-header	
-						.content-box-content
-							=yield
 					- if notice
-						%p#notice= notice
-		
+						.notification.success= notice
+				
+					=yield

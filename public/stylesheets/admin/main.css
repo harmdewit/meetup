@@ -595,6 +595,10 @@ form .my-skinnable-select select {
 	top: 9px;
 }
 
+form label {
+	display: none;
+}
+
 /********** Login **********/
 
 #login {
