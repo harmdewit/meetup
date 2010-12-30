@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 		    begin
 					profile = client.profile(:fields => %w(id,picture_url))
 					user.linkedin_id = profile.id
-					#user.linkedin_url = profile.public_profile_url
 			    user.linkedin_token = atoken
 			    user.linkedin_secret = asecret
 			    user.picture_url = profile.picture_url
@@ -37,7 +36,7 @@ class UsersController < ApplicationController
   		    	session[:linkedin_id] = profile.id
   		   		redirect_to(user, :notice => 'Your account has successfully authenticated with your LinkedIn account.')
   		 		else
-  		        format.xml  { render :xml => user.errors, :status => :unprocessable_entity }
+  		      format.xml  { render :xml => user.errors, :status => :unprocessable_entity }
   		 		end
 				rescue Exception
 					@authenticated = false
@@ -64,10 +63,7 @@ class UsersController < ApplicationController
 	    begin
 	    	
 	    	@authenticated = true
-				#@profile = client.profile(:fields => %w(picture_url))
-				#@linkedin_id = client.profile(:fields => %w(id))
 				@public_linkedin = client.profile(:url => @user.linkedin_url, :fields => %w(public-profile-url,picture_url,first_name,last_name))
-		    #@connections = client.connections
 			rescue Exception
 				flash[:notice] = 'Connection with LinkedIn failed, please authenticate again.'
 				@authenticated = false
