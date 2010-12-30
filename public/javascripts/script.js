@@ -9,7 +9,6 @@ $('document').ready(function() {
 		$(this).parent().addClass('active');
 	});
 	
-
 	$('.stack').click(function() {
 		if($(this).children('.main_card').hasClass('flip')) {
 			$(this).children('.main_card').removeClass('flip');
@@ -17,7 +16,6 @@ $('document').ready(function() {
 			$(this).children('.main_card').addClass('flip');
 		}
 	});
-	
 	
 	$('.clickarea').click(function() {
 		var array = [-3, -2, 1, 4, 3, 2, -1, -4, -5, -6, -7, -8, 5, 6, 7, 8];
@@ -48,6 +46,28 @@ $('document').ready(function() {
 		return false;
 	});
 	
-
+	$('.modal').click(function() {
+		$('#overlay').show();
+	});
+	
+	$('#modal a').click(function() {
+		$('#overlay').hide();
+	});
+	
+	$('.dropdown').click(function() {
+		if($(this).hasClass('active')) {
+			$(this).removeClass('active');
+			$(this).children('ul').slideUp(200);
+		} else {
+			$(this).addClass('active');
+			$(this).children('ul').slideDown(200);
+		}
+	});
+	
+	$('#modal textarea').keydown(function() {
+		var length = $(this).val().length;
+		
+		$(this).parent().children('small').html('Nog ' + (139 - length) + ' karakters over');
+	});
 	
 });

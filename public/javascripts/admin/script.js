@@ -103,8 +103,8 @@ $('document').ready(function() {
 	
 		$('#main-nav > li > ul').hide(); // Hide all subnavigation
 		$('#main-nav > li > a.current').parent().children("ul").show(); // Show current subnavigation	
-			
-		$('#main-nav > li > a').click( // Click!
+
+		$('#main-nav > li > a[href="#"]').click( // Click!
 			function() {
 				$(this).parent().siblings().children("a").removeClass('current'); // Remove .current class from all tabs
 				$(this).addClass('current'); // Add class .current

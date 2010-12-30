@@ -1,0 +1,38 @@
+%h2
+	=image_tag("admin/icons/user_32.png")
+	Users
+	
+.content-box
+	.content-box-header
+		%h3 Users
+		
+	.content-box-content
+	
+		%table
+			%thead
+				%tr
+					%th
+						First name
+					%th
+						Last name
+					%th
+						Email
+					%th
+						LinkedIn
+					%th
+						Acties
+			
+			%tbody
+				- @admin_users.each do |user|
+					%tr
+						%td= user.first_name
+						%td= user.last_name
+						%td= user.email
+						%td= user.linkedin_id
+						%td
+							= link_to image_tag('admin/icons/pencil.png'), edit_admin_user_path(user)
+							= button_to 'Delete', admin_user_path(user), :confirm => 'Are you sure?', :method => :delete
+							
+		
+		%br/					
+		= link_to 'New User', new_admin_user_path

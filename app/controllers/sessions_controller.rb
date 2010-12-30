@@ -22,24 +22,19 @@ class SessionsController < ApplicationController
 				redirect_to login_url, :notice => 'Linkedin authentication failed, please authenticate again.'
 	    end
 	    
-			session[:linkedin_id] = linkedin_id
-			create
+	    if user = User.find_by_linkedin_id(linkedin_id)
+			  session[:linkedin_id] = linkedin_id
+			  redirect_to user, :notice => 'Succesfully logged in.'
+			else
+			  redirect_to login_url, :notice => "Your LinkedIn account is not known in our database, please use your LinkedIn account you used when you first visited this website."
+		  end
 		else
 			redirect_to login_url, :notice => 'Connection failed!'
 		end
- 	end  
-  
-  def create
-    if user = User.find_by_linkedin_id(session[:linkedin_id])
-      redirect_to user, :notice => 'Succesfully logged in.'
-    else
-      redirect_to login_url, :notice => "Your LinkedIn account is not known in our database, please use your LinkedIn account you used when you first visited this website."
-    end
-  end
-
-  def destroy
-    session[:linkedin_id] = nil
-    redirect_to '/login', :notice => "Logged out"
-  end
-
+ 	end
+ 	
+ 	def destroy
+ 	  session[:linkedin_id] = nil
+ 	  redirect_to '/login', :notice => "Logged out"
+ 	end
 end

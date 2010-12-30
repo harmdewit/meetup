@@ -38,11 +38,11 @@ Portal::Application.routes.draw do
 		delete 'logout' => :destroy, :as => 'logout'
 	end
 	
-  devise_for :admins, :controllers => {:sessions => 'admin/sessions'}
+  devise_for :admins, :controllers => {:sessions => 'admin/sessions', :passwords => 'admin/passwords', :registrations => 'admin/registrations'}
 	namespace "admin" do
 		resources :users
 		resources :admins, :only => [:index, :show]
-		resources :meetings 
+		resources :meetings
 		#resources :participants
 	end
 	

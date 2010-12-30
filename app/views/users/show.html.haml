@@ -25,9 +25,6 @@
 					%b Last Name:
 					= @public_linkedin.last_name
 				%li
-					%b public url:
-					= @public_linkedin.public_profile_url
-				%li
 					- if @public_linkedin.picture_url != nil
 						= image_tag @public_linkedin.picture_url, :alt => 'profile_picture'
 
