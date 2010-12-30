@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>fileTriggers</key>
+        <dict>
+            <key>_parti</key>
+            <string>app\views\participants\_participant.html.haml</string>
+            <key>appli</key>
+            <string>app\controllers\application_controller.rb</string>
+            <key>css</key>
+            <string>public\stylesheets\main.css</string>
+            <key>develop</key>
+            <string>log\development.log</string>
+            <key>log</key>
+            <string>log\production.log</string>
+            <key>main</key>
+            <string>public\stylesheets\main.css</string>
+            <key>ro</key>
+            <string>config\routes.rb</string>
+            <key>routes</key>
+            <string>config\routes.rb</string>
+            <key>scrip</key>
+            <string>public\javascripts\script.js</string>
+            <key>script</key>
+            <string>public\javascripts\script.js</string>
+        </dict>
+    </dict>
+</plist>

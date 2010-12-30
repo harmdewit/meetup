@@ -1,5 +1,4 @@
 class MeetingsController < ApplicationController
-  
   # GET /meetings/1
   # GET /meetings/1.xml
   def show

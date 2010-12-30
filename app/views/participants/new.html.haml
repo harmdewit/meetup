@@ -1,7 +1,4 @@
-= form_for [@meeting, @participant], :remote => true do |p|
-	.field
-		= p.text_area :motivation
-		%br/
+= form_for [@meeting, @participant] do |p|
 	.actions
 		= p.submit 'submit'
 	

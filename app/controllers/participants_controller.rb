@@ -1,4 +1,26 @@
 class ParticipantsController < ApplicationController
+	layout "login"
+	
+	  def index
+    @participants = Participant.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @connections }
+    end
+  end
+
+  # GET /connections/1
+  # GET /connections/1.xml
+  def show
+    @participant = Participant.find(params[:id])
+
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.xml  { render :xml => @connection }
+    end
+  end
   # POST /participants
   # POST /participants.xml
   def new
