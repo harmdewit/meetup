@@ -1,62 +1,20 @@
-= render @meeting.participants
--#
-	%p
-		%b Participant:
-		= "#{p.user.first_name} #{p.user.last_name}"
-	= p.connections
-	- p.connections.each do |c|
-		%p
-		%b Participant:
-		= "#{c.participant.user.first_name} #{c.participant.user.last_name}"
-	
+- @array = ""
 
--# @meeting.participating_users.each do |p|
-	%p
-		%b Participant:
-		= "#{p.first_name} #{p.last_name}"
-	
--#
-	= p.connections
-	- p.connections.each do |c|
-		= c.connected_participants
-	-# p.connections.participants.each do |c|
-		= c.connected_user_id
-		= c.meeting_id
-		
-	-# p.connections.each do |c|
-		-# %p
-			%b Connection:
-			= "#{c.first_name} #{c.last_name}"
+- @meeting.participants.each do |p|
 
--# = -#render @participants
--# if @profile 
-	-@connections.each do |x|
-		.stack
-			.main_card
-				.clickarea
-				.card.front
-					%img{:alt => "Ribbon", :src => "/images/vlaggetje.png"}/
-					.card_inside
-						%h2= x.first_name + " " + x.last_name
-						%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-				.card.back
-					.ribbon
-						%a{:href => "#"}
-					.card_inside
-						- if x.picture_url
-							= image_tag x.picture_url
-						%h2 Beest
-						%p Balalaowo
-			.connections
-				.card
-					.card_inside
-						%h2 George Michael
-						%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-				.card
-					.card_inside
-						%h2 George Michael
-						%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-				.card
-					.card_inside
-						%h2 George Michael
-						%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+	.stack.linkedin{:data => {:linkedin => p.participating_user.linkedin_id}}
+		.main_card
+			.clickarea
+			.card.front
+				%a{:href => "#"} 4
+				.card_inside
+					%h2= p.participating_user.first_name + " " + p.participating_user.last_name
+					%small
+					%p= p.motivation
+			
+			.card.back
+				%a{:href => "#"} 4
+				.card_inside
+					%img{:alt => "picture"}
+					%h2= p.participating_user.first_name + " " + p.participating_user.last_name
+					%small

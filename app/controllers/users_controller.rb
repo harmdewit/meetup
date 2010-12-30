@@ -6,12 +6,10 @@ class UsersController < ApplicationController
 	def linkedin_authenticate ticket
 		user = User.find_by_ticket(ticket)
     unless user.linkedin_id
-		  client = LinkedIn::Client.new("TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m", "sD8x8zFOk7atIx1n7Ei5NmAFOkvLkLlnlqDZ8gvPURnaEB1hrcoOxaJgh0tZp6wf")
-
-	    request_token = client.request_token(:oauth_callback => "http://#{request.host_with_port}/users/confirmation/#{user.ticket}/linkedin_callback")  
+	    request_token = @@client.request_token(:oauth_callback => "http://#{request.host_with_port}/users/confirmation/#{user.ticket}/linkedin_callback")  
 	    session[:rtoken] = request_token.token
 	    session[:rsecret] = request_token.secret
-	    redirect_to client.request_token.authorize_url
+	    redirect_to @@client.request_token.authorize_url
     else 
     	redirect_to login_url, :notice => 'You have already linked your account with LinkedIn. Please login as usual.'
   	end
@@ -21,12 +19,11 @@ class UsersController < ApplicationController
   def linkedin_callback
     user = User.find_by_ticket(params[:ticket])
     unless user.linkedin_id
-	    client = LinkedIn::Client.new("TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m", "sD8x8zFOk7atIx1n7Ei5NmAFOkvLkLlnlqDZ8gvPURnaEB1hrcoOxaJgh0tZp6wf")
 	    if params[:oauth_verifier]
 	 			pin = params[:oauth_verifier]
-		    atoken, asecret = client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
+		    atoken, asecret = @@client.authorize_from_request(session[:rtoken], session[:rsecret], pin)
 		    begin
-					profile = client.profile(:fields => %w(id,picture_url))
+					profile = @@client.profile(:fields => %w(id,picture_url))
 					user.linkedin_id = profile.id
 			    user.linkedin_token = atoken
 			    user.linkedin_secret = asecret
@@ -58,12 +55,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   	@linkedin_id = session[:linkedin_id]
 		if @user.linkedin_token
-	    client = LinkedIn::Client.new("TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m", "sD8x8zFOk7atIx1n7Ei5NmAFOkvLkLlnlqDZ8gvPURnaEB1hrcoOxaJgh0tZp6wf")
-	    client.authorize_from_access(@user.linkedin_token, @user.linkedin_secret)
+	    @@client.authorize_from_access(@user.linkedin_token, @user.linkedin_secret)
 	    begin
 	    	
 	    	@authenticated = true
-				@public_linkedin = client.profile(:url => @user.linkedin_url, :fields => %w(public-profile-url,picture_url,first_name,last_name))
+				@public_linkedin = @@client.profile(:url => @user.linkedin_url, :fields => %w(public-profile-url,picture_url,first_name,last_name))
 			rescue Exception
 				flash[:notice] = 'Connection with LinkedIn failed, please authenticate again.'
 				@authenticated = false
