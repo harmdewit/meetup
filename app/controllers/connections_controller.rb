@@ -28,12 +28,9 @@ class ConnectionsController < ApplicationController
   # GET /connections/new
   # GET /connections/new.xml
   def new
+  	@participant = Participant.find(params[:participant_id])
     @connection = Connection.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @connection }
-    end
   end
 
   # GET /connections/1/edit
@@ -42,11 +39,21 @@ class ConnectionsController < ApplicationController
   end
   
   def create
-    @connection = Connection.new(params[:connection])
-
+    @connected_participant = Participant.find(params[:participant_id])
+  	@current_participant = Participant.find_by_user_id_and_meeting_id!(@current_user, @connected_participant.meeting_id)
+		params[:connection1] = {
+			:participant_id => @current_participant.id, 
+			:connected_participant_id => @connected_participant.id, 
+			:status => 'accepted'}
+		params[:connection2] = {
+			:participant_id => @connected_participant.id, 
+			:connected_participant_id => @current_participant.id, 
+			:status => 'accepted'}
+		@connection1 = Connection.new(params[:connection1])
+		@connection2 = Connection.new(params[:connection2])
     respond_to do |format|
-      if @connection.save
-        format.html { redirect_to(@connection, :notice => '@connection was successfully created.') }
+      if @connection1.save && @connection2.save
+        format.html { redirect_to(meeting_participants_url(@connected_participant.meeting), :notice => '@connection was successfully created.') }
         format.xml  { render :xml => @admin_meeting, :status => :created, :location => @admin_meeting }
       else
         format.html { render :action => 'new'}
@@ -71,6 +78,8 @@ class ConnectionsController < ApplicationController
 		end
 	end
 =end
+	
+	
 	def update
 		@user = User.find(@current_user)
 		@connected_user = User.find(params[:connected_user_id])

@@ -3,9 +3,15 @@ Portal::Application.routes.draw do
   resources :meetings, :only => :show do
 	  resources :participants, :only => [:new, :create, :destroy]
 	end
+	
+	resources :participants, :only => :show do
+		resources :connections
+	end
 
+	
+	
 	match 'meetings' => 'meetings#last_meeting'
-	match 'meetings/:id/participants' => 'meetings#show_participants'
+	match 'meetings/:id/participants' => 'meetings#show_participants', :as => 'meeting_participants'
 	
 	match 'users/confirmation/:ticket' => 'users#confirmation'
 	
@@ -22,7 +28,7 @@ Portal::Application.routes.draw do
 	#end
 	
 	#devise_for :admins, :controllers => { :sessions => "admin/sessions" }
-	resources :connections
+	#resources :connections
 	
 	controller :sessions do
 		get 'login' => :new

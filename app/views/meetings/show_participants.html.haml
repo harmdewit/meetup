@@ -1,59 +1,62 @@
-.title
-	%h2 Deelnemers
-	%small (89)
-	%input{:placeholder => "Zoek...", :type => "text"}/
-%p Episode V, A NEW HOPE It is a dark time for the Rebellion. Although the Death Star has been destroyed, Imperial troops have driven the Rebel forces from their hidden base and pursued them across the galaxy.  Evading the dreaded Imperial Starfleet, a group of freedom fighters led by Luke Skywalker has established a new secret base on the remote ice world of Hoth. The evil lord Darth Vader, obsessed with finding young Skywalker, has dispatched.
-- if @current_participant
-	= button_to 'Uitschrijven voor deze meeting', meeting_participant_url(@meeting, @current_participant), :method => :delete
-- else
-	= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), :remote => true
-#main_content
-	- @meeting.participants.each do |p|
+= render @meeting.participants
+-#
+	%p
+		%b Participant:
+		= "#{p.user.first_name} #{p.user.last_name}"
+	= p.connections
+	- p.connections.each do |c|
 		%p
-			%b Participant:
-			= "#{p.participating_user.first_name} #{p.participating_user.last_name}"
-		- p.participating_user.connected_users.each do |c|
-			%p
-				%b Connection:
-				= "#{c.first_name} #{c.last_name}"
-	-# @meeting.participants.each do |participant|
-		%p
-			%b Participant:
-			= participant.user.first_name
-		-participant.connections.each do |c|
-			%p
-				%b Connection:
-				= "#{c.user.first_name} #{c.user.last_name}"
+		%b Participant:
+		= "#{c.participant.user.first_name} #{c.participant.user.last_name}"
 	
+
+-# @meeting.participating_users.each do |p|
+	%p
+		%b Participant:
+		= "#{p.first_name} #{p.last_name}"
+	
+-#
+	= p.connections
+	- p.connections.each do |c|
+		= c.connected_participants
+	-# p.connections.participants.each do |c|
+		= c.connected_user_id
+		= c.meeting_id
+		
+	-# p.connections.each do |c|
+		-# %p
+			%b Connection:
+			= "#{c.first_name} #{c.last_name}"
+
 -# = -#render @participants
-	-# if @profile 
-		-@connections.each do |x|
-			.stack
-				.main_card
-					.clickarea
-					.card.front
-						%img{:alt => "Ribbon", :src => "/images/vlaggetje.png"}/
-						.card_inside
-							%h2= x.first_name + " " + x.last_name
-							%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-					.card.back
-						.ribbon
-							%a{:href => "#"}
-						.card_inside
-							- if x.picture_url
-								= image_tag x.picture_url
-							%h2 Beest
-							%p Balalaowo
-				.connections
-					.card
-						.card_inside
-							%h2 George Michael
-							%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-					.card
-						.card_inside
-							%h2 George Michael
-							%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-					.card
-						.card_inside
-							%h2 George Michael
-							%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+-# if @profile 
+	-@connections.each do |x|
+		.stack
+			.main_card
+				.clickarea
+				.card.front
+					%img{:alt => "Ribbon", :src => "/images/vlaggetje.png"}/
+					.card_inside
+						%h2= x.first_name + " " + x.last_name
+						%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+				.card.back
+					.ribbon
+						%a{:href => "#"}
+					.card_inside
+						- if x.picture_url
+							= image_tag x.picture_url
+						%h2 Beest
+						%p Balalaowo
+			.connections
+				.card
+					.card_inside
+						%h2 George Michael
+						%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+				.card
+					.card_inside
+						%h2 George Michael
+						%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+				.card
+					.card_inside
+						%h2 George Michael
+						%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.

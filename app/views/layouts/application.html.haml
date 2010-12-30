@@ -34,7 +34,7 @@
 						%li
 							=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
 				#personal_info
-					- if @profile
+					-if @profile
 						- if @profile.picture_url
 							= image_tag @profile.picture_url
 						.info

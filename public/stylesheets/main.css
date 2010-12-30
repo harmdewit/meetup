@@ -165,6 +165,14 @@ div:not(.main_card) > .card {
 	z-index: 9999;
 }
 
+.main_card.flip .add_connection {
+	position: absolute;
+	top: 65px;
+	height: 65px;
+	width: 67px;
+	z-index: 9999;
+}
+
 .stack:hover {
 	cursor: pointer;
 }

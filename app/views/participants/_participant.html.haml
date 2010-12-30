@@ -1,6 +1,8 @@
 .stack
 	.main_card
 		.clickarea
+		= link_to new_participant_connection_url(participant), :remote => true do
+			.add_connection
 		.card.front
 			%img{:alt => "Ribbon", :src => "/images/vlaggetje.png"}/
 			.card_inside
@@ -11,24 +13,8 @@
 			.ribbon
 				%a{:href => "#"}
 			.card_inside
-				- if participant.picture_url
-					= image_tag participant.picture_url
+				-# img needed
 				%h2 Beest
 				%p Balalaowo
 	.connections
-		.card
-			.card_inside
-				%h2 George Michael
-				%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-		.card
-			.card_inside
-				%h2 George Michael
-				%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-		.card
-			.card_inside
-				%h2 George Michael
-				%p Ik wil deze meeting graag, Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
--#%tr
-	%td= participant.user_id
-	%td= participant.meeting_id
-	%td= participant.motivation
+		= render participant.connections

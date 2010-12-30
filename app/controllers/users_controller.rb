@@ -31,17 +31,18 @@ class UsersController < ApplicationController
 					user.linkedin_url = profile.public_profile_url
 			    user.linkedin_token = atoken
 			    user.linkedin_secret = asecret	    	
-				rescue Exception
-					@authenticated = false
-					flash[:error] = 'Linkedin authentication failed, please authenticate again.'
-					redirect_to 'users/confirmation/#{user.ticket}'
-		    end
+
 		    if user.save
 		    	session[:linkedin_id] = profile.id
 		   		redirect_to(user, :notice => 'Your account has successfully authenticated with your LinkedIn account.')
 		 		else
 		        format.xml  { render :xml => user.errors, :status => :unprocessable_entity }
 		 		end
+				rescue Exception
+					@authenticated = false
+					flash[:error] = 'Linkedin authentication failed, please authenticate again.'
+					redirect_to 'users/confirmation/#{user.ticket}'
+		    end
 			else
 				flash[:notice] = 'Connection failed!'
 				redirect_to(:action => 'users/confirmation/#{user.ticket}')

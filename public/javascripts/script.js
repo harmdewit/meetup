@@ -9,6 +9,7 @@ $('document').ready(function() {
 		$(this).parent().addClass('active');
 	});
 	
+
 	$('.stack').click(function() {
 		if($(this).children('.main_card').hasClass('flip')) {
 			$(this).children('.main_card').removeClass('flip');
@@ -16,6 +17,7 @@ $('document').ready(function() {
 			$(this).children('.main_card').addClass('flip');
 		}
 	});
+	
 	
 	$('.clickarea').click(function() {
 		var array = [-3, -2, 1, 4, 3, 2, -1, -4, -5, -6, -7, -8, 5, 6, 7, 8];
@@ -45,5 +47,7 @@ $('document').ready(function() {
 		$(this).parent().parent().children('.connections').children('.card').animate({border: "1px solid #f5edd8"}, {duration: 400});
 		return false;
 	});
+	
+
 	
 });
