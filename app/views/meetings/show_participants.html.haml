@@ -1,46 +1,20 @@
 - @array = ""
 
 - @meeting.participants.each do |p|
-	
-	- @array += p.participating_user.linkedin_id + ", "
+
+	.stack.linkedin{:data => {:linkedin => p.participating_user.linkedin_id}}
+		.main_card
+			.clickarea
+			.card.front
+				%a{:href => "#"} 4
+				.card_inside
+					%h2= p.participating_user.first_name + " " + p.participating_user.last_name
+					%small
+					%p= p.motivation
 			
-%script{:type => "IN/MemberData", "data-ids" => @array}
-	<?js for (var member in $("*")) { ?>
-	<div class="stack">
-	<div class="main_card">
-	<div class="clickarea"></div>
-	<div class="card front">
-	
-	<a href="#">4</a>
-	<div class="card_inside">
-	<h2><?js= $(member).firstName ?> <?js= $(member).lastName ?></h2>
-	<small><?js= $(member).headline ?></small>
-	<p>Ik wil deze meeting graag.</p>
-	
-	</div>
-	
-	<div class="card back">
-	
-	<a href="#">4</a>
-	
-	<div class="card_inside">
-	
-	<?js if ($(member).pictureUrl) { ?>
-	<img src="<?js= $(member).pictureUrl ?>" />
-	<?js } else { ?>
-	<div class="imagefix"></div>
-	<?js } ?>
-	
-	<h2><?js= $(member).firstName ?> <?js= $(member).lastName ?></h2>
-	<small><?js= $(member).headline ?></small>
-	
-	<?js } ?>
-	
-	</div>
-	</div>
-	
-	</div>
-	
-	
-	</div>
-	</div>
+			.card.back
+				%a{:href => "#"} 4
+				.card_inside
+					%img{:alt => "picture"}
+					%h2= p.participating_user.first_name + " " + p.participating_user.last_name
+					%small

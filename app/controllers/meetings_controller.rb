@@ -14,8 +14,6 @@ class MeetingsController < ApplicationController
   def last_meeting
   	@meeting = Meeting.find(:last)
 		redirect_to @meeting
-		#@participants = Participant.find_all_by_meeting_id(params[:id])
-		#@current_participant = Participant.find_by_user_id(@current_user.id) if Participant.find_by_user_id(@current_user.id)
 	end
 
 end
