@@ -53,6 +53,7 @@ class ConnectionsController < ApplicationController
 		@connection2 = Connection.new(params[:connection2])
     respond_to do |format|
       if @connection1.save && @connection2.save
+      	Notifier.request_received(@current_user, @connected_participant.user).deliver
         format.html { redirect_to(meeting_participants_url(@connected_participant.meeting), :notice => '@connection was successfully created.') }
         format.xml  { render :xml => @admin_meeting, :status => :created, :location => @admin_meeting }
       else

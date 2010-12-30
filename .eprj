@@ -8,6 +8,8 @@
             <string>app\views\participants\_participant.html.haml</string>
             <key>appli</key>
             <string>app\controllers\application_controller.rb</string>
+            <key>connection</key>
+            <string>app\controllers\connections_controller.rb</string>
             <key>css</key>
             <string>public\stylesheets\main.css</string>
             <key>develop</key>
@@ -16,6 +18,8 @@
             <string>log\production.log</string>
             <key>main</key>
             <string>public\stylesheets\main.css</string>
+            <key>notif</key>
+            <string>app\mailers\notifier.rb</string>
             <key>ro</key>
             <string>config\routes.rb</string>
             <key>routes</key>
@@ -24,6 +28,8 @@
             <string>public\javascripts\script.js</string>
             <key>script</key>
             <string>public\javascripts\script.js</string>
+            <key>user_con</key>
+            <string>app\controllers\admin\users_controller.rb</string>
         </dict>
     </dict>
 </plist>
