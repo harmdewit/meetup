@@ -3,7 +3,4 @@ class Admin < ActiveRecord::Base
   # :token_authenticatable, :lockable, :timeoutable, :confirmable and :activatable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :id, :email, :encrypted_password,	:password_salt
 end

@@ -7,22 +7,6 @@
 #   Mayor.create(:name => 'Daley', :city => cities.first)
 
 # Admin wachtwoord = wachtwoord
-admins = Admin.create([{
-	:id => 1,
-	:email => 'harmdewit@gmail.com', 
-	:encrypted_password => 'c32e0301d3dbdacfd8f26260e8706e5db9b05590', 
-	:password_salt => 'hrx-EKOpo5veVlxpdYFI'}, 
-	{
-	:id => 2,
-	:email => 'bramjetten@gmail.com', 
-	:encrypted_password => 'c32e0301d3dbdacfd8f26260e8706e5db9b05590', 
-	:password_salt => 'hrx-EKOpo5veVlxpdYFI'}, 
-	{
-	:id => 3,
-	:email => 'meximusz@gmail.com', 
-	:encrypted_password => 'c32e0301d3dbdacfd8f26260e8706e5db9b05590', 
-	:password_salt => 'hrx-EKOpo5veVlxpdYFI'}
-])
 
 meetings = Meeting.create ([{
 	:id => 1,
@@ -59,11 +43,11 @@ users = User.create ([{
 	:first_name => 'Bram', 
 	:last_name => 'Jetten', 
 	:email => 'bramjetten@gmail.com', 
-	:linkedin_id => '5BcBOuHFvP', 
-	:linkedin_token => '320f3b3d-3f18-4819-9f24-e0a6d1057969', 
-	:linkedin_secret => 'bed4d659-3874-434a-899c-2fb9366964ea', 
+	:linkedin_id => 'HmHKxBZcF3', 
+	:linkedin_token => '1f00aede-231c-4443-af38-bb53e1d5b43a', 
+	:linkedin_secret => '4d695a7a-7fb8-4b2b-9449-21203d3f43b7', 
 	:picture_url => 'http://media.linkedin.com/mpr/mprx/0_oivHPaH73nSEBjT1H5cUPusr3POIUYr1eXTBPuIrOnoRkVFPQL5Xj2xOfjYq4MA0IhB9yIJlgv_D', 
-	:ticket => '3a165656b747ddc2cfdb64d90977b0f2'}
+	:ticket => 'ae2c593f27ced8f0d26f7a92bd8a31ed'}
 ])
 
 participants = Participant.create ([{
