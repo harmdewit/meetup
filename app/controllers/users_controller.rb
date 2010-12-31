@@ -57,7 +57,6 @@ class UsersController < ApplicationController
 		if @user.linkedin_token
 	    @@client.authorize_from_access(@user.linkedin_token, @user.linkedin_secret)
 	    begin
-	    	
 	    	@authenticated = true
 				@public_linkedin = @@client.profile(:url => @user.linkedin_url, :fields => %w(public-profile-url,picture_url,first_name,last_name))
 			rescue Exception

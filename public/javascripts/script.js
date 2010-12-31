@@ -74,11 +74,11 @@ $('document').ready(function() {
 
 function linkedin() {
 	$('document').ready(function() {
-		var id = "";
+		var id = [];
 		$('.linkedin').each(function() {
-			id += ", " + $(this).attr("data-linkedin");
+			id.push($(this).attr("data-linkedin"));
 		});
-		IN.API.Profile("HmHKxBZcF3", "fB7pRihQUe").result(displayCard);
+		IN.API.Profile(id).result(displayCard);
 	});
 }
 
@@ -89,7 +89,6 @@ function displayCard(profiles) {
 	
 		$('.linkedin').each(function() {
 			if($(this).attr("data-linkedin") == members[member].id) {
-				$(this).removeClass('linkedin');
 				$(this).find("small").html(members[member].headline);
 				$(this).find("img").attr("src", members[member].pictureUrl);
 			}

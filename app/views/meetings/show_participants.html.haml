@@ -5,16 +5,27 @@
 	.stack.linkedin{:data => {:linkedin => p.participating_user.linkedin_id}}
 		.main_card
 			.clickarea
+			= link_to new_participant_connection_url(p), :remote => true do
+				.add_connection
 			.card.front
-				%a{:href => "#"} 4
+				%a{:href => "#"}= p.connections.count
 				.card_inside
 					%h2= p.participating_user.first_name + " " + p.participating_user.last_name
 					%small
 					%p= p.motivation
 			
 			.card.back
-				%a{:href => "#"} 4
+				%a{:href => "#"}= p.connections.count
 				.card_inside
 					%img{:alt => "picture"}
 					%h2= p.participating_user.first_name + " " + p.participating_user.last_name
 					%small
+					
+		.connections
+		
+			- p.connections.each do |connection|
+			
+				.card
+					.card_inside
+						%h2= connection.participant.user.first_name + " " + connection.participant.user.last_name
+						%p= connection.participant.motivation
