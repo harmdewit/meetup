@@ -6,7 +6,7 @@
 		.main_card
 			.clickarea
 			.card.front
-				%a{:href => "#"} 4
+				%a{:href => "#"} = p.participating_user.linked
 				.card_inside
 					%h2= p.participating_user.first_name + " " + p.participating_user.last_name
 					%small

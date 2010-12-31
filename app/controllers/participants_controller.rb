@@ -35,7 +35,7 @@ class ParticipantsController < ApplicationController
 		@participant.user_id = @current_user.id
 		@participant.meeting_id = params[:meeting_id]
     if @participant.save
-      redirect_to(@meeting, :notice => 'Participant was successfully created.')
+      redirect_to(meeting_participants_url(@meeting), :notice => 'Participant was successfully created.')
     else
 			render :action => 'new'
     end

@@ -28,6 +28,8 @@
             <string>public\javascripts\script.js</string>
             <key>script</key>
             <string>public\javascripts\script.js</string>
+            <key>show</key>
+            <string>app\views\meetings\show_participants.html.haml</string>
             <key>user_con</key>
             <string>app\controllers\admin\users_controller.rb</string>
         </dict>

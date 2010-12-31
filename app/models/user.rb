@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
 	has_many :participants, :dependent => :destroy
-	has_many :connections, :dependent => :destroy
+
 	
-	attr_accessible :email, :first_name, :last_name, :ticket
+	attr_accessible :email, :first_name, :last_name, :ticket, :linkedin_id, :linkedin_token, :linkedin_secret, :picture_url
 	validates :first_name, :last_name, :email, :ticket, :presence => true
 	validates_uniqueness_of :email, :ticket
 	validates_format_of   :email,
