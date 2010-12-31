@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :authenticate_user
   
-  @@client = LinkedIn::Client.new("DiHSTa57ykwC7ARPdI6jsp1RfB1zw333VR0maZAMvy0GSq2B0kiYi3NEYJOSeL35", "h2gCOJbYQNQUWxl2YfJuehRxEO9nc-J48RkOi01qboGMZV5qzF5ONf1SL84wDF86")
+  @@client = LinkedIn::Client.new("TMERi4FIyPAGjBhjwBtpd6wT-dBuVYU3fBbbtTuzXGlYgTlDHfT9KK5cZqYRAC5m", "sD8x8zFOk7atIx1n7Ei5NmAFOkvLkLlnlqDZ8gvPURnaEB1hrcoOxaJgh0tZp6wf")
 	
   protected
   
