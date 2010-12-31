@@ -22,7 +22,8 @@ class SessionsController < ApplicationController
 	    
 	    if user = User.find_by_linkedin_id(linkedin_id)
 			  session[:linkedin_id] = linkedin_id
-			  redirect_to user, :notice => 'Succesfully logged in.'
+			  @meeting = Meeting.find(:last)
+			  redirect_to @meeting
 			else
 			  redirect_to login_url, :notice => "Your LinkedIn account is not known in our database, please use your LinkedIn account you used when you first visited this website."
 		  end

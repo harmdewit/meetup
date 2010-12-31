@@ -25,16 +25,20 @@
 							%a{:href => "#"}
 								%span.icon d
 								Nee, annuleren
-		#container
-			%header
-			.spacer
-			-##information
-				
+		#bar
+		#login_container
+		
+			%span.icon !
+			%h1 Helaas, je bent niet ingelogd.
+			
+			.line
+			
+			%h2 Wij maken gebruik van LinkedIn.
+			%p Om gebruik te kunnen maken van LaRed MeetUp moet er eerst geautoriseerd worden met linkedin hierna kan je: Episode IV, A NEW HOPE It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+		
 			- if notice
 				%p#notice= notice
-			.title
-			%h2 Login
 			=yield
 			
-			%footer
-		
+			%small Geen LinkedIn account?
+			= link_to "Maak een account aan", "https://www.linkedin.com/reg/join?trk=hb_join"

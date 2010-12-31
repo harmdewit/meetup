@@ -69,6 +69,10 @@ $('document').ready(function() {
 	
 		$(this).parent().children('small').html('Nog ' + (139 - length) + ' karakters over');
 	});
+	
+	$('.close').click(function() {
+		$(this).parent().slideUp('fast');
+	});
 
 });
 
