@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
 		      if user.save
   		    	session[:linkedin_id] = profile.id
-  		   		redirect_to(user, :notice => 'Your account has successfully authenticated with your LinkedIn account.')
+  		   		redirect_to(last_meeting, :notice => 'Your account has successfully authenticated with your LinkedIn account.')
   		 		else
   		      format.xml  { render :xml => user.errors, :status => :unprocessable_entity }
   		 		end
@@ -41,11 +41,11 @@ class UsersController < ApplicationController
 					redirect_to 'users/confirmation/#{user.ticket}'
 		    end
 			else
-				flash[:notice] = 'Connection failed!'
+				flash[:notice] = 'Connection with LinkedIn failed!'
 				redirect_to(:action => 'users/confirmation/#{user.ticket}')
 			end
 		else
-			redirect_to login_url, :notice => 'You have already linked your account with LinkedIn. Please login as usual.'
+			redirect_to login_url, :notice => 'You have already authenticated your account with LinkedIn. Please login as usual.'
 		end
  	end  
 
@@ -72,11 +72,10 @@ class UsersController < ApplicationController
   def confirmation
   	unless session[:linkedin_id]
 	  	user = User.find_by_ticket(params[:ticket])
-	    if user.linkedin_id
-	    	redirect_to login_url, :notice => 'You have already linked your account with LinkedIn. Please login as usual.'
+	    unless user.linkedin_id
+	    	linkedin_authenticate params[:ticket]
 	    else
-	    	params[:id] = user.id
-				linkedin_authenticate params[:ticket]
+				redirect_to login_url, :notice => 'You have already linked your account with LinkedIn. Please login as usual.'
 	    end
     else
       if User.find_by_linkedin_id(session[:linkedin_id])

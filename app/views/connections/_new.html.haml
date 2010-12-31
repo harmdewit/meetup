@@ -1,4 +1,4 @@
-= form_for [@participant, @connection] do |p|
+= form_for [@participant, @connection], :remote => false do |p|
 	%p If you add the user the person will be notified by email. Are you sure you want to add the user?
 	.actions
 		= p.submit 'Ok'

@@ -10,7 +10,7 @@ Portal::Application.routes.draw do
 
 	
 	
-	match 'meetings' => 'meetings#last_meeting'
+	match 'meetings' => 'meetings#last_meeting', :as => 'last_meeting'
 	match 'meetings/:id/participants' => 'meetings#show_participants', :as => 'meeting_participants'
 	
 	match 'users/confirmation/:ticket' => 'users#confirmation'

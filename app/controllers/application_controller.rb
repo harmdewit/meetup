@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 	  	if (@current_user = User.find_by_linkedin_id(session[:linkedin_id])) && session[:linkedin_id]
 		    @@client.authorize_from_access(@current_user.linkedin_token, @current_user.linkedin_secret)
 	  	else
-				redirect_to login_url, :notice => "Please log in"
+				redirect_to login_url, :notice => "Please log in."
 			end
 		end
 	end
