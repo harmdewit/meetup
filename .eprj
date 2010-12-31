@@ -4,6 +4,10 @@
     <dict>
         <key>fileTriggers</key>
         <dict>
+            <key>.css</key>
+            <string>public\stylesheets\admin\css3.css</string>
+            <key>.log</key>
+            <string>log\development.log</string>
             <key>_parti</key>
             <string>app\views\participants\_participant.html.haml</string>
             <key>appli</key>

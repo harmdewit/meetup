@@ -67,9 +67,13 @@
 			.spacer
 			
 			#information
-				
+			
 				- if notice
-					%p#notice= notice
+					.notice.error
+						%span.icon !
+						.close.icon *
+						= notice
+
 				.title
 					%h2= @meeting.title
 					%small= #{}"(#{@meeting.participants.count})"

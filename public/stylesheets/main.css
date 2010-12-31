@@ -15,6 +15,87 @@ body {
 	-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .4);
 }
 
+/* Login */
+
+#login_container {
+	margin: 0 auto;
+	text-align: center;
+	width: 780px;
+}
+
+#bar {
+	border-bottom: 1px solid #000;
+	border-top: 1px solid #fce786;
+	height: 6px;
+	margin-bottom: 30px;
+	
+	background: -webkit-gradient(linear, left top, left bottom, from(#faaf23), to(#f7931b));
+}
+
+#login_container .line {
+	border-bottom: 1px solid #393939;
+	border-top: 1px solid #1a1a1a;
+	margin: 50px auto 35px auto;
+}
+
+#login_container span.icon {
+	color: #f8991d;
+	font-size: 48px;
+	text-shadow: 0 -1px 0 #fce786;
+	line-height: 75px;
+}
+
+#login_container h1 {
+	color: #fff;
+	font-size: 30px;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #000;
+}
+
+#login_container h2 {
+	color: #8c8c8c;
+	font-size: 24px;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #000;
+}
+
+#login_container p {
+	color: #8c8c8c;
+	font-size: 16px;
+	line-height: 22px;
+	margin-bottom: 50px;
+	margin-top: 10px;
+	text-shadow: 0 1px 0 #000;
+}
+
+#login_container a.button {
+	color: #5d390b;
+	font-size: 18px;
+	font-weight: bold;
+	padding: 14px 50px;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #fcd532;
+
+	background: -webkit-gradient(linear, left bottom, left top, from(#f7911b), to(#fabd38));
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0 1px 0 #000;
+}
+
+#login_container small {
+	color: #757575;
+	display: block;
+	font-size: 14px;
+	margin-bottom: 5px;
+	margin-top: 50px;
+	text-shadow: 0 1px 0 #000;
+}
+
+#login_container a {
+	color: #3797ce;
+	font-size: 14px;
+	text-shadow: 0 1px 0 #000;
+}
+
 /* Stacks & Cards */
 .stack {
 	display: inline-block;
@@ -393,12 +474,58 @@ nav ul li.active a {
 	-webkit-box-shadow: inset 0 1px 0 #707070;
 }
 
+/* Notifications */
+
+.notice {
+	color: #420406;
+	line-height: 46px;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 0 40px 0 55px;
+	position: absolute;
+	right: 44px;
+	top: 0px;
+	
+	-webkit-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-webkit-box-shadow: 0 1px 0 #151515;
+}
+
+.notice .icon {
+	font-size: 18px;
+	font-weight: normal;
+	line-height: 58px;
+	position: absolute;
+	left: 20px;
+	top: -5px;
+}
+
+.notice .close {
+	cursor: pointer;
+	font-size: 14px;
+	left: auto;
+	right: 5px;
+	top: -18px;
+}
+
+.error {
+	color: #420406;
+	text-shadow: 0 1px 0 #db1319;
+	
+	background: url(../images/notice_bg.png);
+}
+
+.error .close {
+	color: #5f0609;
+}
+
 /* Information section */
 
 #information {
 	background: #262626;
 	border-bottom: 1px solid #1a1a1a;
 	padding: 25px 44px;
+	position: relative;
 }
 
 #information .title {
