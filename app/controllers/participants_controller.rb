@@ -1,6 +1,7 @@
 class ParticipantsController < ApplicationController
 	layout "login"
-	
+
+=begin	
 	  def index
     @participants = Participant.all
 
@@ -9,25 +10,36 @@ class ParticipantsController < ApplicationController
       format.xml  { render :xml => @connections }
     end
   end
+=end
 
-  # GET /connections/1
-  # GET /connections/1.xml
   def show
     @participant = Participant.find(params[:id])
-
-
+		
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @connection }
     end
   end
-  # POST /participants
-  # POST /participants.xml
+
   def new
 		@meeting = Meeting.find(params[:meeting_id])
   	@participant = Participant.new
 	end
 	
+	def edit
+		@meeting = Meeting.find(params[:meeting_id])
+		@participant = Participant.find(params[:id])
+	end
+	
+	def update
+		@participant = Participant.find(params[:id])
+		
+		if @participant.update_attributes(params[:participant])
+			redirect_to(meeting_participants_url(@participant.meeting), :notice => 'You have succesfully changed your motivation.')
+    else
+			render :action => 'new'
+    end
+	end
 	
   def create
   	@meeting = Meeting.find(params[:meeting_id])
@@ -35,21 +47,24 @@ class ParticipantsController < ApplicationController
 		@participant.user_id = @current_user.id
 		@participant.meeting_id = params[:meeting_id]
     if @participant.save
-      redirect_to(meeting_participants_url(@meeting), :notice => 'Participant was successfully created.')
+      redirect_to(meeting_participants_url(@meeting), :notice => 'You have succesfully signed in to the meeting.')
     else
 			render :action => 'new'
     end
   end
+  
+  def destroy_confirmation
+  	@meeting = Meeting.find(params[:meeting_id])
+    @participant = Participant.find(params[:id])  	
+	end
 
-  # DELETE /participants/1
-  # DELETE /participants/1.xml
   def destroy
   	@meeting = Meeting.find(params[:meeting_id])
     @participant = Participant.find(params[:id])
     @participant.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@meeting) }
+      format.html { redirect_to(@meeting, :notice => 'You have succesfully signed off from the meeting.') }
       format.xml  { head :ok }
     end
   end

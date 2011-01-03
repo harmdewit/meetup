@@ -1,0 +1,9 @@
+%p Note: If you have any connections and you sign off from the meeting they will get notified by email.
+= form_for [@meeting, @participant] do |p|
+	.field
+		= p.text_area :motivation
+		%br/
+	.buttons
+		= p.submit
+		= button_to 'Sign off from meeting', meeting_participant_url(@meeting, @participant), :class => 'button', :method => 'delete'
+		%a.hide_overlay Cancel

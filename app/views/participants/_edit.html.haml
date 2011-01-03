@@ -1,7 +1,8 @@
+%p Note: If you have any connections and you sign off from the meeting they will get notified by email.
 = form_for [@meeting, @participant] do |p|
 	.field
 		= p.text_area :motivation
 		%br/
 	.buttons
-		= p.submit 'submit'
+		= p.submit
 		%a.hide_overlay Cancel

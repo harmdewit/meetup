@@ -1,6 +1,6 @@
 = form_for [@participant, @connection] do |p|
 	%p If you add the user the person will be notified by email. Are you sure you want to add the user?
-	.actions
+	.buttons
 		= p.submit 'Ok'
-%button.hide_overlay Cancel
+		%a.hide_overlay Cancel
 	

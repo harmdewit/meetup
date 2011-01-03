@@ -22,18 +22,17 @@ class SessionsController < ApplicationController
 	    
 	    if user = User.find_by_linkedin_id(linkedin_id)
 			  session[:linkedin_id] = linkedin_id
-			  @meeting = Meeting.find(:last)
-			  redirect_to @meeting
+			  redirect_to last_meeting_url, :notice => 'Logged in.'
 			else
-			  redirect_to login_url, :notice => "Your LinkedIn account is not known in our database, please use your LinkedIn account you used when you first visited this website."
+			  redirect_to login_url, :notice => "Your LinkedIn account is not known in our database, please use your LinkedIn account you used to visit this website for the first time."
 		  end
 		else
-			redirect_to login_url, :notice => 'Connection failed!'
+			redirect_to login_url, :notice => 'Connection failed.'
 		end
  	end
  	
  	def destroy
  	  session[:linkedin_id] = nil
- 	  redirect_to '/login', :notice => "Logged out"
+ 	  redirect_to login_url, :notice => "Logged out."
  	end
 end

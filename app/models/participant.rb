@@ -1,8 +1,8 @@
 class Participant < ActiveRecord::Base
 	belongs_to :meeting
 	belongs_to :user
-	belongs_to :participating_user, :class_name => 'User', :foreign_key =>'user_id'
-	has_many :connections
- 	#has_many :connections
- 	#has_many => :users, :through => :connections, :source => :
+	has_many :connections, :dependent => :destroy
+
+	validate :user_id, :meeting_id, :presence => true
+	validates_uniqueness_of :user_id, :scope => :meeting_id
 end

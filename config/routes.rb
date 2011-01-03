@@ -1,51 +1,39 @@
 Portal::Application.routes.draw do
 
+	root :to => "meetings#last_meeting"
+
   resources :meetings, :only => :show do
-	  resources :participants, :only => [:new, :create, :destroy]
+	  resources :participants, :except => :index do
+	  	get 'destroy_confirmation', :on => :member
+  	end
 	end
+	match 'meetings/:id/participants' => 'meetings#show_participants', :as => 'meeting_participants'
+	match 'meetings' => 'meetings#last_meeting', :as => 'last_meeting'
 	
 	resources :participants, :only => :show do
 		resources :connections
 	end
-
 	
-	
-	match 'meetings' => 'meetings#last_meeting'
-	match 'meetings/:id/participants' => 'meetings#show_participants', :as => 'meeting_participants'
-	
+  resources :users, :only => :show
 	match 'users/confirmation/:ticket' => 'users#confirmation'
-	
 	match 'users/confirmation/:ticket/linkedin_authenticate', :to => 'users#linkedin_authenticate'
 	match 'users/confirmation/:ticket/linkedin_callback', :to => 'users#linkedin_callback'
 	
-	match 'sessions/linkedin_authenticate'
-	match 'sessions/linkedin_callback'
-	
-  resources :users
-  
-	#resources :users do |user|
-	#	user.resources :connections
-	#end
-	
-	#devise_for :admins, :controllers => { :sessions => "admin/sessions" }
-	#resources :connections
-	
 	controller :sessions do
 		get 'login' => :new
-		get 'linkedin_authenticate' => :linkedin_authenticate
-		get 'linkedin_callback' => :linkedin_callback
 		post 'login' => :create
 		delete 'logout' => :destroy, :as => 'logout'
+		get 'linkedin_authenticate' => :linkedin_authenticate
+		get 'linkedin_callback' => :linkedin_callback
 	end
 	
-  devise_for :admins, :controllers => {:sessions => 'admin/sessions', :passwords => 'admin/passwords', :registrations => 'admin/registrations'}
+	match 'admin' => 'admin/meetings#index'
 	namespace "admin" do
 		resources :users
 		resources :admins, :only => [:index, :show]
 		resources :meetings
-		#resources :participants
 	end
-	
+  devise_for :admins, :controllers => {:sessions => 'admin/sessions', :passwords => 'admin/passwords', :registrations => 'admin/registrations'}	
 
 
   # The priority is based upon order of creation:
@@ -97,7 +85,7 @@ Portal::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => "meetings#last_meeting"
+  # root :to => "meetings#last_meeting"
 
   # See how all your routes lay out with "rake routes"
 
