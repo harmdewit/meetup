@@ -10,9 +10,10 @@
 	%p= @meeting.description
 
 	- if @current_participant
-		= button_to 'Uitschrijven voor deze meeting', meeting_participant_url(@meeting, @current_participant), :method => :delete
+		= link_to 'Uitschrijven voor deze meeting', destroy_confirmation_meeting_participant_url(@meeting, @current_participant), :class => "button", :remote => true
 	- else
-		= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), {:class => "button"}, :remote => true
+		= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), :class => "button", :remote => true
+		
 	%br/
 	%br/
 	.line

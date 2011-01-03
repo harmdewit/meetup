@@ -369,6 +369,7 @@ header {
 	cursor: pointer;
 	margin-top: 3px;
 	position: absolute;
+	z-index: 9999;
 	
 	-webkit-border-radius: 4px;
 	-webkit-box-shadow: inset 0 1px 0 #f8c685;

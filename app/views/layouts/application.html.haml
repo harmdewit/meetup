@@ -62,6 +62,14 @@
 								%span.text Opties
 								
 								%ul
+								
+									- if @current_participant.presence
+									
+										%li
+											= link_to 'Afmelden Deelname', destroy_confirmation_meeting_participant_url(@meeting, @current_participant), :remote => true
+										
+										%li
+											= link_to 'Wijzig Motivatie', edit_meeting_participant_url(@meeting, @current_participant), :remote => true
 									%li
 										= link_to 'Uitloggen', logout_url, :method => 'delete'
 			.spacer
