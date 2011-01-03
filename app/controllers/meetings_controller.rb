@@ -1,6 +1,4 @@
-class MeetingsController < ApplicationController
-	layout 'meeting'
-	
+class MeetingsController < ApplicationController	
   def show
     @meeting = Meeting.find(params[:id])
     @current_participant = Participant.find_by_user_id_and_meeting_id(@current_user, @meeting)

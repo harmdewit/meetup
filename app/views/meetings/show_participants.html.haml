@@ -29,7 +29,7 @@
 
 	- @meeting.participants.each do |p|
 
-		.stack.linkedin{:data => {:linkedin => p.participating_user.linkedin_id}}
+		.stack.linkedin{:data => {:linkedin => p.user.linkedin_id}}
 			.main_card
 				.clickarea
 				= link_to new_participant_connection_url(p), :remote => true do
@@ -37,7 +37,7 @@
 				.card.front
 					%a{:href => "#"}= p.connections.count
 					.card_inside
-						%h2= p.participating_user.first_name + " " + p.participating_user.last_name
+						%h2= p.user.first_name + " " + p.user.last_name
 						%small
 						%p= p.motivation
 			
@@ -45,7 +45,7 @@
 					%a{:href => "#"}= p.connections.count
 					.card_inside
 						%img{:alt => "picture"}
-						%h2= p.participating_user.first_name + " " + p.participating_user.last_name
+						%h2= p.user.first_name + " " + p.user.last_name
 						%small
 					
 			.connections
