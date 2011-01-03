@@ -1,11 +1,11 @@
 $('document').ready(function() {
 	jQuery.fx.interval = 1;
-
-	$('nav ul li a').click(function() {
-		$('nav ul li').each(function() {
+	
+	$('#tabcontent ul li a').click(function() {
+		$('#tabcontent ul li').each(function() {
 			$(this).removeClass('active');
 		});
-	
+		
 		$(this).parent().addClass('active');
 	});
 

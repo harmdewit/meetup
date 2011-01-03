@@ -6,6 +6,7 @@ body {
 /* Container */
 
 #container {
+	background: #262626;
 	border-bottom: 1px solid #000;
 	margin: 20px auto;
 	width: 1026px;
@@ -32,9 +33,12 @@ body {
 	background: -webkit-gradient(linear, left top, left bottom, from(#faaf23), to(#f7931b));
 }
 
-#login_container .line {
+.line {
 	border-bottom: 1px solid #393939;
 	border-top: 1px solid #1a1a1a;
+}
+
+#login_container .line {
 	margin: 50px auto 35px auto;
 }
 
@@ -528,6 +532,10 @@ nav ul li.active a {
 	position: relative;
 }
 
+.information_show {
+	border: none;
+}
+
 #information .title {
 	border-bottom: 1px solid #1a1a1a;
 	padding-bottom: 12px;
@@ -538,6 +546,14 @@ nav ul li.active a {
 	display: inline;
 	font-weight: bold;
 	font-size: 24px;
+	text-shadow: 0 1px 0 #000;
+}
+
+#information .title h3 {
+	color: #cecece;
+	display: inline;
+	font-size: 14px;
+	margin-left: 10px;
 	text-shadow: 0 1px 0 #000;
 }
 
@@ -578,18 +594,45 @@ input::-webkit-input-placeholder {
 	text-shadow: 0 1px 0 #000;
 }
 
+#information.information_show p {
+	border: none;
+}
+
+#information.information_show > h2 {
+	border-top: 1px solid #393939;
+	color: #fff;
+	font-size: 18px;
+	font-weight: bold;
+	padding-top: 25px;
+	text-shadow: 0 1px 0 #000;
+}
+
+#information a.button {
+	color: #5d390b;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 75px;
+	padding: 12px 25px;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #fcd532;
+
+	background: -webkit-gradient(linear, left bottom, left top, from(#f7911b), to(#fabd38));
+	-webkit-border-radius: 5px;
+	-webkit-box-shadow: 0 1px 0 #000;
+}
+
 /* Pagination */
 
-#information ul {
+#information > ul {
 	margin: 15px auto 0 auto;
 	text-align: center;
 }
 
-#information ul li {
+#information > ul li {
 	display: inline;
 }
 
-#information ul li a {
+#information > ul li a {
 	background: url(../images/pagination.png) no-repeat center;
 	display: inline-block;
 	height: 8px;
@@ -599,7 +642,7 @@ input::-webkit-input-placeholder {
 	text-indent: -9999px;
 }
 
-#information ul li.active a {
+#information > ul li.active a {
 	background: url(../images/pagination_active.png) no-repeat center;
 }
 
@@ -612,6 +655,79 @@ input::-webkit-input-placeholder {
 	padding: 35px 44px 0 44px;
 	
 	-webkit-box-shadow: inset 0 5px 5px rgba(0, 0, 0, .3);
+}
+
+/* Tab Content */
+
+#tabcontent {
+	margin-top: 20px;
+}
+
+#tabcontent ul li {
+	display: inline-block;
+}
+
+#tabcontent ul li a {
+	background: -webkit-gradient(linear, left top, left bottom, from(#7a7a7a), to(#646464));
+	color: #2b2b2b;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 25px;
+	margin-right: 20px;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #979797;
+	position: relative;
+	width: 140px;
+	
+	-webkit-border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-webkit-box-shadow: 0 -1px 0 #b0afaf;
+}
+
+#tabcontent ul li.active a {
+	background: -webkit-gradient(linear, left top, left bottom, from(#c2c2c2), to(#9a9a9a));
+	line-height: 27px;
+	text-shadow: 0 1px 0 #eaeaea;
+	z-index: 999;
+	
+	-webkit-box-shadow: 0 -1px 0 #dedede;
+}
+
+#tabcontent ul li a span.icon {
+	float: left;
+	font-size: 16px;
+	font-weight: normal;
+	left: 10px;
+	top: 1px;
+	position: absolute;
+}
+
+#tabcontent ul li.active a span.icon {
+	text-shadow: 0 1px 0 #eee;
+}
+
+.tabcontentbar {
+	background: -webkit-gradient(linear, left top, left bottom, from(#9a9a9a), to(#868686));
+	border-bottom: 1px solid #6c6c6c;
+	border-top: 1px solid #c6c6c6;
+	height: 8px;
+	margin-top: -1px;
+}
+
+#tabcontent .content {
+	background: #e6e3da;
+	padding: 22px;
+	
+	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .4);
+}
+
+#tabcontent .content h2 {
+	color: #292828;
+	font-size: 18px;
+	font-weight: bold;
+	text-shadow: 0 1px 0 #f8f7f4;
 }
 
 /* Footer */

@@ -66,32 +66,6 @@
 										= link_to 'Uitloggen', logout_url, :method => 'delete'
 			.spacer
 			
-			#information
-			
-				- if notice
-					.notice.error
-						%span.icon !
-						.close.icon *
-						= notice
-
-				.title
-					%h2= @meeting.title
-					%small= #{}"(#{@meeting.participants.count})"
-					%input{:placeholder => "Zoek...", :type => "text"}/
-				%p= @meeting.description
-				%ul
-					%li
-						%a 1
-					%li.active
-						%a 2
-					%li
-						%a 3
-					%li
-						%a 4
-					%li
-						%a 5
-			
-			#main_content
-				=yield
+			=yield
 			
 			%footer

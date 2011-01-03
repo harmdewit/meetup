@@ -1,5 +1,45 @@
-- if @current_participant
-	= button_to 'Uitschrijven voor deze meeting', meeting_participant_url(@meeting, @current_participant), :method => :delete
-- else
-	= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), :remote => true
+#information{:class => "information_show"}
 
+	.title
+		%h2 La Red Meeting
+		%h3 14 september 2010
+		%small= #{}"(#{@meeting.participants.count})"
+		%input{:placeholder => "Zoek...", :type => "text"}/
+	
+	%h2= @meeting.title
+	%p= @meeting.description
+
+	- if @current_participant
+		= button_to 'Uitschrijven voor deze meeting', meeting_participant_url(@meeting, @current_participant), :method => :delete
+	- else
+		= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), {:class => "button"}, :remote => true
+	%br/
+	%br/
+	.line
+
+	#tabcontent
+		%ul
+			%li.active
+				%a{:href => "#"}
+					%span.icon n
+					Programma
+			%li
+				%a{:href => "#"}
+					%span.icon U
+					Spreker
+			%li
+				%a{:href => "#"}
+					%span.icon G
+					Locatie
+			%li
+				%a{:href => "#"}
+					%span.icon P
+					Bijlage
+		
+		.tabcontentbar
+		
+		.content
+			%h2 Het programma van deze bijeenkomst
+			
+#main_content
+	card
