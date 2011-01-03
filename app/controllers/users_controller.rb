@@ -31,14 +31,21 @@ class UsersController < ApplicationController
 
 		      if user.save
   		    	session[:linkedin_id] = profile.id
-  		   		redirect_to(last_meeting, :notice => 'Your account has successfully authenticated with your LinkedIn account.')
+  		   		redirect_to(last_meeting_url, :notice => 'Your account has successfully authenticated with your LinkedIn account.')
   		 		else
   		      format.xml  { render :xml => user.errors, :status => :unprocessable_entity }
   		 		end
 				rescue Exception
-					@authenticated = false
-					flash[:error] = 'Linkedin authentication failed, please authenticate again.'
-					redirect_to 'users/confirmation/#{user.ticket}'
+					profile = @@client.profile(:fields => %w(id))
+					user.linkedin_id = profile.id
+			    user.linkedin_token = atoken
+			    user.linkedin_secret = asecret
+		      if user.save
+  		    	session[:linkedin_id] = profile.id
+  		   		redirect_to(last_meeting_url, :notice => 'Your account has successfully authenticated with your LinkedIn account.')
+  		 		else
+  		      format.xml  { render :xml => user.errors, :status => :unprocessable_entity }
+  		 		end
 		    end
 			else
 				flash[:notice] = 'Connection with LinkedIn failed!'

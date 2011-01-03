@@ -1,0 +1,5 @@
+%p If you break the connection the user the person will be notified by email. Are you sure you want to break the connection?
+.buttons
+	= button_to 'Break Connection', participant_connection_url(@participant, @connection), :class => 'button', :method => 'delete'
+	%a.hide_overlay Cancel
+	

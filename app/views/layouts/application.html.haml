@@ -33,37 +33,6 @@
 								Nee, annuleren
 		#container		
 			%header
-				%nav
-					%ul
-						- if params[:action] == "show"
-							%li.active
-								=link_to 'Meeting informatie', @meeting
-						- else
-							%li
-								=link_to 'Meeting informatie', @meeting
-								
-						- if params[:action] != "show"
-							%li.active
-								=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
-						- else
-							%li
-								=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
-								
-				#personal_info
-					- if @current_user
-						- if @current_user.picture_url
-							= image_tag @current_user.picture_url
-						.info
-							Welkom,
-							%br/
-							%strong= @current_user.first_name + " " + @current_user.last_name
-							.dropdown
-								%span.icon y
-								%span.text Opties
-								
-								%ul
-									%li
-										= link_to 'Uitloggen', logout_url, :method => 'delete'
 			.spacer
 			
 			#information
@@ -74,23 +43,6 @@
 						.close.icon *
 						= notice
 
-				.title
-					%h2= @meeting.title
-					%small= #{}"(#{@meeting.participants.count})"
-					%input{:placeholder => "Zoek...", :type => "text"}/
-				%p= @meeting.description
-				%ul
-					%li
-						%a 1
-					%li.active
-						%a 2
-					%li
-						%a 3
-					%li
-						%a 4
-					%li
-						%a 5
-			
 			#main_content
 				=yield
 			

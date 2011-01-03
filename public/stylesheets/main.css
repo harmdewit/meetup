@@ -68,7 +68,7 @@ body {
 	text-shadow: 0 1px 0 #000;
 }
 
-#login_container a.button {
+.button {
 	color: #5d390b;
 	font-size: 18px;
 	font-weight: bold;
@@ -79,6 +79,10 @@ body {
 	background: -webkit-gradient(linear, left bottom, left top, from(#f7911b), to(#fabd38));
 	-webkit-border-radius: 5px;
 	-webkit-box-shadow: 0 1px 0 #000;
+}
+
+.button button {
+	background: none;
 }
 
 #login_container small {
@@ -712,8 +716,14 @@ footer {
 	
 	-webkit-box-orient: horizontal;
 }
-
-#modal .buttons a {
+#modal .buttons input {
+	background: none;
+	border: none;
+	margin: none;
+	padding: none;
+	display:block;
+}
+#modal .buttons a, #modal .buttons input {
 	border-top: 1px solid #656565;
 	display: block;
 	font-size: 14px;
@@ -723,13 +733,13 @@ footer {
 	-webkit-box-flex: 1;
 }
 
-#modal .buttons a:first-child {
+#modal .buttons a:first-child, #modal .buttons input:first-child {
 	border-right: 1px solid #3f3f3f;
 	color: #fff;
 	text-shadow: 0 1px 0 #000;
 }
 
-#modal .buttons a:last-child {
+#modal .buttons a:last-child, #modal .buttons input:last-child {
 	color: #969696;
 	text-shadow: 0 1px 0 #000;
 }
@@ -739,12 +749,12 @@ footer {
 	margin-right: 5px;
 }
 
-#modal .buttons a:first-child span.icon {
+#modal .buttons a:first-child span.icon, #modal .buttons input:first-child span.icon {
 	color: #009a2c;
 	text-shadow: 0 1px 0 #000;
 }
 
-#modal .buttons a:last-child span.icon {
+#modal .buttons a:last-child span.icon, #modal .buttons input:last-child span.icon {
 	color: #cf060e;
 	opacity: .5;
 }

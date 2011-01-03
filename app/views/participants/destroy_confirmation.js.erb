@@ -1,0 +1,5 @@
+$("#modal .content").html("<%= escape_javascript(render(:partial => "destroy_confirmation"))%>");
+$("#overlay").show()
+$('.hide_overlay').click(function() {
+	$("#overlay").hide()
+})

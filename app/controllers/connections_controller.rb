@@ -10,7 +10,7 @@ class ConnectionsController < ApplicationController
   end
   
   def create
-    @connected_participant = Participant.find(params[:participant_id])
+    @connected_participant = Participant.find_by_id!(params[:participant_id])
   	@current_participant = Participant.find_by_user_id_and_meeting_id!(@current_user, @connected_participant.meeting_id)
 		params[:connection1] = {
 			:participant_id => @current_participant.id, 
@@ -22,20 +22,17 @@ class ConnectionsController < ApplicationController
 			:status => 'Accepted'}
 		@connection1 = Connection.new(params[:connection1])
 		@connection2 = Connection.new(params[:connection2])
-    respond_to do |format|
-      if @connection1.save && @connection2.save
-        @meeting =  @connected_participant.meeting
-      	Notifier.request_received(@current_user, @connected_participant.user).deliver
-        format.html { redirect_to(meeting_participants_url(@meeting, :notice => "You have succesfully connected to #{@connected_user.user.first_name} #{@connected_user.user.last_name}.")) }
-
-        format.js
-        format.xml  { render :xml => @admin_meeting, :status => :created, :location => @admin_meeting }
-      else
-        format.html { render :action => 'new'}
-      end
+    if @connection1.save && @connection2.save
+  		@meeting =  @connected_participant.meeting
+    	Notifier.request_received(@current_user, @connected_participant.user).deliver
+      redirect_to( meeting_participants_url(@meeting.id), :notice => "You have succesfully connected to #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
     end
   end
 	
+  def edit
+		@participant = Participant.find(params[:participant_id])
+		@connection = Connection.find(params[:id])
+	end
 	
 	def update
 		@user = User.find(@current_user)
@@ -54,14 +51,15 @@ class ConnectionsController < ApplicationController
 	end
 	
 	def destroy
-    @connected_participant = Participant.find(params[:participant_id])
-  	@current_participant = Participant.find_by_user_id_and_meeting_id(@current_user, @connected_participant.meeting_id)
+		@connection = Connection.find(params[:id])
+    @connected_participant = Participant.find(@connection.connected_participant_id)
+  	@current_participant = Participant.find(@connection.participant_id)
 		@connection1 = Connection.find_by_participant_id_and_connected_participant_id(@current_participant, @connected_participant)
 		@connection2 = Connection.find_by_participant_id_and_connected_participant_id(@connected_participant, @current_participant)
-		@connection1.destroy then @connection2.destroy
+		@connection1.destroy
+		@connection2.destroy
     
 		@meeting =  @connected_participant.meeting
-    redirect_to(meeting_participants_url(@meeting, 
-    	:notice => "You disconnected from #{@connected_user.user.first_name} #{@connected_user.user.last_name}."))
+    redirect_to(meeting_participants_url(@meeting.id), :notice => "You disconnected from #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
 	end
 end

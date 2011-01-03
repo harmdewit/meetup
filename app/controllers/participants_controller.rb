@@ -14,8 +14,7 @@ class ParticipantsController < ApplicationController
 
   def show
     @participant = Participant.find(params[:id])
-
-
+		
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @connection }
@@ -27,6 +26,20 @@ class ParticipantsController < ApplicationController
   	@participant = Participant.new
 	end
 	
+	def edit
+		@meeting = Meeting.find(params[:meeting_id])
+		@participant = Participant.find(params[:id])
+	end
+	
+	def update
+		@participant = Participant.find(params[:id])
+		
+		if @participant.update_attributes(params[:participant])
+			redirect_to(meeting_participants_url(@participant.meeting), :notice => 'You have succesfully changed your motivation.')
+    else
+			render :action => 'new'
+    end
+	end
 	
   def create
   	@meeting = Meeting.find(params[:meeting_id])
@@ -39,6 +52,11 @@ class ParticipantsController < ApplicationController
 			render :action => 'new'
     end
   end
+  
+  def destroy_confirmation
+  	@meeting = Meeting.find(params[:meeting_id])
+    @participant = Participant.find(params[:id])  	
+	end
 
   def destroy
   	@meeting = Meeting.find(params[:meeting_id])
