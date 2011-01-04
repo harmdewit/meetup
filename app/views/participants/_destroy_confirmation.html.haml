@@ -1,5 +1,5 @@
 %p Note: If you have any connections and you sign off from the meeting they will get notified by email.
 = form_for [@meeting, @participant] do |p|
 	.buttons
-		= button_to 'Sign off from meeting', meeting_participant_url(@meeting, @participant), :method => 'delete'
+		= link_to 'Sign off from meeting', meeting_participant_url(@meeting, @participant), :method => :delete
 		%a.hide_overlay Cancel

@@ -7,6 +7,8 @@ $('document').ready(function() {
 		});
 		
 		$(this).parent().addClass('active');
+		
+		return false;
 	});
 
 	$('.stack').click(function() {

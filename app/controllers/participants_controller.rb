@@ -55,7 +55,7 @@ class ParticipantsController < ApplicationController
   
   def destroy_confirmation
   	@meeting = Meeting.find(params[:meeting_id])
-    @participant = Participant.find(params[:id])  	
+    @participant = Participant.find(params[:id])
 	end
 
   def destroy

@@ -1,5 +1,8 @@
 Portal::Application.routes.draw do
 
+  match 'sessions/linkedin_callback'
+  match 'sessions/linkedin_authenticate'
+    
 	root :to => "meetings#last_meeting"
 
   resources :meetings, :only => :show do

@@ -73,12 +73,12 @@ body {
 }
 
 .button {
-	color: #5d390b;
+	color: #5d390b !important;
 	font-size: 18px;
 	font-weight: bold;
 	padding: 14px 50px;
 	text-decoration: none;
-	text-shadow: 0 1px 0 #fcd532;
+	text-shadow: 0 1px 0 #fcd532 !important;
 
 	background: -webkit-gradient(linear, left bottom, left top, from(#f7911b), to(#fabd38));
 	-webkit-border-radius: 5px;
