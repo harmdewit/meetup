@@ -65,12 +65,6 @@ $('document').ready(function() {
 			$(this).children('ul').slideDown(200);
 		}
 	});
-
-	$('#modal textarea').keydown(function() {
-		var length = $(this).val().length;
-	
-		$(this).parent().children('small').html('Nog ' + (139 - length) + ' karakters over');
-	});
 	
 	$('.close').click(function() {
 		$(this).parent().slideUp('fast');

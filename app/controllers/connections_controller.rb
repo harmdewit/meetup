@@ -25,7 +25,10 @@ class ConnectionsController < ApplicationController
     if @connection1.save && @connection2.save
   		@meeting =  @connected_participant.meeting
     	Notifier.request_received(@current_user, @connected_participant.user).deliver
-      redirect_to( meeting_participants_url(@meeting.id), :notice => "You have succesfully connected to #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
+      redirect_to(meeting_participants_url(@meeting.id), :notice => "Je hebt nu een connectie met #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
+    else
+      flash[:error] = "Je hebt deze persoon al toevoegd jongen."
+      redirect_to @current_participant.meeting
     end
   end
 	
@@ -60,6 +63,6 @@ class ConnectionsController < ApplicationController
 		@connection2.destroy
     
 		@meeting =  @connected_participant.meeting
-    redirect_to(meeting_participants_url(@meeting.id), :notice => "You disconnected from #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
+    redirect_to(meeting_participants_url(@meeting.id), :notice => "Je hebt je connectie met #{@connected_participant.user.first_name} #{@connected_participant.user.last_name} verbroken.")
 	end
 end

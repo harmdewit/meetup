@@ -485,8 +485,7 @@ nav ul li.active a {
 
 /* Notifications */
 
-.notice {
-	color: #420406;
+.notification {
 	line-height: 46px;
 	font-size: 12px;
 	font-weight: bold;
@@ -500,7 +499,7 @@ nav ul li.active a {
 	-webkit-box-shadow: 0 1px 0 #151515;
 }
 
-.notice .icon {
+.notification .icon {
 	font-size: 18px;
 	font-weight: normal;
 	line-height: 58px;
@@ -509,7 +508,7 @@ nav ul li.active a {
 	top: -5px;
 }
 
-.notice .close {
+.notification .close {
 	cursor: pointer;
 	font-size: 14px;
 	left: auto;
@@ -517,11 +516,16 @@ nav ul li.active a {
 	top: -18px;
 }
 
+.notice {
+	background: url(../images/notice2_bg.png);
+	color: #064204;
+	text-shadow: 0 1px 0 #15e11a;
+}
+
 .error {
+	background: url(../images/notice_bg.png);
 	color: #420406;
 	text-shadow: 0 1px 0 #db1319;
-	
-	background: url(../images/notice_bg.png);
 }
 
 .error .close {
@@ -795,6 +799,7 @@ footer {
 #modal p {
 	color: #54514b;
 	font-size: 12px;
+	line-height: 18px;
 	text-shadow: 0 1px 0 #fff;
 }
 
@@ -833,30 +838,29 @@ footer {
 	
 	-webkit-box-orient: horizontal;
 }
-#modal .buttons input {
+
+#modal .buttons a, #modal .buttons input {
 	background: none;
 	border: none;
-	margin: none;
-	padding: none;
-	display:block;
-}
-#modal .buttons a, #modal .buttons input {
 	border-top: 1px solid #656565;
+	cursor: pointer;
 	display: block;
-	font-size: 14px;
+	margin: 0;
+	font-size: 13px;
 	line-height: 30px;
 	text-decoration: none;
+	width: 100%;
 	
 	-webkit-box-flex: 1;
 }
 
-#modal .buttons a:first-child, #modal .buttons input:first-child {
+#modal .buttons a:first-child, #modal .buttons input {
 	border-right: 1px solid #3f3f3f;
 	color: #fff;
 	text-shadow: 0 1px 0 #000;
 }
 
-#modal .buttons a:last-child, #modal .buttons input:last-child {
+#modal .buttons a:last-child, #modal {
 	color: #969696;
 	text-shadow: 0 1px 0 #000;
 }
@@ -880,11 +884,16 @@ footer {
 	background: #fab625;
 	border: 1px solid #8f6815;
 	border-bottom: 1px solid #f5edd8;
-	height: 8px;
+	height: 5px;
 	left: 4px;
 	position: absolute;
 	width: 450px;
-	top: -11px;
+	top: -8px;
 	
 	-webkit-box-shadow: inset 0 1px 0 #fbca5c;
+}
+
+#modal .nocenter {
+	margin-left: 11px;
+	text-align: left;
 }

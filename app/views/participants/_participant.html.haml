@@ -25,7 +25,7 @@
 		
 			.card
 				.card_inside
-					%h2= connection.participant.user.first_name + " " + connection.participant.user.last_name
-					%p= connection.participant.motivation
+					%h2= connection.connected_participant.user.first_name + " " + connection.connected_participant.user.last_name
+					%p= connection.connected_participant.motivation
 					- if participant == @current_participant
-						= link_to 'Connectie Verbreken', edit_participant_connection_url(connection.participant, connection), :remote => true
+						= link_to 'Connectie Verbreken', edit_participant_connection_url(connection.connected_participant, connection), :remote => true
