@@ -144,6 +144,40 @@
 					%li
 						%strong.link Professional_Web-design.pdf
 						%p 56,8 MB
-			
+	%br/
+	%br/
+	.line
+	
+	%h3 Recente aanmeldingen
+	%p Episode V, A NEW HOPE It is a dark time for the Rebellion. Although the Death Star has been destroyed, Imperial troops have driven the Rebel forces from their hidden base and pursued them across the galaxy.
+	
+	- if @current_participant
+		= link_to 'Volledige lijst bekijken', meeting_participants_url(@meeting), :class => "button smaller"
+	- else
+		= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), :class => "button", :remote => true
+
 #main_content
-	card
+	
+	- @latest_participants.each do |participant|
+		.stack.linkedin{:data => {:linkedin => participant.user.linkedin_id}}
+			.main_card
+				.card.front
+					%a= participant.connections.count
+					.card_inside
+						%h2= participant.user.first_name + " " + participant.user.last_name
+						%small
+						%p= participant.motivation
+				.card.back
+					.card_inside
+						%img{:alt => "picture"}
+						%h2= participant.user.first_name + " " + participant.user.last_name
+						%small
+						.linkedin_url
+							%a{:href => "#"} Bekijk LinkedIn-profiel
+
+			.connections
+				- participant.connections.each do |connection|
+					.card
+						.card_inside
+							%h2= connection.connected_participant.user.first_name + " " + connection.connected_participant.user.last_name
+							%p= connection.connected_participant.motivation

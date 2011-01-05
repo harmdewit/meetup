@@ -304,10 +304,6 @@ div:not(.main_card) > .card {
 	z-index: 2;
 }
 
-.connections .card:last-child .card_inside {
-	opacity: .92;
-}
-
 .main_card.flip {	
 	-webkit-transform: rotateY(180deg);
 }
@@ -699,13 +695,18 @@ input::-webkit-input-placeholder {
 	border: none;
 }
 
-#information.information_show > h2 {
+#information.information_show > h2, #information.information_show > h3 {
 	border-top: 1px solid #393939;
 	color: #fff;
 	font-size: 18px;
 	font-weight: bold;
 	padding-top: 25px;
 	text-shadow: 0 1px 0 #000;
+}
+
+#information.information_show > h3 {
+	border: none;
+	padding-top: 15px;
 }
 
 #information a.button {
@@ -720,6 +721,11 @@ input::-webkit-input-placeholder {
 	background: -webkit-gradient(linear, left bottom, left top, from(#f7911b), to(#fabd38));
 	-webkit-border-radius: 5px;
 	-webkit-box-shadow: 0 1px 0 #000;
+}
+
+#information a.button.smaller {
+	line-height: 60px;
+	padding: 5px 10px;
 }
 
 /* Pagination */
@@ -1085,4 +1091,12 @@ footer {
 #modal .nocenter {
 	margin-left: 11px;
 	text-align: left;
+}
+
+/* Footer */
+
+footer a img {
+	float: right;
+	margin-right: 44px;
+	margin-top: 35px;
 }
