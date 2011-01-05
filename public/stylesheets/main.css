@@ -240,7 +240,7 @@ div:not(.main_card) > .card {
 
 .main_card, .main_card .card {
 	-webkit-box-shadow: 0 5px 5px rgba(0, 0, 0, .2);
-	-webkit-transition: all .3s ease-in-out;
+	-webkit-transition: all .4s ease-in-out;
 }
 
 .card.back {
@@ -284,7 +284,7 @@ div:not(.main_card) > .card {
 	opacity: 0;
 	
 	-webkit-transition: opacity 0s;
-	-webkit-transition-delay: .15s;
+	-webkit-transition-delay: .2s;
 }
 
 .main_card.flip .card.back {
@@ -292,7 +292,7 @@ div:not(.main_card) > .card {
 	
 	-webkit-transform: rotateY(180deg);
 	-webkit-transition: opacity 0s;
-	-webkit-transition-delay: .15s;
+	-webkit-transition-delay: .2s;
 }
 
 .main_card.flip .clickarea {
@@ -312,6 +312,66 @@ div:not(.main_card) > .card {
 
 .stack:hover {
 	cursor: pointer;
+}
+
+.card.one {
+	display: none;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: -319px;
+	margin-top: -150px;
+}
+
+.card.two {
+	display: none;
+	left: 0px !important;
+	top: 0px !important;
+	margin-top: -150px;
+}
+
+.card.three {
+	display: none;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: 319px;
+	margin-top: -150px;
+}
+
+.card.four {
+	display: none;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: 319px;
+}
+
+.card.five {
+	display: none;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: 319px;
+	margin-top: 150px;
+}
+
+.card.six {
+	display: none;
+	left: 0px !important;
+	top: 0px !important;
+	margin-top: 150px;
+}
+
+.card.seven {
+	display: none;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: -319px;
+	margin-top: 150px;
+}
+
+.card.eight {
+	display: none;
+	left: 0px !important;
+	top: 0px !important;
+	margin-left: -319px;
 }
 
 /* Header */

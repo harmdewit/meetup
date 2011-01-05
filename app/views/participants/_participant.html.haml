@@ -22,7 +22,7 @@
 	.connections
 	
 		- participant.connections.each do |connection|
-		
+			
 			.card
 				.card_inside
 					%h2= connection.connected_participant.user.first_name + " " + connection.connected_participant.user.last_name
