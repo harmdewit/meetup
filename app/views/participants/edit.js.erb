@@ -1,5 +1,10 @@
 $("#modal .content").html("<%= escape_javascript(render(:partial => "edit"))%>");
 $("#overlay").show()
 $('.hide_overlay').click(function() {
-	$("#overlay").hide()
-})
+	$("#overlay").hide();
+});
+
+$('#modal textarea').keydown(function() {
+	var length = $(this).val().length;
+	$(this).parent().parent().parent().children('small').html('Nog ' + (139 - length) + ' karakters over');
+});

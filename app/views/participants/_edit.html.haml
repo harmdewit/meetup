@@ -1,8 +1,15 @@
-%p Note: If you have any connections and you sign off from the meeting they will get notified by email.
+%strong Aanmeldingsbericht wijzigen
+%p We willen graag dat iedereen die zich aanmeldt een motivatie opgeeft.
+	
+%small
+	Nog ... karakters over
+
 = form_for [@meeting, @participant] do |p|
 	.field
 		= p.text_area :motivation
 		%br/
 	.buttons
-		= p.submit
-		%a.hide_overlay Cancel
+		= p.submit "Opslaan"
+		%a{:href => "#", :class => "hide_overlay"}
+			%span.icon d
+			Annuleren

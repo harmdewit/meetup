@@ -17,17 +17,20 @@ class SessionsController < ApplicationController
 				profile = @@client.profile(:fields => %w(id))
 	    	linkedin_id = profile.id
 			rescue Exception
-				redirect_to login_url, :notice => 'Linkedin authentication failed, please authenticate again.'
+			  flash[:error] = 'LinkedIn authenticatie is mislukt, probeer het opnieuw.'
+				redirect_to login_url
 	    end
 	    
 	    if user = User.find_by_linkedin_id(linkedin_id)
 			  session[:linkedin_id] = linkedin_id
 			  redirect_to last_meeting_url, :notice => 'Logged in.'
 			else
-			  redirect_to login_url, :notice => "Your LinkedIn account is not known in our database, please use your LinkedIn account you used to visit this website for the first time."
+			  flash[:error] = "Je LinkedIn account is niet bekend bij ons."
+			  redirect_to login_url
 		  end
 		else
-			redirect_to login_url, :notice => 'Connection failed.'
+		  flash[:error] = 'Connectie maken met LinkedIn is mislukt.'
+			redirect_to login_url
 		end
  	end
  	

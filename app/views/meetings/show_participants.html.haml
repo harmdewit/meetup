@@ -1,10 +1,14 @@
 #information
 	
-	- if notice
-		.notice.error
-			%span.icon !
+	- flash.each do |key, msg|
+		.notification{:class => key}
+			- if key == "error"
+				%span.icon !
+			- else
+				%span.icon 2
+				
 			.close.icon *
-			= notice
+			= msg
 
 	.title
 		%h2= @meeting.title

@@ -1,5 +1,17 @@
-%p Note: If you have any connections and you sign off from the meeting they will get notified by email.
+%strong
+	Afmelden voor het event 
+	= @meeting.title
+	?
+%p
+	Weet je zeker dat je je wilt afmelden voor de meeting
+	= @meeting.title
+	?
+
 = form_for [@meeting, @participant] do |p|
 	.buttons
-		= button_to 'Sign off from meeting', meeting_participant_url(@meeting, @participant), :method => 'delete'
-		%a.hide_overlay Cancel
+		= link_to meeting_participant_url(@meeting, @participant), :method => :delete do
+			%span.icon 3
+			Ja, uitschrijven
+		%a{:href => "#", :class => "hide_overlay"}
+			%span.icon d
+			Nee, annuleren

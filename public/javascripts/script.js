@@ -7,6 +7,8 @@ $('document').ready(function() {
 		});
 		
 		$(this).parent().addClass('active');
+		
+		return false;
 	});
 
 	$('.stack').click(function() {
@@ -17,32 +19,85 @@ $('document').ready(function() {
 		}
 	});
 
-	$('.clickarea').click(function() {
-		var array = [-3, -2, 1, 4, 3, 2, -1, -4, -5, -6, -7, -8, 5, 6, 7, 8];
-		var index = $(this).parent().parent().index() + 1;
-		var newarray = [];
-	
-		for(i = 0; i < array.length; i++) {
-			var getal = index + array[i];
+	$('.clickarea').click(function() {			
+		var one = ["four", "six", "five"];
+		var two = ["eight", "four", "six"];
+		var three = ["eight", "six", "seven"];
+		var four = ["two", "four", "three"];
+		var five = ["eight", "two", "four"];
+		var six = ["eight", "two", "one"];
+		var seven = ["two", "four", "three"];
+		var eight = ["eight", "two", "four"];
+		var nine = ["two", "eight", "one"];
 		
-			if(getal > 0 && getal <= 9 ) {
-				newarray.push(array[i]);
-			}
+		var number = $(this).parent().parent().index() + 1;
+		
+		switch(number) {
+			case 1:
+				var array = one;
+				break;
+			case 2:
+				var array = two;
+				break;
+			case 3:
+				var array = three;
+				break;
+			case 4:
+				var array = four;
+				break;
+			case 5:
+				var array = five;
+				break;
+			case 6:
+				var array = six;
+				break;
+			case 7:
+				var array = seven;
+				break;
+			case 8:
+				var array = eight;
+				break;
+			case 9:
+				var array = nine;
+				break;
+			default:
+				var array = one;
+				break;
 		}
-	
-		$(this).parent().parent().addClass('overlay');
-		$(this).parent().parent().parent().children(".stack").each(function() {
-			if(!$(this).hasClass('overlay')) {
-				$(this).css({opacity: .15});
-			}
-		});
-	
-		$(this).parent().parent().children('.connections').children('.card:nth-child(1)').animate({left: "330px", top: "162px"}, {duration: 400, easing: 'easeOutBack'});
-		$(this).parent().parent().children('.connections').children('.card:nth-child(2)').animate({left: "330px", top: 0}, {duration: 400, easing: 'easeOutBack'});
-		$(this).parent().parent().children('.connections').children('.card:nth-child(3)').animate({left: 0, top: "162px"}, {duration: 400, easing: 'easeOutBack'});
-
-		$(this).parent().parent().children('.connections').children('.card').children(".card_inside").animate({width: "298px", opacity: "1"}, {duration: 400});
-		$(this).parent().parent().children('.connections').children('.card').animate({border: "1px solid #f5edd8"}, {duration: 400});
+		
+		if(!$(this).parent().parent().hasClass('overlay')) {
+			$(this).parent().parent().addClass('overlay');
+			$(this).parent().parent().parent().children(".stack").each(function() {
+				if(!$(this).hasClass('overlay')) {
+					$(this).fadeTo(200, ".15");
+				}
+			});
+			
+			$(this).parent().parent().children('.connections').children('.card:nth-child(1)').addClass(array[0]);
+			$(this).parent().parent().children('.connections').children('.card:nth-child(2)').addClass(array[1]);
+			$(this).parent().parent().children('.connections').children('.card:nth-child(3)').addClass(array[2]);
+			
+			$(this).parent().parent().children('.connections').children('.card:nth-child(1)').fadeIn();
+			$(this).parent().parent().children('.connections').children('.card:nth-child(2)').fadeIn();
+			$(this).parent().parent().children('.connections').children('.card:nth-child(3)').fadeIn();
+			
+			$(this).parent().parent().children('.connections').children('.card').children(".card_inside").css({width: "298px", opacity: "1"});
+			$(this).parent().parent().children('.connections').children('.card').css({border: "1px solid #f5edd8"});
+		} else {
+			$(this).parent().parent().removeClass('overlay');
+			$(this).parent().parent().parent().children(".stack").each(function() {
+				$(this).fadeTo(200, "1");
+			});
+			
+			$(this).parent().parent().children('.connections').children('.card:nth-child(1)').removeClass(array[0]);
+			$(this).parent().parent().children('.connections').children('.card:nth-child(2)').removeClass(array[1]);
+			$(this).parent().parent().children('.connections').children('.card:nth-child(3)').removeClass(array[2]);
+			
+			$(this).parent().parent().children('.connections').children('.card:nth-child(1)').children(".card_inside").css({width: "284px", opacity: "0.9"});
+			$(this).parent().parent().children('.connections').children('.card:nth-child(2)').children(".card_inside").css({width: "272px", opacity: "0.7"});
+			$(this).parent().parent().children('.connections').children('.card:nth-child(3)').children(".card_inside").css({width: "298px", opacity: "0.7"});
+		}
+		
 		return false;
 	});
 
@@ -62,12 +117,6 @@ $('document').ready(function() {
 			$(this).addClass('active');
 			$(this).children('ul').slideDown(200);
 		}
-	});
-
-	$('#modal textarea').keydown(function() {
-		var length = $(this).val().length;
-	
-		$(this).parent().children('small').html('Nog ' + (139 - length) + ' karakters over');
 	});
 	
 	$('.close').click(function() {

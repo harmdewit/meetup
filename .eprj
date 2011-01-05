@@ -22,9 +22,17 @@
             <string>log\production.log</string>
             <key>main</key>
             <string>public\stylesheets\main.css</string>
+            <key>main.cs</key>
+            <string>public\stylesheets\main.css</string>
+            <key>mains</key>
+            <string>public\stylesheets\main.css</string>
             <key>notif</key>
             <string>app\mailers\notifier.rb</string>
             <key>ro</key>
+            <string>config\routes.rb</string>
+            <key>rou</key>
+            <string>config\routes.rb</string>
+            <key>rout</key>
             <string>config\routes.rb</string>
             <key>routes</key>
             <string>config\routes.rb</string>
@@ -32,6 +40,10 @@
             <string>public\javascripts\script.js</string>
             <key>script</key>
             <string>public\javascripts\script.js</string>
+            <key>seeds</key>
+            <string>db\more_seeds.rb</string>
+            <key>session</key>
+            <string>app\controllers\sessions_controller.rb</string>
             <key>show</key>
             <string>app\views\meetings\show_participants.html.haml</string>
             <key>user_con</key>

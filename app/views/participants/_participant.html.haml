@@ -6,29 +6,26 @@
 			= link_to new_participant_connection_url(participant), :remote => true do
 				.add_connection
 		.card.front
-			%a{:href => "#"}= participant.connections.count
+			%a= participant.connections.count
 			.card_inside
 				%h2= participant.user.first_name + " " + participant.user.last_name
 				%small
 				%p= participant.motivation
-
 		
 		.card.back
-			%a{:href => "#"}= participant.connections.count
+			%a= participant.connections.count
 			.card_inside
 				%img{:alt => "picture"}
 				%h2= participant.user.first_name + " " + participant.user.last_name
 				%small
-				.linkedin_url 
-					%a{:href => '#'} Bekijk LinkedIn Profiel
 				
 	.connections
 	
 		- participant.connections.each do |connection|
-		
+			
 			.card
 				.card_inside
-					%h2= connection.connected_participant.user.first_name + " " + connection.participant.user.last_name
-					%p= connection.participant.motivation
+					%h2= connection.connected_participant.user.first_name + " " + connection.connected_participant.user.last_name
+					%p= connection.connected_participant.motivation
 					- if participant == @current_participant
-						= link_to 'Connectie Verbreken', edit_participant_connection_url(connection.participant, connection), :remote => true
+						= link_to 'Connectie Verbreken', edit_participant_connection_url(connection.connected_participant, connection), :remote => true

@@ -35,7 +35,7 @@ class ParticipantsController < ApplicationController
 		@participant = Participant.find(params[:id])
 		
 		if @participant.update_attributes(params[:participant])
-			redirect_to(meeting_participants_url(@participant.meeting), :notice => 'You have succesfully changed your motivation.')
+			redirect_to(meeting_participants_url(@participant.meeting), :notice => 'Je motivitiebericht is gewijzigd.')
     else
 			render :action => 'new'
     end
@@ -47,7 +47,7 @@ class ParticipantsController < ApplicationController
 		@participant.user_id = @current_user.id
 		@participant.meeting_id = params[:meeting_id]
     if @participant.save
-      redirect_to(meeting_participants_url(@meeting), :notice => 'You have succesfully signed in to the meeting.')
+      redirect_to(meeting_participants_url(@meeting), :notice => 'Je hebt je aangemeld voor de meeting.')
     else
 			render :action => 'new'
     end
@@ -55,7 +55,7 @@ class ParticipantsController < ApplicationController
   
   def destroy_confirmation
   	@meeting = Meeting.find(params[:meeting_id])
-    @participant = Participant.find(params[:id])  	
+    @participant = Participant.find(params[:id])
 	end
 
   def destroy
@@ -64,7 +64,7 @@ class ParticipantsController < ApplicationController
     @participant.destroy
 
     respond_to do |format|
-      format.html { redirect_to(@meeting, :notice => 'You have succesfully signed off from the meeting.') }
+      format.html { redirect_to(@meeting, :notice => 'Je hebt je afgemeld voor de meeting.') }
       format.xml  { head :ok }
     end
   end

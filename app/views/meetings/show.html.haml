@@ -1,5 +1,15 @@
 #information{:class => "information_show"}
 
+	- flash.each do |key, msg|
+		.notification{:class => key}
+			- if key == "error"
+				%span.icon !
+			- else
+				%span.icon 2
+			
+			.close.icon *
+			= msg
+
 	.title
 		%h2 La Red Meeting
 		%h3 14 september 2010
@@ -10,7 +20,7 @@
 	%p= @meeting.description
 
 	- if @current_participant
-		= link_to 'Afmelden Deelname', destroy_confirmation_meeting_participant_url(@meeting, @current_participant), :remote => true, :class => 'button'
+		= link_to 'Afmelden voor deze meeting', destroy_confirmation_meeting_participant_url(@meeting, @current_participant), :class => "button", :remote => true
 	- else
 		= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), :class => "button", :remote => true
 		
