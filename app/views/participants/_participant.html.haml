@@ -6,14 +6,14 @@
 			= link_to new_participant_connection_url(participant), :remote => true do
 				.add_connection
 		.card.front
-			%a{:href => "#"}= participant.connections.count
+			%a= participant.connections.count
 			.card_inside
 				%h2= participant.user.first_name + " " + participant.user.last_name
 				%small
 				%p= participant.motivation
 		
 		.card.back
-			%a{:href => "#"}= participant.connections.count
+			%a= participant.connections.count
 			.card_inside
 				%img{:alt => "picture"}
 				%h2= participant.user.first_name + " " + participant.user.last_name
