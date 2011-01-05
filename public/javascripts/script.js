@@ -1,12 +1,17 @@
 $('document').ready(function() {
 	jQuery.fx.interval = 1;
 	
-	$('#tabcontent ul li a').click(function() {
-		$('#tabcontent ul li').each(function() {
-			$(this).removeClass('active');
-		});
-		
+	$('#tabcontent .content div').hide();
+	$('#tabcontent .content div:first-child').show();
+	
+	$('#tabcontent > ul li a').click(function() {
+		$('#tabcontent ul li').removeClass('active');
 		$(this).parent().addClass('active');
+		
+		var id = $(this).attr("href");
+		
+		$('#tabcontent .content div').hide();
+		$(this).parent().parent().parent().find(id).show();
 		
 		return false;
 	});
