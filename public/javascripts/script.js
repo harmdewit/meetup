@@ -17,6 +17,8 @@ $('document').ready(function() {
 		} else {
 			$(this).children('.main_card').addClass('flip');
 		}
+		
+		return false;
 	});
 
 	$('.clickarea').click(function() {			
