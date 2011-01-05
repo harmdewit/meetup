@@ -1,5 +1,4 @@
 Portal::Application.routes.draw do
-
 	root :to => "meetings#last_meeting"
 
   resources :meetings, :only => :show do
@@ -16,9 +15,11 @@ Portal::Application.routes.draw do
 	
   resources :users, :only => :show
 	match 'users/confirmation/:ticket' => 'users#confirmation'
-	match 'users/confirmation/:ticket/linkedin_authenticate', :to => 'users#linkedin_authenticate'
+	match 'users/confirmation/:ticket/linkedin_authenticate', :to => 'users#linkedin_authenticate', :as => 'users_linkedin_authenticate'
 	match 'users/confirmation/:ticket/linkedin_callback', :to => 'users#linkedin_callback'
 	
+	match 'sessions/linkedin_callback'
+	match 'sessions/linkedin_authenticate'
 	controller :sessions do
 		get 'login' => :new
 		post 'login' => :create
@@ -32,6 +33,10 @@ Portal::Application.routes.draw do
 		resources :users
 		resources :admins, :only => [:index, :show]
 		resources :meetings
+		resources :participants do
+			resources :connections, :only => [:new]
+		end
+  	resources :connections, :only => [:index, :create]
 	end
   devise_for :admins, :controllers => {:sessions => 'admin/sessions', :passwords => 'admin/passwords', :registrations => 'admin/registrations'}	
 

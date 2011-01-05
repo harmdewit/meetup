@@ -41,16 +41,16 @@
 						- else
 							%li
 								=link_to 'Meeting informatie', @meeting
-								
-						- if params[:action] != "show"
-							%li.active
-								=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
-						- else
-							%li
-								=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
+						- if @current_participant.presence
+							- if params[:action] != "show"
+								%li.active
+									=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
+							- else
+								%li
+									=link_to 'Deelnemers', "#{meeting_path(@meeting)}/participants"
 								
 				#personal_info
-					- if @current_user
+					- if @current_user.presence
 						- if @current_user.picture_url
 							= image_tag @current_user.picture_url
 						.info

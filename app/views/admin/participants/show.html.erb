@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @admin_participant.user_id %>
+</p>
+
+<p>
+  <b>Motivation:</b>
+  <%= @admin_participant.motivation %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%= @admin_participant.created_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_participant_path(@admin_participant) %> |
+<%= link_to 'Back', admin_participants_path %>

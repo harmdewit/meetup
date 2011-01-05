@@ -131,6 +131,7 @@ body {
 	width: 298px;
 }
 
+
 .card h2 {
 	color: #292828;
 	display: inline-block;
@@ -156,6 +157,36 @@ body {
 	white-space: nowrap;
 }
 
+.card .linkedin_url {
+	position: absolute;
+	height: 35px;
+	width: 100%;
+	bottom: 0px;
+	background: -webkit-gradient(linear, left top, left bottom, from(#313131), to(#232323));
+
+	border: 1px solid #4c4c4c;
+	border-bottom: none;
+	display: -webkit-box;
+	margin: -1px;	
+	-webkit-box-orient: horizontal;
+}
+
+.card .linkedin_url > a {
+	background: url(../images/linkedin_32_grey.png) no-repeat;
+	padding-left: 50px;
+	color: gray;
+	text-shadow: 0 1px 0 #000;display: block;
+	font-size: 14px;
+	line-height: 35px;
+	text-decoration: none;
+	-webkit-box-flex: 1;
+}
+
+.card .linkedin_url > a:hover{
+	color: #fff;
+	background: url(../images/linkedin_32.png) no-repeat;
+}
+
 .card p {
 	color: #746f65;
 	font-size: 12px;
@@ -174,7 +205,7 @@ div:not(.main_card) > .card {
 	z-index: 3;
 }
 
-.main_card .card.front a {
+.main_card .card.front>a {
 	background: url(../images/vlaggetje.png) no-repeat;
 	color: #fff;
 	display: block;
@@ -193,7 +224,7 @@ div:not(.main_card) > .card {
 	z-index: 999;
 }
 
-.main_card .card.back a {
+.main_card .card.back>a {
 	background: url(../images/vlaggetje2.png) no-repeat;
 	color: #fff;
 	font-family: "Aller Display";
@@ -208,6 +239,7 @@ div:not(.main_card) > .card {
 	text-decoration: none;
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
 	width: 67px;
+	z-index:2;
 }
 
 .main_card .card.back h2 {

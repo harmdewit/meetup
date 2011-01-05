@@ -1,0 +1,15 @@
+= form_for [@participant, @connection] do |p|
+	%p If you add the user the person will be notified by email. Are you sure you want to add the user?
+	%b Current Connections
+	- @participant.connections.each do |c|
+		= "#{c.connected_participant.user.first_name} #{c.connected_participant.user.last_name}, "
+	p.label Connections possible to add:
+	- @participants.each do |p|
+		%input{type => check_box, 'participant'}
+		= p.label "#{p.user.first_name} #{p.user.last_name} #{p.motivation}"
+	
+	.actions
+		= p.submit 'Ok'
+		
+%button.hide_overlay Cancel
+	

@@ -11,6 +11,7 @@
 				%h2= participant.user.first_name + " " + participant.user.last_name
 				%small
 				%p= participant.motivation
+
 		
 		.card.back
 			%a{:href => "#"}= participant.connections.count
@@ -18,6 +19,8 @@
 				%img{:alt => "picture"}
 				%h2= participant.user.first_name + " " + participant.user.last_name
 				%small
+				.linkedin_url 
+					%a{:href => '#'} Bekijk LinkedIn Profiel
 				
 	.connections
 	
@@ -25,7 +28,7 @@
 		
 			.card
 				.card_inside
-					%h2= connection.participant.user.first_name + " " + connection.participant.user.last_name
+					%h2= connection.connected_participant.user.first_name + " " + connection.participant.user.last_name
 					%p= connection.participant.motivation
 					- if participant == @current_participant
 						= link_to 'Connectie Verbreken', edit_participant_connection_url(connection.participant, connection), :remote => true

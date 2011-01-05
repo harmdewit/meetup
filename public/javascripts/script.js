@@ -82,7 +82,9 @@ function linkedin() {
 		$('.linkedin').each(function() {
 			id.push($(this).attr("data-linkedin"));
 		});
-		IN.API.Profile(id).result(displayCard);
+		IN.API.Profile(id).fields("id", "firstName", "lastName", "headline", "pictureUrl", "site-standard-profile-request").result(displayCard);
+		//IN.API.Profile(id).result(displayCard);
+
 	});
 }
 
@@ -95,6 +97,7 @@ function displayCard(profiles) {
 			if($(this).attr("data-linkedin") == members[member].id) {
 				$(this).find("small").html(members[member].headline);
 				$(this).find("img").attr("src", members[member].pictureUrl);
+				$(this).find(".linkedin_url a").attr("href", members[member].siteStandardProfileRequest.url)
 			}
 		});
 		

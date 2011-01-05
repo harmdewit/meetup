@@ -3,8 +3,8 @@ class UsersController < ApplicationController
 	layout 'login'
 
 	# GET /user/:id/linkedin_authenticate 
-	def linkedin_authenticate ticket
-		user = User.find_by_ticket(ticket)
+	def linkedin_authenticate
+		user = User.find_by_ticket(params[:ticket])
     unless user.linkedin_id
 	    request_token = @@client.request_token(:oauth_callback => "http://#{request.host_with_port}/users/confirmation/#{user.ticket}/linkedin_callback")  
 	    session[:rtoken] = request_token.token
@@ -78,18 +78,15 @@ class UsersController < ApplicationController
   # GET /users/confirmation/:ticket
   def confirmation
   	unless session[:linkedin_id]
-	  	user = User.find_by_ticket(params[:ticket])
-	    unless user.linkedin_id
-	    	linkedin_authenticate params[:ticket]
-	    else
+	  	@user = User.find_by_ticket(params[:ticket])
+	    if @user.linkedin_id
 				redirect_to login_url, :notice => 'You have already linked your account with LinkedIn. Please login as usual.'
 	    end
     else
-      if User.find_by_linkedin_id(session[:linkedin_id])
+      if @user = User.find_by_linkedin_id(session[:linkedin_id])
     	  redirect_to User.find_by_linkedin_id(session[:linkedin_id]), :notice => 'You are already logged in.'
     	else
     	  session[:linkedin_id] = nil
-    	  linkedin_authenticate params[:ticket]
   	  end
   	end
 	end

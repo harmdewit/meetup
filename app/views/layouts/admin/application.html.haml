@@ -20,6 +20,9 @@
 			#container
 				#header
 					%h1#logo Admin Control Panel
+					%h2
+						=image_tag("admin/icons/tools_32.png")
+						Administratie
 					
 					#header_buttons
 						- if admin_signed_in?
@@ -30,6 +33,30 @@
 							= link_to "Sign in", new_admin_session_path
 							
 					%ul#main-nav
+						- if params[:controller] == "admin/connections"
+							%li
+								= link_to "Connections", admin_connections_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Connections", admin_connections_path						
+						- if params[:controller] == "admin/participants"
+							%li
+								= link_to "Participants", admin_participants_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Participants", admin_participants_path						
+						- if params[:controller] == "admin/users"
+							%li
+								= link_to "Users", admin_users_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Users", admin_users_path
+						- if params[:controller] == "admin/meetings"
+							%li
+								= link_to "Meetings", admin_meetings_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Meetings", admin_meetings_path
 						- if params[:controller] == "admin/admins"
 							%li
 								= link_to "Admins", admin_admins_path, {:class => "current"}
@@ -37,22 +64,11 @@
 							%li
 								= link_to "Admins", admin_admins_path
 								
-						- if params[:controller] == "admin/users"
-							%li
-								= link_to "Users", admin_users_path, {:class => "current"}
-						- else
-							%li
-								= link_to "Users", admin_users_path
-										
-						- if params[:controller] == "admin/meetings"
-							%li
-								= link_to "Meetings", admin_meetings_path, {:class => "current"}
-						- else
-							%li
-								= link_to "Meetings", admin_meetings_path
 							
 				#content
-					- if notice
-						.notification.success= notice
-				
-					=yield
+					.content-box
+						.content-box-header	
+						.content-box-content
+							- if notice
+								.notification.success= notice
+							=yield

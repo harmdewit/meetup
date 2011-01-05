@@ -1,0 +1,14 @@
+%h2= @meeting.title
+%p= @meeting.description
+
+%h3 Participants
+%br
+- @meeting.participants.each do |p|
+	%p
+		%b= "#{p.user.first_name} #{p.user.last_name}, "
+		= "#{p.motivation}"
+		%br
+		%b Connections
+		- p.connections.each do |c|
+			= "#{c.connected_participant.user.first_name} #{c.connected_participant.user.last_name}, "
+		=link_to 'connectie toevoegen', new_admin_participant_connection_url(p)
