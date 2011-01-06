@@ -23,6 +23,9 @@
 				%p= participant.motivation
 				- if @suggested_participants.include? participant
 					= image_tag("suggestion_ribbon.png", :class => 'suggestion_ribbon')
+				- if  @current_connected_participants.include? participant
+					= image_tag("connected_ribbon.png", :class => 'suggestion_ribbon')
+				
 		
 		.card.back
 			- unless participant == @current_participant
