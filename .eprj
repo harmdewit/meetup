@@ -8,6 +8,8 @@
             <string>public\stylesheets\admin\css3.css</string>
             <key>.log</key>
             <string>log\development.log</string>
+            <key>_par</key>
+            <string>app\views\participants\_participant.html.haml</string>
             <key>_parti</key>
             <string>app\views\participants\_participant.html.haml</string>
             <key>appli</key>
@@ -30,6 +32,8 @@
             <string>public\stylesheets\admin\main.css</string>
             <key>notif</key>
             <string>app\mailers\notifier.rb</string>
+            <key>participant</key>
+            <string>app\views\participants\_participant.html.haml</string>
             <key>r</key>
             <string>config\routes.rb</string>
             <key>ro</key>
