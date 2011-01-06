@@ -164,27 +164,22 @@ body {
 	bottom: 0px;
 	background: -webkit-gradient(linear, left top, left bottom, from(#313131), to(#232323));
 
-	border: 1px solid #4c4c4c;
-	border-bottom: none;
+	border-top: 1px solid #4c4c4c;
 	display: -webkit-box;
 	margin: -1px;	
 	-webkit-box-orient: horizontal;
 }
 
 .card .linkedin_url > a {
-	background: url(../images/linkedin_32_grey.png) no-repeat;
-	padding-left: 50px;
-	color: gray;
-	text-shadow: 0 1px 0 #000;display: block;
-	font-size: 14px;
+	border-top: 1px solid #656565;
+	padding-left: 58px;
+	color: #fff;
+	display: inline-block;
+	text-shadow: 0 1px 0 #000;
+	font-size: 12px;
 	line-height: 35px;
 	text-decoration: none;
 	-webkit-box-flex: 1;
-}
-
-.card .linkedin_url > a:hover{
-	color: #fff;
-	background: url(../images/linkedin_32.png) no-repeat;
 }
 
 .card img.suggestion_ribbon {
