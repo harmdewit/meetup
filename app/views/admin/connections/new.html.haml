@@ -1,15 +1,28 @@
-= form_for [@participant, @connection] do |p|
-	%p If you add the user the person will be notified by email. Are you sure you want to add the user?
-	%b Current Connections
-	- @participant.connections.each do |c|
-		= "#{c.connected_participant.user.first_name} #{c.connected_participant.user.last_name}, "
-	p.label Connections possible to add:
-	- @participants.each do |p|
-		%input{type => check_box, 'participant'}
-		= p.label "#{p.user.first_name} #{p.user.last_name} #{p.motivation}"
+= form_for (:admin,[@participant, @connection]) do |f|
+	f.submit
+-#
+	-#	= "participant: #{@participant.inspect}"
+		= "connection: #{@connection.inspect}"
+	%p 
+		If you add the user the person will be notified by email. Are you sure you want to add the user?
+		%br
+		%b Current Connections
+		- @participant.connections.each do |c|
+			= "#{c.connected_participant.user.first_name} #{c.connected_participant.user.last_name}, "
+		%br
 	
-	.actions
-		= p.submit 'Ok'
+	%table
+		%tr
+			%th
+			%th= "Available participants"
+			%th= "Motivation"
+		- @participant.meeting.participants.each do |p|
+			%tr
+				%td= f.radio_button "p[connection][connected_participant_id]", p.id
+				%td= "#{p.user.first_name} #{p.user.last_name}"
+				%td= p.motivation
 		
-%button.hide_overlay Cancel
-	
+	.buttons
+		= f.submit 'Ok'
+		%a.hide_overlay{:href => "#{}"}
+			Cancel

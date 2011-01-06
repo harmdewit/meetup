@@ -11,7 +11,9 @@
             <key>_parti</key>
             <string>app\views\participants\_participant.html.haml</string>
             <key>appli</key>
-            <string>app\controllers\application_controller.rb</string>
+            <string>app\views\layouts\admin\application.html.haml</string>
+            <key>connect</key>
+            <string>app\controllers\admin\connections_controller.rb</string>
             <key>connection</key>
             <string>app\controllers\connections_controller.rb</string>
             <key>css</key>

@@ -35,6 +35,10 @@ Portal::Application.routes.draw do
 		resources :users
 		resources :admins, :only => [:index, :show]
 		resources :meetings
+		resources :participants do
+			resources :connections, :only => [:new, :create]
+		end
+		resources :connections
 	end
   devise_for :admins, :controllers => {:sessions => 'admin/sessions', :passwords => 'admin/passwords', :registrations => 'admin/registrations'}	
 

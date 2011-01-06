@@ -3,8 +3,12 @@
 
 		.clickarea
 		- unless participant == @current_participant
-			= link_to new_participant_connection_url(participant), :remote => true do
-				.add_connection
+			- unless @current_connected_participants.include? participant
+				= link_to new_participant_connection_url(participant), :remote => true do
+					.add_connection
+			- else 
+				= link_to edit_participant_connection_url(participant, @current_connected_participants_connections[@current_connected_participants.index(participant)]), :remote => true do
+					.delete_connection
 		.card.front
 			%a= participant.connections.count
 			.card_inside
@@ -14,13 +18,17 @@
 		
 		.card.back
 			%a= participant.connections.count
+			- unless participant == @current_participant
+				- unless @current_connected_participants.include? participant
+					.img_add_connection
+				- else
+					.img_delete_connection
 			.card_inside
 				%img{:alt => "picture"}
 				%h2= participant.user.first_name + " " + participant.user.last_name
 				%small
 				.linkedin_url
-					%a{:href => "#"} Bekijk LinkedIn-profiel
-				
+					%a{:href => '#'} LinkedIn Profiel
 	.connections
 	
 		- participant.connections.each do |connection|
@@ -29,5 +37,5 @@
 				.card_inside
 					%h2= connection.connected_participant.user.first_name + " " + connection.connected_participant.user.last_name
 					%p= connection.connected_participant.motivation
-					- if participant == @current_participant
-						= link_to 'Connectie Verbreken', edit_participant_connection_url(connection.connected_participant, connection), :remote => true
+					- if connection.status == 'Aanbevolen'
+						= image_tag("suggestion_ribbon.png", :class => 'suggestion_ribbon')

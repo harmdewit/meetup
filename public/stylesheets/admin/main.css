@@ -450,14 +450,32 @@ form input[type="submit"]:hover {
 	left: 10px;
 }
 
-#overlay {
+#overlay2 {
+	background: url(../images/overlay.png) repeat;
 	display: none;
 	height: 100%;
-	width: 100%;
 	position: absolute;
 	top: 0;
-	left: 0;
-	z-index: 997;
+	width: 100%;
+	z-index: 9999;
+}
+
+#centerpack {
+	height: 100%;
+	position: relative;
+	width: 100%;
+}
+
+#modal {
+	background: #e8e5dd;
+	border-top: 1px solid #ccc9be;
+	margin: 150px auto;
+	text-align: center;
+	position: relative;
+	width: 460px;
+	z-index: 999999;
+
+	-webkit-box-shadow: 0 0 10px rgba(0, 0, 0, .3);
 }
 
 /********** Content-tabs **********/
