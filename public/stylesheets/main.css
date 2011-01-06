@@ -187,6 +187,12 @@ body {
 	background: url(../images/linkedin_32.png) no-repeat;
 }
 
+.card img.suggestion_ribbon {
+	position: absolute;
+	bottom: -6px;
+	right: -7px;
+}
+
 .card p {
 	color: #746f65;
 	font-size: 12px;
@@ -225,7 +231,7 @@ div:not(.main_card) > .card {
 }
 
 .main_card .card.back>a {
-	background: url(../images/vlaggetje2.png) no-repeat;
+	background: url(../images/vlaggetje_connecties.png) no-repeat;
 	color: #fff;
 	font-family: "Aller Display";
 	font-size: 36px;
@@ -240,6 +246,25 @@ div:not(.main_card) > .card {
 	text-shadow: 0 1px 0 rgba(0, 0, 0, .4);
 	width: 67px;
 	z-index:2;
+}
+
+.main_card .card.back>.img_add_connection, .main_card .card.back>.img_delete_connection {
+	position: absolute;
+	left: 237px;
+	padding-left: 3px;
+	padding-top: 6px;
+	top: 62px;
+	height: 135px;
+	width: 67px;
+	z-index:2;
+}
+
+.main_card .card.back>.img_add_connection {
+	background: url(../images/vlaggetje_toevoegen.png) no-repeat;
+}
+
+.main_card .card.back>.img_delete_connection {
+	background: url(../images/vlaggetje_verwijderen.png) no-repeat;
 }
 
 .main_card .card.back h2 {
@@ -334,12 +359,12 @@ div:not(.main_card) > .card {
 	z-index: 9999;
 }
 
-.main_card.flip .add_connection {
+.main_card.flip .add_connection, .main_card.flip .delete_connection {
 	position: absolute;
-	top: 65px;
+	top: 64px;
 	height: 65px;
 	width: 67px;
-	z-index: 9999;
+	z-index: 999999;
 }
 
 .stack:hover {

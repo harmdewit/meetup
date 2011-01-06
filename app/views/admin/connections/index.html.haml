@@ -3,6 +3,8 @@
 
 %h3 Participants
 %br
+
+%br
 - @meeting.participants.each do |p|
 	%p
 		%b= "#{p.user.first_name} #{p.user.last_name}, "
@@ -12,3 +14,12 @@
 		- p.connections.each do |c|
 			= "#{c.connected_participant.user.first_name} #{c.connected_participant.user.last_name}, "
 		=link_to 'connectie toevoegen', new_admin_participant_connection_url(p)
+		%br
+
+		= form_for(:admin,@connection ) do |f|
+			%input{:type => "hidden", :name => :participant_id, :value => p.id}
+			%select{:name => :connected_participant_id}
+				- @select_options.each do |p|
+					%option{:value => p.id}
+						= p.user.first_name + " " + p.user.last_name
+			= f.submit "Toevoegen"
