@@ -11,10 +11,12 @@
 			= msg
 
 	.title
-		%h2= @meeting.title
+		%h2 Deelnemerslijst
 		%h3= "(#{@meeting.participants.count})"
 		%input{:placeholder => "Zoek...", :type => "text"}/
-	%p= @meeting.description
+
+	%h2 Interactieve deelnemerslijst
+	%p Je mag tot drie personen toevoegen als gesprekspartner voor de meeting.
 	
 	%ul
 		%li

@@ -649,13 +649,8 @@ nav ul li.active a {
 
 #information {
 	background: #262626;
-	border-bottom: 1px solid #1a1a1a;
 	padding: 25px 44px;
 	position: relative;
-}
-
-.information_show {
-	border: none;
 }
 
 #information .title {
@@ -707,7 +702,6 @@ input::-webkit-input-placeholder {
 }
 
 #information p {
-	border-top: 1px solid #393939;
 	color: #8c8c8c;
 	font-size: 14px;
 	line-height: 20px;
@@ -716,11 +710,7 @@ input::-webkit-input-placeholder {
 	text-shadow: 0 1px 0 #000;
 }
 
-#information.information_show p {
-	border: none;
-}
-
-#information.information_show > h2, #information.information_show > h3 {
+#information > h2, #information > h3 {
 	border-top: 1px solid #393939;
 	color: #fff;
 	font-size: 18px;
@@ -729,7 +719,7 @@ input::-webkit-input-placeholder {
 	text-shadow: 0 1px 0 #000;
 }
 
-#information.information_show > h3 {
+#information > h3 {
 	border: none;
 	padding-top: 15px;
 }
