@@ -31,26 +31,153 @@
 	#tabcontent
 		%ul
 			%li.active
-				%a{:href => "#"}
+				%a{:href => "#programma"}
 					%span.icon n
 					Programma
 			%li
-				%a{:href => "#"}
+				%a{:href => "#spreker"}
 					%span.icon U
 					Spreker
 			%li
-				%a{:href => "#"}
+				%a{:href => "#locatie"}
 					%span.icon G
 					Locatie
 			%li
-				%a{:href => "#"}
+				%a{:href => "#bijlage"}
 					%span.icon P
 					Bijlage
 		
 		.tabcontentbar
 		
 		.content
-			%h2 Het programma van deze bijeenkomst
-			
+			#programma
+				%h2 Het programma van deze bijeenkomst
+
+				%ul
+					%li
+						%strong 19.00 -
+						%p Ontvangst
+					%li
+						%strong 20.00 -
+						%p 
+							Welkomstwoord door Ing. A.M.S. (Miriam) Notten
+					%li
+						%strong 20.10 -
+						%p
+							Jubilarissen:
+							%br/
+							\- Aart-Jan Smits - Directeur Nationale Veiligheid Thales Nederland B.V.
+							%br/
+							\- Francis Notten - Eigenaar Notten Translations
+							%br/
+							\- Frans Taminiau - Eigenaar Taiko Communicatie design
+							%br/
+							\- Ger Mol - Eigenaar Hunt4you
+							%br/
+							\- Hans Nieuwenhuis - VP Strategy Government Capgemini Nederland
+							%br/
+							\- Micheline Hounjet - Coördinator Gameteam en Marktteam Stedelijke Infra Deltares
+					%li
+						%strong 20.20 -
+						%p
+							La Red netwerktelefoon, de netwerkvraag van deze maand wordt gesteld door Tatiana van Rijswijk van InnerVida.
+					%li
+						%strong 20.30 -
+						%p Kennard Bos, uitvoerend producent bij het televisieprogramma Goede Tijden Slechte Tijden, laat je aan de hand van de methode “Emotional Toolbox” 			inzien welk karaktertype jij bent, wat belangrijk voor je is en hoe je dat overbrengt. Wanneer je van elkaar weet welk karaktertype je bent, kan je de 			ander 	benaderen op een manier die bij zijn of haar karaktertype past…..heel belangrijk bij netwerken!
+					%li
+						%strong 21.30 -
+						%p Borrel met hapjes
+					%li
+						%strong 22.30 -
+						%p Afsluiting
+						
+			#spreker
+				%h2 Spreker op deze bijeenkomst
+				%img{:src => "../images/hansolo.png", :alt => "Han Solo"}
+				
+				%ul.marginleft
+					%li
+						%strong Han Solo
+						%p Pilot
+					%li
+						%p Smuggler - Pilot of the Millenium Falcon
+					%li
+						%p The Rebel Forces
+					%li
+						%p
+							%a{:href => "#"}
+								Han.Solo@starwars.com
+					%li
+						%p
+							%a{:href => "http://www.starwars.com"}
+								http://www.starwars.com
+								
+				%h3 Gespreksonderwerp
+				%p Kennard Bos, uitvoerend producent bij het televisieprogramma Goede Tijden Slechte Tijden, laat je aan de hand van de methode “Emotional Toolbox” inzien welk karaktertype jij bent, wat belangrijk voor je is en hoe je dat overbrengt. Wanneer je van elkaar weet welk karaktertype je bent, kan je de ander benaderen op een manier die bij zijn of haar karaktertype past…..heel belangrijk bij netwerken!
+						
+			#locatie
+				%h2 Locatie van de bijeenkomst
+				%img{:src => "../images/locatie.png", :alt => "Locatie"}
+				
+				%ul.marginleft2
+					%li
+						%strong Het pakhuis eten en drinken
+						%p .
+					%li
+						%p Phoenixstraat 4c
+					%li
+						%p 2611 AL Delft
+					%li
+						%p 015-2125925
+					%li
+						%p
+							%a{:href => "http://www.pakhuisdelft.nl"}
+								http://www.pakhuisdelft.nl
+				
+			#bijlage
+				%h2 Bijlage bij deze bijeenkomst
+				
+				%ul
+					%li
+						%strong.link The_Smashing_Book.pdf
+						%p 56,8 MB
+					%li
+						%strong.link Professional_Web-design.pdf
+						%p 56,8 MB
+	%br/
+	%br/
+	.line
+	
+	%h3 Recente aanmeldingen
+	%p Episode V, A NEW HOPE It is a dark time for the Rebellion. Although the Death Star has been destroyed, Imperial troops have driven the Rebel forces from their hidden base and pursued them across the galaxy.
+	
+	- if @current_participant
+		= link_to 'Volledige lijst bekijken', meeting_participants_url(@meeting), :class => "button smaller"
+	- else
+		= link_to 'Deelnemen aan deze meeting', new_meeting_participant_url(@meeting), :class => "button", :remote => true
+
 #main_content
-	card
+	
+	- @latest_participants.each do |participant|
+		.stack.linkedin{:data => {:linkedin => participant.user.linkedin_id}}
+			.main_card
+				.card.front
+					%a= participant.connections.count
+					.card_inside
+						%h2= participant.user.first_name + " " + participant.user.last_name
+						%small
+						%p= participant.motivation
+				.card.back
+					.card_inside
+						%img{:alt => "picture"}
+						%h2= participant.user.first_name + " " + participant.user.last_name
+						%small
+						.linkedin_url
+							%a{:href => "#"} Bekijk LinkedIn-profiel
+
+			.connections
+				- participant.connections.each do |connection|
+					.card
+						.card_inside
+							%h2= connection.connected_participant.user.first_name + " " + connection.connected_participant.user.last_name
+							%p= connection.connected_participant.motivation

@@ -329,10 +329,6 @@ div:not(.main_card) > .card {
 	z-index: 2;
 }
 
-.connections .card:last-child .card_inside {
-	opacity: .92;
-}
-
 .main_card.flip {	
 	-webkit-transform: rotateY(180deg);
 }
@@ -724,13 +720,18 @@ input::-webkit-input-placeholder {
 	border: none;
 }
 
-#information.information_show > h2 {
+#information.information_show > h2, #information.information_show > h3 {
 	border-top: 1px solid #393939;
 	color: #fff;
 	font-size: 18px;
 	font-weight: bold;
 	padding-top: 25px;
 	text-shadow: 0 1px 0 #000;
+}
+
+#information.information_show > h3 {
+	border: none;
+	padding-top: 15px;
 }
 
 #information a.button {
@@ -745,6 +746,11 @@ input::-webkit-input-placeholder {
 	background: -webkit-gradient(linear, left bottom, left top, from(#f7911b), to(#fabd38));
 	-webkit-border-radius: 5px;
 	-webkit-box-shadow: 0 1px 0 #000;
+}
+
+#information a.button.smaller {
+	line-height: 60px;
+	padding: 5px 10px;
 }
 
 /* Pagination */
@@ -789,11 +795,11 @@ input::-webkit-input-placeholder {
 	margin-top: 20px;
 }
 
-#tabcontent ul li {
+#tabcontent > ul li {
 	display: inline-block;
 }
 
-#tabcontent ul li a {
+#tabcontent > ul li a {
 	background: -webkit-gradient(linear, left top, left bottom, from(#7a7a7a), to(#646464));
 	color: #2b2b2b;
 	display: inline-block;
@@ -812,7 +818,7 @@ input::-webkit-input-placeholder {
 	-webkit-box-shadow: 0 -1px 0 #b0afaf;
 }
 
-#tabcontent ul li.active a {
+#tabcontent > ul li.active a {
 	background: -webkit-gradient(linear, left top, left bottom, from(#c2c2c2), to(#9a9a9a));
 	line-height: 27px;
 	text-shadow: 0 1px 0 #eaeaea;
@@ -821,7 +827,7 @@ input::-webkit-input-placeholder {
 	-webkit-box-shadow: 0 -1px 0 #dedede;
 }
 
-#tabcontent ul li a span.icon {
+#tabcontent > ul li a span.icon {
 	float: left;
 	font-size: 16px;
 	font-weight: normal;
@@ -830,7 +836,7 @@ input::-webkit-input-placeholder {
 	position: absolute;
 }
 
-#tabcontent ul li.active a span.icon {
+#tabcontent > ul li.active a span.icon {
 	text-shadow: 0 1px 0 #eee;
 }
 
@@ -844,7 +850,7 @@ input::-webkit-input-placeholder {
 
 #tabcontent .content {
 	background: #e6e3da;
-	padding: 22px;
+	padding: 22px 0;
 	
 	-webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, .4);
 }
@@ -853,7 +859,104 @@ input::-webkit-input-placeholder {
 	color: #292828;
 	font-size: 18px;
 	font-weight: bold;
+	margin: 0 22px;
 	text-shadow: 0 1px 0 #f8f7f4;
+}
+
+#tabcontent .content ul {
+	margin-top: 22px;
+}
+
+#tabcontent .content ul li {
+	display: block;
+	padding: 0 22px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+#tabcontent .content ul li p {
+	color: #6b6965;
+	font-size: 12px;
+	margin-bottom: 3px;
+	margin-left: 60px;
+	margin-top: -5px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+}
+
+#tabcontent .content ul li:nth-child(odd) {
+	background: #dad7cf;
+	border-bottom: 1px solid #d3d0c9;
+	border-top: 1px solid #e8e5dc;
+	line-height: 28px;
+
+	-webkit-box-shadow: 0 -1px 0 #d3d0c9;
+}
+
+#tabcontent .content ul li:nth-child(even) {
+	margin: 2px 0;
+}
+
+#tabcontent .content ul li strong {
+	color: #292828;
+	float: left;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 18px;
+	margin-right: 10px;
+	margin-top: 3px;
+}
+
+#tabcontent .content ul li strong.link {
+	cursor: pointer;
+	text-decoration: underline;
+}
+
+#tabcontent .content ul li:nth-child(even) strong {
+	margin-top: 9px;
+}
+
+#tabcontent .content img {
+	cursor: pointer;
+	float: left;
+	margin: 22px;
+}
+
+#tabcontent .content ul li a {
+	color: #1880cc;
+	text-decoration: underline;
+}
+
+#tabcontent .content ul.marginleft {
+	margin-left: 200px;
+}
+
+#tabcontent .content ul.marginleft p, #tabcontent .content ul.marginleft2 p {
+	margin-left: 0px;
+}
+
+#tabcontent .content ul.marginleft2 {
+	margin-left: 340px;
+}
+
+#tabcontent .content h3 {
+	background: #dad7cf;
+	border-bottom: 1px solid #d3d0c9;
+	border-top: 1px solid #e8e5dc;
+	color: #292828;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 28px;
+	margin-top: 50px;
+	padding-left: 22px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
+	
+	-webkit-box-shadow: 0 -1px 0 #d3d0c9;
+}
+
+#tabcontent .content div > p {
+	color: #4e4e4e;
+	font-size: 12px;
+	padding: 10px 22px 0 22px;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, .8);
 }
 
 /* Footer */
@@ -1013,4 +1116,12 @@ footer {
 #modal .nocenter {
 	margin-left: 11px;
 	text-align: left;
+}
+
+/* Footer */
+
+footer a img {
+	float: right;
+	margin-right: 44px;
+	margin-top: 35px;
 }
