@@ -25,10 +25,24 @@ class ConnectionsController < ApplicationController
     if @connection1.save && @connection2.save
   		@meeting =  @connected_participant.meeting
     	Notifier.request_received(@current_user, @connected_participant.user).deliver
-      redirect_to(meeting_participants_url(@meeting.id), :notice => "Je hebt nu een connectie met #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
-    else
-      flash[:error] = "Je hebt deze persoon al toevoegd jongen."
-      redirect_to @current_participant.meeting
+      redirect_to(meeting_participants_url(@current_participant.meeting.id), :notice => "Je hebt nu een connectie met #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
+    else 
+	  	if Connection.find_by_participant_id_and_connected_participant_id(@current_participant.id, @connected_participant.id)
+  			@connection1 = Connection.find_by_participant_id_and_connected_participant_id(@current_participant.id, @connected_participant.id)
+  			@connection2 = Connection.find_by_connected_participant_id_and_participant_id(@current_participant.id, @connected_participant.id)
+  			@connection1.status = 'Accepted'
+  			@connection2.status = 'Accepted'
+  			if @connection1.save && @connection2.save
+  				Notifier.request_received(@current_user, @connected_participant.user).deliver
+      		redirect_to(meeting_participants_url(@current_participant.meeting.id), :notice => "Je hebt nu een connectie met #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
+    		else
+    			flash[:error] = 'Friend not accepted!'
+					redirect_to meeting_participants_url(@current_participant.meeting.id)
+				end
+			else
+	      flash[:error] = "Je hebt deze persoon al toevoegd jongen."
+	      redirect_to meeting_participants_url(@current_participant.meeting.id)
+      end
     end
   end
 	
@@ -40,8 +54,8 @@ class ConnectionsController < ApplicationController
 	def update
 		@user = User.find(@current_user)
 		@connected_user = User.find(params[:connected_user_id])
-		params[:connection1] = {:user_id => @user.id, :connected_user_id => @connected_user.id, :status => 'accepted'}
-		params[:connection2] = {:user_id => @connected_user.id, :connected_user_id => @user.id, :status => 'accepted'}
+		params[:connection1] = {:user_id => @user.id, :connected_user_id => @connected_user.id, :status => 'Accepted'}
+		params[:connection2] = {:user_id => @connected_user.id, :connected_user_id => @user.id, :status => 'Accepted'}
 		@connection1 = Connection.find_by_user_id_and_connected_user_id(@user.id, @connected_user.id)
 		@connection2 = Connection.find_by_user_id_and_connected_user_id(@connected_user.id, @user.id)
 		if @connection1.update_attributes(params[:connection1]) && @connection2.update_attributes(params[:connection2])

@@ -172,7 +172,7 @@ function displayCard(profiles) {
 		$('.linkedin').each(function() {
 			if($(this).attr("data-linkedin") == members[member].id) {
 				$(this).find("small").html(members[member].headline);
-				$(this).find("img").attr("src", members[member].pictureUrl);
+				$(this).find("img.linkedin_img").attr("src", members[member].pictureUrl);
 				$(this).find(".linkedin_url a").attr("href", members[member].siteStandardProfileRequest.url)
 			}
 		});

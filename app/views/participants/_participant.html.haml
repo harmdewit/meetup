@@ -10,21 +10,36 @@
 				= link_to edit_participant_connection_url(participant, @current_connected_participants_connections[@current_connected_participants.index(participant)]), :remote => true do
 					.delete_connection
 		.card.front
-			%a= participant.connections.count
+			- unless participant == @current_participant
+				- unless @suggested_participants.include? participant
+					%a= participant.connections.count
+				- else 
+					%a= participant.connections.count - 1
+			- else
+				%a= participant.connections.count - @suggested_participants.count
 			.card_inside
 				%h2= participant.user.first_name + " " + participant.user.last_name
 				%small
 				%p= participant.motivation
+				- if @suggested_participants.include? participant
+					= image_tag("suggestion_ribbon.png", :class => 'suggestion_ribbon')
 		
 		.card.back
-			%a= participant.connections.count
+			- unless participant == @current_participant
+				- unless @suggested_participants.include? participant
+					%a= participant.connections.count
+				- else 
+					%a= participant.connections.count - 1
+			- else
+				%a= participant.connections.count - @suggested_participants.count
 			- unless participant == @current_participant
 				- unless @current_connected_participants.include? participant
 					.img_add_connection
 				- else
 					.img_delete_connection
+
 			.card_inside
-				%img{:alt => "picture"}
+				%img.linkedin_img{:alt => "picture"}
 				%h2= participant.user.first_name + " " + participant.user.last_name
 				%small
 				.linkedin_url
@@ -32,10 +47,9 @@
 	.connections
 	
 		- participant.connections.each do |connection|
+			- unless connection.status == 'Aanbevolen'
 			
-			.card
-				.card_inside
-					%h2= connection.connected_participant.user.first_name + " " + connection.connected_participant.user.last_name
-					%p= connection.connected_participant.motivation
-					- if connection.status == 'Aanbevolen'
-						= image_tag("suggestion_ribbon.png", :class => 'suggestion_ribbon')
+				.card
+					.card_inside
+						%h2= connection.connected_participant.user.first_name + " " + connection.connected_participant.user.last_name
+						%p= connection.connected_participant.motivation
