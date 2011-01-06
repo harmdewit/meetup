@@ -27,9 +27,11 @@
             <key>main.cs</key>
             <string>public\stylesheets\main.css</string>
             <key>mains</key>
-            <string>public\stylesheets\main.css</string>
+            <string>public\stylesheets\admin\main.css</string>
             <key>notif</key>
             <string>app\mailers\notifier.rb</string>
+            <key>r</key>
+            <string>config\routes.rb</string>
             <key>ro</key>
             <string>config\routes.rb</string>
             <key>rou</key>

@@ -47,7 +47,7 @@ class ParticipantsController < ApplicationController
 		@participant.user_id = @current_user.id
 		@participant.meeting_id = params[:meeting_id]
     if @participant.save
-      redirect_to(meeting_participants_url(@meeting), :notice => 'Je hebt je aangemeld voor de meeting.')
+      redirect_to(meeting_participants_url(@meeting), :notice => 'Je hebt je aangemeld voor de meeting. Je kunt nu afspraken maken met andere deelnemers om ze te ontmoeten op de meeting.')
     else
 			render :action => 'new'
     end

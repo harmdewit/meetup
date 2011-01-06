@@ -1,6 +1,14 @@
+%strong
+	= @participant.user.first_name + " " + @participant.user.last_name
+	toevoegen
+%p
+	Als je deze persoon toevoegt krijgt wordt hij hiervan op de hoogte gebracht.
+	%br/
+	Weet je het zeker?
+
 = form_for [@participant, @connection] do |p|
-	%p If you add the user the person will be notified by email. Are you sure you want to add the user?
-	.actions
-		= p.submit 'Ok'
-%button.hide_overlay Cancel
-	
+	.buttons
+		= p.submit 'Ja, voeg toe'
+		%a{:href => "#", :class => "hide_overlay"}
+			%span.icon d
+			Nee, annuleren.
