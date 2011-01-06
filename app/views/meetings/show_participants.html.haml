@@ -16,7 +16,7 @@
 		%input{:placeholder => "Zoek...", :type => "text"}/
 
 	%h2 Interactieve deelnemerslijst
-	%p Je mag tot drie personen toevoegen als gesprekspartner voor de meeting.
+	%p= "Je mag tot drie personen toevoegen als gesprekspartner voor de meeting. Je hebt er op dit moment #{@current_connected_participants.count} toegevoegd."
 	
 	%ul
 		%li
