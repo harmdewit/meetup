@@ -19,7 +19,7 @@ Portal::Application.routes.draw do
 	
   resources :users, :only => :show
 	match 'users/confirmation/:ticket' => 'users#confirmation'
-	match 'users/confirmation/:ticket/linkedin_authenticate', :to => 'users#linkedin_authenticate'
+	match 'users/confirmation/:ticket/linkedin_authenticate', :to => 'users#linkedin_authenticate', :as => "users_linkedin_authenticate"
 	match 'users/confirmation/:ticket/linkedin_callback', :to => 'users#linkedin_callback'
 	
 	controller :sessions do
