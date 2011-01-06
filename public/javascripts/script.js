@@ -127,6 +127,28 @@ $('document').ready(function() {
 	$('.close').click(function() {
 		$(this).parent().slideUp('fast');
 	});
+	
+	$('a.gebruikersovereenkomst').click(function() {
+		var link = $(this).attr("href");
+		
+		$("#overlay").show();
+		$('.hide_overlay').click(function() {
+			$("#overlay").hide();
+		});
+		
+		$('#modal .buttons a:first-child').attr("href", link);
+		
+		$('p.gebruikersovereenkomst').jScrollPane();
+		$('.jspVerticalBar').hide();
+
+		$('p.gebruikersovereenkomst').hover(function() {
+			$('.jspVerticalBar').fadeIn('fast');
+		}, function() {
+			$('.jspVerticalBar').fadeOut('fast');
+		});
+		
+		return false;
+	});
 
 });
 

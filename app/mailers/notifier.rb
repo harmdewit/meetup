@@ -11,7 +11,7 @@ class Notifier < ActionMailer::Base
 
   def registration_request(user)
     @user = user
-    mail :to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", :subject => 'Nieuwe aanmelddienst LaRed: Shit In A Box'    
+    mail :to => "#{@user.first_name} #{@user.last_name} <#{@user.email}>", :subject => 'Nieuwe aanmelddienst LaRed: Meetup'    
   end
 
   def meeting_request

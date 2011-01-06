@@ -86,6 +86,7 @@ class UsersController < ApplicationController
       if @user = User.find_by_linkedin_id(session[:linkedin_id])
     	  redirect_to User.find_by_linkedin_id(session[:linkedin_id]), :notice => 'You are already logged in.'
     	else
+    	  @user = User.find_by_ticket(params[:ticket])
     	  session[:linkedin_id] = nil
   	  end
   	end

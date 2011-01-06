@@ -12,33 +12,48 @@
 	%body
 		#overlay
 			#centerpack
+				.bigspacer
 				#modal
 					.colorindicator
 					.content
-					-# %strong Afmelden voor het event "eventnaam"?
-						%p Weet je zeker dat je je wilt afmelden voor het event "eventnaam"?
+						%strong Gebruikersovereenkomst
+						%p Neem eerst een moment voor onze gebruikersovereenkomst voordat je inlogt.
+						
+						%p.gebruikersovereenkomst
+							%strong Algemeen
+							%br/
+							La Red netwerken & relatiebeheer, hierna te noemen La Red, verleent u hierbij toegang tot lared.nl (de Website) en nodigt u uit kennis te nemen van haar aanbod. La Red behoudt zich daarbij het recht voor op elk moment de inhoud aan te passen of onderdelen te verwijderen zonder daarover aan u mededeling te hoeven doen.
+							%br/
+							%br/
+							De informatie op de website is bedoeld als vrijblijvend en niet als een concreet aanbod om een overeenkomst te sluiten. Overeenkomsten worden alleen gesloten door aanvaarding van een als zodanig aangeduide offerte van La Red.
+							%br/
+							%br/
+							%strong Beperkte aansprakelijkheid
+							%br/
+							De op de website aangeboden materialen worden aangeboden zonder enige vorm van garantie of aanspraak op juistheid. Deze materialen kunnen op elk moment wijzigen zonder voorafgaande mededeling van La Red.
+							 Gebruikers kunnen zelf inhoud plaatsen op de Website. La Red oefent hierop geen voorafgaande controle of redactioneel toezicht uit. La Red zal klachten over gebruikersinhoud serieus onderzoeken en waar nodig ingrijpen. Neem hiervoor contact met ons op via het contactformulier.
+							%br/
+							%br/
+							%strong Auteursrechten
+							%br/
+							Alle rechten van intellectuele eigendom betreffende deze materialen liggen bij La Red en haar licentiegevers en gebruikers. Kopiëren, verspreiden en elk ander gebruik van deze materialen is niet toegestaan zonder schriftelijke toestemming van La Red, behoudens en slechts voor zover anders bepaald in regelingen van dwingend recht (zoals citaatrecht), tenzij bij specifieke materialen anders aangegeven is.
+							%br/
+							%br/
+							Het is niet toegestaan webpagina's of individuele elementen (zoals afbeeldingen, video's of interactieve applicaties) van de Website op te nemen in een frameset of via een inline link in een andere webpagina te verwerken, indien daarbij verwarring kan ontstaan over de afkomst van het materiaal.
+							%br/
+							%br/
+							%strong Overig
+							%br/
+							Deze disclaimer kan van tijd tot tijd wijzigen.
 						
 						.buttons
 							%a{:href => "#"} 
 								%span.icon 3
-								Ja, afmelden
-							%a{:href => "#"}
+								Accepteren
+							%a{:href => "#", :class => "hide_overlay"}
 								%span.icon d
-								Nee, annuleren
+								Weigeren
 		#bar
 		#login_container
 		
-			%span.icon !
-			%h1 Helaas, je bent niet ingelogd.
-			
-			.line
-			
-			%h2 Wij maken gebruik van LinkedIn.
-			%p Om gebruik te kunnen maken van LaRed MeetUp moet er eerst geautoriseerd worden met linkedin hierna kan je: Episode IV, A NEW HOPE It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
-		
-			- if notice
-				%p#notice= notice
-			=yield
-			
-			%small Geen LinkedIn account?
-			= link_to "Maak een account aan", "https://www.linkedin.com/reg/join?trk=hb_join"
+			= yield

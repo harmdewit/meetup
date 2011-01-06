@@ -1,7 +1,12 @@
-.title= "Hallo, #{@user.first_name} #{@user.last_name}"
-%p Hierbij nodigen wij U uit voor onze nieuwe Lared dienst MeetUp
+%br/
+%h1= "Hallo, #{@user.first_name} #{@user.last_name}"
+%p Hierbij nodigen wij van La Red je uit voor onze nieuwe dienst MeetUp.
 
-%p
-	Wij maken gebruik van LinkedIn. Door op de onderstaande knop te drukken geeft U aan het eens te zijn met onze User Agreement en kunt U autoriseren met LinkedIn.
-	%br
-	= link_to 'Authenticate with LinkedIn', users_linkedin_authenticate_url(@user.ticket)
+= image_tag "video.png", :class => "video"
+
+.line
+
+%br
+= link_to 'Inloggen met LinkedIn', users_linkedin_authenticate_url(@user.ticket), :class => "button gebruikersovereenkomst"
+%small Geen LinkedIn account?
+= link_to "Maak een account aan", "https://www.linkedin.com/reg/join?trk=hb_join"
