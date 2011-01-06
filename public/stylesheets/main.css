@@ -160,13 +160,13 @@ body {
 .card .linkedin_url {
 	position: absolute;
 	height: 35px;
-	width: 100%;
+	width: 300px;
 	bottom: 0px;
 	background: -webkit-gradient(linear, left top, left bottom, from(#313131), to(#232323));
 
 	border-top: 1px solid #4c4c4c;
 	display: -webkit-box;
-	margin: -1px;	
+	margin: -1px;
 	-webkit-box-orient: horizontal;
 }
 
@@ -367,14 +367,14 @@ div:not(.main_card) > .card {
 	left: 0px !important;
 	top: 0px !important;
 	margin-left: -319px;
-	margin-top: -150px;
+	margin-top: -167px;
 }
 
 .card.two {
 	display: none;
 	left: 0px !important;
 	top: 0px !important;
-	margin-top: -150px;
+	margin-top: -167px;
 }
 
 .card.three {
@@ -382,7 +382,7 @@ div:not(.main_card) > .card {
 	left: 0px !important;
 	top: 0px !important;
 	margin-left: 319px;
-	margin-top: -150px;
+	margin-top: -167px;
 }
 
 .card.four {
@@ -397,14 +397,14 @@ div:not(.main_card) > .card {
 	left: 0px !important;
 	top: 0px !important;
 	margin-left: 319px;
-	margin-top: 150px;
+	margin-top: 167px;
 }
 
 .card.six {
 	display: none;
 	left: 0px !important;
 	top: 0px !important;
-	margin-top: 150px;
+	margin-top: 167px;
 }
 
 .card.seven {
@@ -412,7 +412,7 @@ div:not(.main_card) > .card {
 	left: 0px !important;
 	top: 0px !important;
 	margin-left: -319px;
-	margin-top: 150px;
+	margin-top: 167px;
 }
 
 .card.eight {

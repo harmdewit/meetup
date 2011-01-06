@@ -34,7 +34,7 @@ class Admin::ConnectionsController < Admin::AdminController
 		@connection2 = Connection.new(params[:connection2])
     if @connection1.save && @connection2.save
   		@meeting =  @connected_participant.meeting
-      redirect_to( admin_connections_url, :notice => "You have succesfully connected #{@participant.user.first_name} #{@participant.user.last_name} to #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
+      redirect_to( admin_connections_url, :notice => "#{@participant.user.first_name} #{@participant.user.last_name} is nu aanbevolen aan #{@connected_participant.user.first_name} #{@connected_participant.user.last_name}.")
     end
 	end
 end
