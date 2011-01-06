@@ -164,27 +164,22 @@ body {
 	bottom: 0px;
 	background: -webkit-gradient(linear, left top, left bottom, from(#313131), to(#232323));
 
-	border: 1px solid #4c4c4c;
-	border-bottom: none;
+	border-top: 1px solid #4c4c4c;
 	display: -webkit-box;
 	margin: -1px;	
 	-webkit-box-orient: horizontal;
 }
 
 .card .linkedin_url > a {
-	background: url(../images/linkedin_32_grey.png) no-repeat;
-	padding-left: 50px;
-	color: gray;
-	text-shadow: 0 1px 0 #000;display: block;
-	font-size: 14px;
+	border-top: 1px solid #656565;
+	padding-left: 58px;
+	color: #fff;
+	display: inline-block;
+	text-shadow: 0 1px 0 #000;
+	font-size: 12px;
 	line-height: 35px;
 	text-decoration: none;
 	-webkit-box-flex: 1;
-}
-
-.card .linkedin_url > a:hover{
-	color: #fff;
-	background: url(../images/linkedin_32.png) no-repeat;
 }
 
 .card img.suggestion_ribbon {
@@ -649,13 +644,8 @@ nav ul li.active a {
 
 #information {
 	background: #262626;
-	border-bottom: 1px solid #1a1a1a;
 	padding: 25px 44px;
 	position: relative;
-}
-
-.information_show {
-	border: none;
 }
 
 #information .title {
@@ -707,7 +697,6 @@ input::-webkit-input-placeholder {
 }
 
 #information p {
-	border-top: 1px solid #393939;
 	color: #8c8c8c;
 	font-size: 14px;
 	line-height: 20px;
@@ -716,11 +705,7 @@ input::-webkit-input-placeholder {
 	text-shadow: 0 1px 0 #000;
 }
 
-#information.information_show p {
-	border: none;
-}
-
-#information.information_show > h2, #information.information_show > h3 {
+#information > h2, #information > h3 {
 	border-top: 1px solid #393939;
 	color: #fff;
 	font-size: 18px;
@@ -729,7 +714,7 @@ input::-webkit-input-placeholder {
 	text-shadow: 0 1px 0 #000;
 }
 
-#information.information_show > h3 {
+#information > h3 {
 	border: none;
 	padding-top: 15px;
 }
