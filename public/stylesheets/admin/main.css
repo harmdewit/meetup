@@ -223,6 +223,7 @@ body {
 #content table thead th {
 	border-bottom: 1px solid #ddd;
 	font-weight: bold;
+	min-width: 120px;
 }
                 
 #content tbody {

@@ -1,0 +1,36 @@
+%h2
+	=image_tag("admin/icons/user_32.png")
+	Meetings
+	
+.content-box
+	.content-box-header
+		%h3 Meetings
+		
+	.content-box-content
+	
+		%table
+			%thead
+				%tr
+					%th
+						Titel
+					%th
+						Beschrijving
+					%th
+						Acties
+					%th
+						Deelnemers
+			
+			%tbody
+				- @admin_meetings.each do |meeting|
+					%tr
+						%td= meeting.title
+						%td= meeting.description
+						%td
+							= link_to image_tag('admin/icons/pencil.png'), edit_admin_meeting_path(meeting)
+							= button_to 'Verwijderen', admin_meeting_path(meeting), :confirm => 'Weet je het zeker?', :method => :delete
+						%td
+							= link_to "Deelnemers", admin_connections_path
+							
+		
+		%br/					
+		= link_to 'Nieuwe meeting', new_admin_meeting_path
