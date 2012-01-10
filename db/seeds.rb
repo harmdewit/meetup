@@ -15,7 +15,7 @@ meetings = Meeting.create ([{
 	{
 	:id => 2,
 	:title => 'Star Wars', 
-	:description => 'War! The Republic is crumbling under attacks by the ruthless Sith Lord, Count Dooku.  There are heroes on both sides.  Evil is everywhere. '
+	:description => 'War! The Republic is crumbling under attacks by the ruthless Sith Lord, Count Dooku. There are heroes on both sides. Evil is everywhere.'
 }])
 
 users = User.create ([
