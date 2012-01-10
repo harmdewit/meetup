@@ -32,6 +32,12 @@ GEM
     bcrypt-ruby (2.1.4)
     bcrypt-ruby (2.1.4-x86-mingw32)
     builder (2.1.2)
+    capistrano (2.9.0)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.1.0)
     crack (0.1.8)
     devise (1.1.5)
       bcrypt-ruby (~> 2.1.2)
@@ -39,6 +45,7 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     haml (3.0.25)
+    highline (1.6.9)
     i18n (0.5.0)
     linkedin (0.1.7)
       crack (~> 0.1.4)
@@ -50,6 +57,14 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    mysql2 (0.2.7)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.2.2)
+    net-ssh-gateway (1.1.0)
+      net-ssh (>= 1.99.1)
     nokogiri (1.4.4)
     nokogiri (1.4.4-x86-mingw32)
     oauth (0.3.6)
@@ -94,8 +109,10 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  capistrano
   devise
   haml
   linkedin
+  mysql2 (= 0.2.7)
   rails
   sqlite3-ruby
