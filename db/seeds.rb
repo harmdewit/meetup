@@ -72,7 +72,7 @@ users = User.create ([
 	}, {
 		:id => 6,
 		:first_name => 'Ilona', 
-		:last_name => 'Doudart de la Grée', 
+		:last_name => 'Doudart de la Gree', 
 		:email => 'mevrouwpollewop@gmail.com', 
 		:ticket => '29b20466f4c87e28c427722c750e1b04', 
 		:linkedin_id => '9csNVeHuF8', 
@@ -108,7 +108,7 @@ participants = Participant.create ([
 		:id => 1,
 		:user_id => 1,
 		:meeting_id => 1,
-		:motivation => 'Harm zijn leven draait geheel om koekjes. Zonder koekjes zou hij zijn leven beëindigen.'
+		:motivation => 'Harm zijn leven draait geheel om koekjes. Zonder koekjes zou hij zijn leven beeindigen.'
 	},	{
 		:id => 2,
 		:user_id => 1,
