@@ -3,11 +3,11 @@ class SessionsController < ApplicationController
 	layout 'login'
 	
 	def linkedin_authenticate
-    # if Rails.env.production?
-      request_token = @@client.request_token(:oauth_callback => "#{request.host}/sessions/linkedin_callback")  	    
-    # else
-      # request_token = @@client.request_token(:oauth_callback => "http://#{request.host_with_port}/sessions/linkedin_callback")  
-    # end
+    if Rails.env.production?
+      request_token = @@client.request_token(:oauth_callback => "http://#{request.host}/sessions/linkedin_callback")  	    
+    else
+      request_token = @@client.request_token(:oauth_callback => "http://#{request.host_with_port}/sessions/linkedin_callback")  
+    end
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
     redirect_to @@client.request_token.authorize_url

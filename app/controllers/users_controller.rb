@@ -6,11 +6,11 @@ class UsersController < ApplicationController
 	def linkedin_authenticate
 		user = User.find_by_ticket(params[:ticket])
     unless user.linkedin_id
-      # if Rails.env.production?
-  	    request_token = @@client.request_token(:oauth_callback => "#{request.host}/users/confirmation/#{user.ticket}/linkedin_callback")  
-      # else
-        # request_token = @@client.request_token(:oauth_callback => "http://#{request.host_with_port}/users/confirmation/#{user.ticket}/linkedin_callback")  
-      # end
+      if Rails.env.production?
+  	    request_token = @@client.request_token(:oauth_callback => "http://#{request.host}/users/confirmation/#{user.ticket}/linkedin_callback")  
+      else
+        request_token = @@client.request_token(:oauth_callback => "http://#{request.host_with_port}/users/confirmation/#{user.ticket}/linkedin_callback")  
+      end
 	    session[:rtoken] = request_token.token
 	    session[:rsecret] = request_token.secret
 	    redirect_to @@client.request_token.authorize_url

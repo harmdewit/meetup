@@ -9,11 +9,16 @@
 		= javascript_include_tag 'jquery'
 		= javascript_include_tag 'rails'
 		= javascript_include_tag 'script'
-		
+		- if Rails.env.production?
+			%script{:type => "text/javascript", :src => "http://platform.linkedin.com/in.js"}
+				api_key: du6egpmuzdvl
+				onLoad: linkedin
+				authorize: true
+		- else
 		%script{:type => "text/javascript", :src => "http://platform.linkedin.com/in.js"}
-			api_key: du6egpmuzdvl
+			api_key: -1YQvzZ-M0-j2vNnq8cSTsbOigV2XUur4lTVLQKBJ7kMVjSMGOF2Ndrib8EhXfLD
 			onLoad: linkedin
-			authorize: true
+			authorize: true			
 	%body
 	
 		#overlay
