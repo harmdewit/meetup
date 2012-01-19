@@ -1,0 +1,12 @@
+%br/
+%h1= "Hallo, #{@user.first_name} #{@user.last_name}"
+%p Hierbij nodigen wij van La Red je uit voor onze nieuwe dienst MeetUp.
+
+= image_tag "video.png", :class => "video"
+
+.line
+
+%br
+= link_to 'Inloggen met LinkedIn', authenticate_linkedin_url, :class => "button gebruikersovereenkomst"
+%small Geen LinkedIn account?
+= link_to "Maak een account aan", "https://www.linkedin.com/reg/join?trk=hb_join"

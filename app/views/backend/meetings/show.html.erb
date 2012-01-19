@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @backend_meeting.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @backend_meeting.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_backend_meeting_path(@backend_meeting) %> |
+<%= link_to 'Back', backend_meetings_path %>

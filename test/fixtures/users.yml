@@ -4,16 +4,16 @@ one:
   first_name: MyString
   last_name: MyString
   email: MyString
-  linkedin_id: MyString
-  linkedin_token: MyString
-  linkedin_secret: MyString
+  uid: MyString
+  token: MyString
+  secret: MyString
   ticket: MyString
 
 two:
   first_name: MyString
   last_name: MyString
   email: MyString
-  linkedin_id: MyString
-  linkedin_token: MyString
-  linkedin_secret: MyString
+  uid: MyString
+  token: MyString
+  secret: MyString
   ticket: MyString

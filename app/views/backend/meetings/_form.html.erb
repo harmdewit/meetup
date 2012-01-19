@@ -1,0 +1,25 @@
+<%= form_for([:backend, @backend_meeting]) do |f| %>
+  <% if @backend_meeting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@backend_meeting.errors.count, "error") %> prohibited this backend_meeting from being saved:</h2>
+
+      <ul>
+      <% @backend_meeting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

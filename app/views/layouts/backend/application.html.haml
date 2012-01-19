@@ -1,0 +1,54 @@
+!!!
+%html
+	%head
+		%title Portal	
+		= csrf_meta_tag
+
+		= stylesheet_link_tag 'backend/reset.css'
+		= stylesheet_link_tag 'backend/main.css'
+		= stylesheet_link_tag 'backend/css3.css'
+		= stylesheet_link_tag 'backend/custom-theme/jquery-ui-1.8.1.custom.css'
+		
+
+		= javascript_include_tag 'backend/jquery-1.4.2.min.js'
+		= javascript_include_tag 'backend/jquery-ui.min.js'
+		= javascript_include_tag 'backend/jquery.wysiwyg.js'
+		= javascript_include_tag 'backend/excanvas.js'
+		= javascript_include_tag 'backend/jquery.visualize.js'
+		= javascript_include_tag 'backend/script.js'
+		= javascript_include_tag 'jquery'
+		= javascript_include_tag 'rails'
+		
+	%body
+		#overlay2
+			#centerpack
+				#modal
+		#bokeh
+			#container
+				#header
+					%h1#logo Admin Control Panel
+					
+					#header_buttons
+						= link_to "Sign Out", destroy_admin_session_path, method: :delete
+						= link_to "#{current_admin.email} ", "#"
+
+							
+					%ul#main-nav
+						- if params[:controller] == "backend/users"
+							%li
+								= link_to "Gebruikers", backend_users_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Gebruikers", backend_users_path
+						- if params[:controller] == "backend/meetings" || params[:controller] == "backend/connections"
+							%li
+								= link_to "Meetings", backend_meetings_path, {:class => "current"}
+						- else
+							%li
+								= link_to "Meetings", backend_meetings_path
+							
+				#content
+					- if notice
+						.notification.success= notice
+						
+					=yield

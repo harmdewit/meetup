@@ -11,7 +11,6 @@ Portal::Application.configure do
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
-  config.action_view.debug_rjs             = true
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send
@@ -22,5 +21,24 @@ Portal::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+
+	 ActionMailer::Base.smtp_settings = {
+	 	:address => "smtp.gmail.com" ,
+	 	:port => 587,
+	 	:domain => "gmail.com" ,
+	 	:user_name => "laredportal" ,
+	 	:password => "dmecgroep5" ,
+	 	:authentication => "plain" ,
+	 	:enable_starttls_auto => true
+	 }
+
+	config.action_mailer.default_url_options = {
+	  :host => 'localhost',
+	  :port => 3000
+	}
+	LinkedIn.configure do |config|
+	  config.token = "-1YQvzZ-M0-j2vNnq8cSTsbOigV2XUur4lTVLQKBJ7kMVjSMGOF2Ndrib8EhXfLD"
+	  config.secret = "4cD40PK_AYoq69NptDig_4rJbR9aCS1APWAk_jsOeBLAwVh5zed4a7zhXl43hOWh"
+	end
 end
 

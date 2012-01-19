@@ -1,5 +1,4 @@
 class ConnectionsController < ApplicationController
-	skip_before_filter :authenticate_user, :only => :index
 	layout 'login'
 
   # GET /connections/new

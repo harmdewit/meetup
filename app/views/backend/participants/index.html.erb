@@ -1,0 +1,27 @@
+<h1>Listing backend_participants</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Motivation</th>
+    <th>Created at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @backend_participants.each do |backend_participant| %>
+  <tr>
+    <td><%= backend_participant.user_id %></td>
+    <td><%= backend_participant.motivation %></td>
+    <td><%= backend_participant.created_at %></td>
+    <td><%= link_to 'Show', backend_participant %></td>
+    <td><%= link_to 'Edit', edit_backend_participant_path(backend_participant) %></td>
+    <td><%= link_to 'Destroy', backend_participant, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Participant', new_backend_participant_path %>

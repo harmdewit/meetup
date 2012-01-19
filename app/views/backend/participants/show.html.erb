@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @backend_participant.user_id %>
+</p>
+
+<p>
+  <b>Motivation:</b>
+  <%= @backend_participant.motivation %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%= @backend_participant.created_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_backend_participant_path(@backend_participant) %> |
+<%= link_to 'Back', backend_participants_path %>

@@ -2,13 +2,13 @@ require 'test_helper'
 
 class Admin::MeetingsControllerTest < ActionController::TestCase
   setup do
-    @admin_meeting = admin_meetings(:one)
+    @backend_meeting = backend_meetings(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:admin_meetings)
+    assert_not_nil assigns(:backend_meetings)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class Admin::MeetingsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create admin_meeting" do
+  test "should create backend_meeting" do
     assert_difference('Admin::Meeting.count') do
-      post :create, :admin_meeting => @admin_meeting.attributes
+      post :create, :backend_meeting => @backend_meeting.attributes
     end
 
-    assert_redirected_to admin_meeting_path(assigns(:admin_meeting))
+    assert_redirected_to backend_meeting_path(assigns(:backend_meeting))
   end
 
-  test "should show admin_meeting" do
-    get :show, :id => @admin_meeting.to_param
+  test "should show backend_meeting" do
+    get :show, :id => @backend_meeting.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @admin_meeting.to_param
+    get :edit, :id => @backend_meeting.to_param
     assert_response :success
   end
 
-  test "should update admin_meeting" do
-    put :update, :id => @admin_meeting.to_param, :admin_meeting => @admin_meeting.attributes
-    assert_redirected_to admin_meeting_path(assigns(:admin_meeting))
+  test "should update backend_meeting" do
+    put :update, :id => @backend_meeting.to_param, :backend_meeting => @backend_meeting.attributes
+    assert_redirected_to backend_meeting_path(assigns(:backend_meeting))
   end
 
-  test "should destroy admin_meeting" do
+  test "should destroy backend_meeting" do
     assert_difference('Admin::Meeting.count', -1) do
-      delete :destroy, :id => @admin_meeting.to_param
+      delete :destroy, :id => @backend_meeting.to_param
     end
 
-    assert_redirected_to admin_meetings_path
+    assert_redirected_to backend_meetings_path
   end
 end

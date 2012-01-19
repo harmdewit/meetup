@@ -4,12 +4,9 @@
 .line
 
 %h2 Wij maken gebruik van LinkedIn.
-%p Om gebruik te kunnen maken van LaRed MeetUp moet er eerst geautoriseerd worden met linkedin hierna kan je: Episode IV, A NEW HOPE It is a period of civil war. Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+%p Om gebruik te kunnen maken van LaRed MeetUp moet er eerst geautoriseerd worden met linkedin.
 
 - if notice
 	%p#notice= notice
 	
-= link_to 'Inloggen met LinkedIn', linkedin_authenticate_path, :class => "button"
-
-%small Geen LinkedIn account?
-= link_to "Maak een account aan", "https://www.linkedin.com/reg/join?trk=hb_join"
+= link_to 'Inloggen met LinkedIn', authenticate_linkedin_url, :class => "button"

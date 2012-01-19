@@ -20,18 +20,17 @@
 			%ul
 				%li
 					%b First Name:
-					= @public_linkedin.first_name
+					= @user.first_name
 				%li
 					%b Last Name:
-					= @public_linkedin.last_name
+					= @user.last_name
 				%li
-					- if @public_linkedin.picture_url != nil
-						= image_tag @public_linkedin.picture_url, :alt => 'profile_picture'
+					= image_tag @user.image, :alt => 'profile_picture'
 
 				-#%ul
 					%li
 						%b LinkedIn ID:
-						= @linkedin_id.id
+						= @uid.id
 					%li
 						%b First Name:
 						= @profile.first_name
@@ -39,8 +38,8 @@
 						%b Last Name:
 						= @profile.last_name
 					%li
-						- if @profile.picture_url != nil
-							= image_tag @profile.picture_url, :alt => 'profile_picture'
+						- if @profile.image != nil
+							= image_tag @profile.image, :alt => 'profile_picture'
 					%li
 						%h3 public linkedin
 			
@@ -55,7 +54,7 @@
 							%b Last Name:
 							= c.last_name
 						%li
-							- if c.picture_url != nil
-								= image_tag c.picture_url, :alt => 'profile_picture'
+							- if c.image != nil
+								= image_tag c.image, :alt => 'profile_picture'
 		- else 
 			%p LinkedIn not authenticated!

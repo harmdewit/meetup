@@ -1,0 +1,35 @@
+%h2
+	=image_tag("backend/icons/user_32.png")
+	= @meeting.title
+
+.content-box
+	.content-box-header
+		%h3 Deelnemers
+		
+	.content-box-content
+	
+		%table
+			%thead
+				%tr
+					%th
+						Naam
+					%th
+						Connecties
+					%th
+						Aanbeveling
+		
+			%tbody
+				- @meeting.participants.each do |p|
+					%tr
+						%td= "#{p.user.first_name} #{p.user.last_name}"
+						%td
+							- p.connections.each do |c|
+								= "#{c.connected_participant.user.first_name} #{c.connected_participant.user.last_name}, "
+						%td
+							= form_for(:backend,@connection ) do |f|
+								%input{:type => "hidden", :name => :participant_id, :value => p.id}
+								%select{:name => :connected_participant_id}
+									- @select_options.each do |p|
+										%option{:value => p.id}
+											= p.user.first_name + " " + p.user.last_name
+								= f.submit "Toevoegen"

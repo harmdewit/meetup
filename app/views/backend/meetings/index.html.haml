@@ -1,0 +1,36 @@
+%h2
+	=image_tag("backend/icons/user_32.png")
+	Meetings
+	
+.content-box
+	.content-box-header
+		%h3 Meetings
+		
+	.content-box-content
+	
+		%table
+			%thead
+				%tr
+					%th
+						Titel
+					%th
+						Beschrijving
+					%th
+						Acties
+					%th
+						Deelnemers
+			
+			%tbody
+				- @backend_meetings.each do |meeting|
+					%tr
+						%td= meeting.title
+						%td= meeting.description
+						%td
+							= link_to image_tag('backend/icons/pencil.png'), edit_backend_meeting_path(meeting)
+							= button_to 'Verwijderen', backend_meeting_path(meeting), :confirm => 'Weet je het zeker?', :method => :delete
+						%td
+							= link_to "Deelnemers", backend_connections_path
+							
+		
+		%br/					
+		= link_to 'Nieuwe meeting', new_backend_meeting_path

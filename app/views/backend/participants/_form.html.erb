@@ -1,0 +1,29 @@
+<%= form_for(@backend_participant) do |f| %>
+  <% if @backend_participant.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@backend_participant.errors.count, "error") %> prohibited this backend_participant from being saved:</h2>
+
+      <ul>
+      <% @backend_participant.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :motivation %><br />
+    <%= f.text_field :motivation %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br />
+    <%= f.date_select :created_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

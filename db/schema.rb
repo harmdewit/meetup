@@ -1,3 +1,4 @@
+# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -15,7 +16,6 @@ ActiveRecord::Schema.define(:version => 20101223221425) do
   create_table "admins", :force => true do |t|
     t.string   "email",                               :default => "", :null => false
     t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -56,17 +56,24 @@ ActiveRecord::Schema.define(:version => 20101223221425) do
   end
 
   create_table "users", :force => true do |t|
+    t.string   "uid"
+    t.string   "name"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "linkedin_id"
-    t.string   "linkedin_token"
-    t.string   "linkedin_secret"
+    t.string   "nickname"
+    t.string   "location"
+    t.string   "description"
+    t.string   "image"
+    t.string   "phone"
+    t.string   "urls"
+    t.string   "token"
+    t.string   "secret"
     t.string   "ticket"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "linkedin_url"
-    t.string   "picture_url"
+    t.string   "image"
   end
 
 end

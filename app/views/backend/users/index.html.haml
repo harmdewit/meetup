@@ -1,0 +1,35 @@
+%h2
+	=image_tag("backend/icons/user_32.png")
+	Users
+	
+.content-box
+	.content-box-header
+		%h3 Users
+		
+	.content-box-content
+	
+		%table
+			%thead
+				%tr
+					%th
+						Voornaam
+					%th
+						Achternaam
+					%th
+						Email
+					%th
+						Acties
+			
+			%tbody
+				- @backend_users.each do |user|
+					%tr
+						%td= user.first_name
+						%td= user.last_name
+						%td= user.email
+						%td
+							= link_to image_tag('backend/icons/pencil.png'), edit_backend_user_path(user)
+							= button_to 'Verwijderen', backend_user_path(user), :confirm => 'Weet je het zeker?', :method => :delete
+							
+		
+		%br/					
+		= link_to 'Nieuwe gebruiker', new_backend_user_path

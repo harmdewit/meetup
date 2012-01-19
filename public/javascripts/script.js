@@ -154,18 +154,18 @@ $('document').ready(function() {
 
 function linkedin() {
 	$('document').ready(function() {
-		var id = [];
+		var ids = [];
 		$('.linkedin').each(function() {
-			id.push($(this).attr("data-linkedin"));
+			ids.push($(this).attr("data-linkedin"));
 		});
-		IN.API.Profile(id).fields("id", "firstName", "lastName", "headline", "pictureUrl", "site-standard-profile-request").result(displayCard);
-		//IN.API.Profile(id).result(displayCard);
+		IN.API.Profile(ids).fields(["id", "firstName", "lastName", "headline", "pictureUrl", "siteStandardProfileRequest"]).result(displayCard);
 
 	});
 }
 
 function displayCard(profiles) {
 	var members = profiles.values;
+	alert(JSON.stringify(profiles))
 	
 	for(var member in members) {
 	
@@ -173,7 +173,7 @@ function displayCard(profiles) {
 			if($(this).attr("data-linkedin") == members[member].id) {
 				$(this).find("small").html(members[member].headline);
 				$(this).find("img.linkedin_img").attr("src", members[member].pictureUrl);
-				$(this).find(".linkedin_url a").attr("href", members[member].siteStandardProfileRequest.url)
+				$(this).find(".linkedin_url a").attr("href", members[member].siteStandardProfileRequest);
 			}
 		});
 		

@@ -1,4 +1,4 @@
-.stack.linkedin{:data => {:linkedin => participant.user.linkedin_id}}
+.stack.linkedin{:data => {:linkedin => participant.user.uid}}
 	.main_card
 
 		.clickarea
@@ -42,11 +42,11 @@
 					.img_delete_connection
 
 			.card_inside
-				%img.linkedin_img{:alt => "picture"}
+				= image_tag participant.user.image, :alt => "picture", class: "linkedin_img"
 				%h2= participant.user.first_name + " " + participant.user.last_name
-				%small
+				%small= participant.user.description
 				.linkedin_url
-					%a{:href => '#'} Bekijk LinkedIn profiel
+					%a{href: participant.user.urls} Bekijk LinkedIn profiel
 	.connections
 	
 		- participant.connections.each do |connection|

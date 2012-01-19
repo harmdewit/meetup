@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>First name:</b>
+  <%= @backend_user.first_name %>
+</p>
+
+<p>
+  <b>Last name:</b>
+  <%= @backend_user.last_name %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @backend_user.email %>
+</p>
+
+<p>
+  <b>Linkedin:</b>
+  <%= @backend_user.uid %>
+</p>
+
+<p>
+  <b>Linkedin token:</b>
+  <%= @backend_user.token %>
+</p>
+
+<p>
+  <b>Linkedin secret:</b>
+  <%= @backend_user.secret %>
+</p>
+
+<p>
+  <b>Ticket:</b>
+  <%= @backend_user.ticket %>
+</p>
+
+
+<%= link_to 'Edit', edit_backend_user_path(@backend_user) %> |
+<%= link_to 'Back', backend_users_path %>

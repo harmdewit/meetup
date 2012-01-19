@@ -2,13 +2,13 @@ require 'test_helper'
 
 class Admin::UsersControllerTest < ActionController::TestCase
   setup do
-    @admin_user = admin_users(:one)
+    @backend_user = backend_users(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:admin_users)
+    assert_not_nil assigns(:backend_users)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class Admin::UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create admin_user" do
+  test "should create backend_user" do
     assert_difference('Admin::User.count') do
-      post :create, :admin_user => @admin_user.attributes
+      post :create, :backend_user => @backend_user.attributes
     end
 
-    assert_redirected_to admin_user_path(assigns(:admin_user))
+    assert_redirected_to backend_user_path(assigns(:backend_user))
   end
 
-  test "should show admin_user" do
-    get :show, :id => @admin_user.to_param
+  test "should show backend_user" do
+    get :show, :id => @backend_user.to_param
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, :id => @admin_user.to_param
+    get :edit, :id => @backend_user.to_param
     assert_response :success
   end
 
-  test "should update admin_user" do
-    put :update, :id => @admin_user.to_param, :admin_user => @admin_user.attributes
-    assert_redirected_to admin_user_path(assigns(:admin_user))
+  test "should update backend_user" do
+    put :update, :id => @backend_user.to_param, :backend_user => @backend_user.attributes
+    assert_redirected_to backend_user_path(assigns(:backend_user))
   end
 
-  test "should destroy admin_user" do
+  test "should destroy backend_user" do
     assert_difference('Admin::User.count', -1) do
-      delete :destroy, :id => @admin_user.to_param
+      delete :destroy, :id => @backend_user.to_param
     end
 
-    assert_redirected_to admin_users_path
+    assert_redirected_to backend_users_path
   end
 end

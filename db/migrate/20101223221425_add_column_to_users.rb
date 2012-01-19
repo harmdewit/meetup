@@ -1,9 +1,9 @@
 class AddColumnToUsers < ActiveRecord::Migration
   def self.up
-    add_column :users, :picture_url, :string
+    add_column :users, :image, :string
   end
 
   def self.down
-    remove_column :users, :picture_url
+    remove_column :users, :image
   end
 end

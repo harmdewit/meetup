@@ -46,4 +46,21 @@ Portal::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+
+  ActionMailer::Base.smtp_settings = {
+     :address              => "smtp.gmail.com",
+     :port                 => 587,
+     :user_name            => "harmdezwart@gmail.com",
+     :password             => 'brood1923',
+     :authentication       => "plain",
+     :enable_starttls_auto => true
+   }
+	config.action_mailer.default_url_options = {
+	  :host => 'www.meetup.harmdewit.com',
+	}
+	LinkedIn.configure do |config|
+	  config.token = "du6egpmuzdvl"
+	  config.secret = "FoePCrBCPDs2qDGE"
+	end
+	
 end

@@ -159,7 +159,7 @@
 #main_content
 	
 	- @latest_participants.each do |participant|
-		.stack.linkedin{:data => {:linkedin => participant.user.linkedin_id}}
+		.stack.linkedin{:data => {:linkedin => participant.user.uid}}
 			.main_card
 				.card.front
 					%a= participant.connections.count
