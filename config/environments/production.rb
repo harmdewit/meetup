@@ -1,4 +1,4 @@
-Portal::Application.configure do
+MeetUp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.
@@ -57,10 +57,5 @@ Portal::Application.configure do
    }
 	config.action_mailer.default_url_options = {
 	  :host => 'www.meetup.harmdewit.com',
-	}
-	LinkedIn.configure do |config|
-	  config.token = "du6egpmuzdvl"
-	  config.secret = "FoePCrBCPDs2qDGE"
-	end
-	
+	}	
 end

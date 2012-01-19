@@ -1,4 +1,4 @@
-Portal::Application.configure do
+MeetUp::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # In the development environment your application's code is reloaded on
@@ -26,7 +26,7 @@ Portal::Application.configure do
 	 	:address => "smtp.gmail.com" ,
 	 	:port => 587,
 	 	:domain => "gmail.com" ,
-	 	:user_name => "laredportal" ,
+	 	:user_name => "laredMeetUp" ,
 	 	:password => "dmecgroep5" ,
 	 	:authentication => "plain" ,
 	 	:enable_starttls_auto => true
@@ -36,9 +36,6 @@ Portal::Application.configure do
 	  :host => 'localhost',
 	  :port => 3000
 	}
-	LinkedIn.configure do |config|
-	  config.token = "-1YQvzZ-M0-j2vNnq8cSTsbOigV2XUur4lTVLQKBJ7kMVjSMGOF2Ndrib8EhXfLD"
-	  config.secret = "4cD40PK_AYoq69NptDig_4rJbR9aCS1APWAk_jsOeBLAwVh5zed4a7zhXl43hOWh"
-	end
+
 end
 

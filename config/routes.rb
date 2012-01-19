@@ -1,4 +1,4 @@
-Portal::Application.routes.draw do
+MeetUp::Application.routes.draw do
 
 	root :to => "meetings#last_meeting"
 
